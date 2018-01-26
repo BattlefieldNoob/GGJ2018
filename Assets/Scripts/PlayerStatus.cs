@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStatus : MonoBehaviour {
 
-	enum State {Normal,Infected,Stunned };
+	public UnityEvent CollidedWithPlayer;
+	enum State {Normal,Infected,Stunned,Dead};
 	State CurrentState;
 	private float StunTime = 1.0f;
 	CharacterMovement Movement;
@@ -13,6 +15,7 @@ public class PlayerStatus : MonoBehaviour {
 	void Start () {
 		CurrentState = State.Normal;
 		Movement = GetComponent<CharacterMovement>();
+		CollidedWithPlayer = new UnityEvent();
 	}
 	
 	// Update is called once per frame
@@ -23,14 +26,23 @@ public class PlayerStatus : MonoBehaviour {
 		}
 	}
 
+	public void Explode()
+	{
+		//animazione
+		CurrentState = State.Dead;
+		gameObject.SetActive(false);
+	}
+
+	public bool IsDead()
+	{
+		return CurrentState == State.Dead;
+	}
+
 	public void Infect()
 	{
-		Debug.Log("Infect");
-		CurrentState = State.Stunned;
-		GetComponent<CharacterMovement>().enabled = false;
-		StartCoroutine(Stun());
-		//time to wait
-		//blendShape
+			CurrentState = State.Stunned;
+			GetComponent<CharacterMovement>().enabled = false;
+			StartCoroutine(Stun());
 	}
 
 	private IEnumerator Stun()
@@ -51,8 +63,7 @@ public class PlayerStatus : MonoBehaviour {
 		var other = collision.transform.GetComponent<PlayerStatus>();
 		if (other && CurrentState == State.Infected)
 		{
-			BecomeHealthy();
-			other.Infect();
+			CollidedWithPlayer.Invoke();
 		}
 	}
 }
