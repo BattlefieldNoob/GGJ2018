@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerStatus : MonoBehaviour {
 
 	public UnityEvent CollidedWithPlayer;
-	enum State {Normal,Infected,Stunned };
+	enum State {Normal,Infected,Stunned,Dead};
 	State CurrentState;
 	private float StunTime = 1.0f;
 	CharacterMovement Movement;
@@ -24,6 +24,18 @@ public class PlayerStatus : MonoBehaviour {
 		{
 			Infect();
 		}
+	}
+
+	public void Explode()
+	{
+		//animazione
+		CurrentState = State.Dead;
+		gameObject.SetActive(false);
+	}
+
+	public bool IsDead()
+	{
+		return CurrentState == State.Dead;
 	}
 
 	public void Infect()
