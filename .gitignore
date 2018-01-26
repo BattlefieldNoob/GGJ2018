@@ -29,6 +29,38 @@ ExportedObj/
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
+# FMOD
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+/Assets/StreamingAssets/Master Bank.bank
+/Assets/StreamingAssets/Master Bank.bank.meta
+/Assets/StreamingAssets/Master Bank.strings.bank
+/Assets/StreamingAssets/Master Bank.strings.bank.meta
+fmod.log
+fmod_editor.log
+
+
 # Builds
 *.apk
 *.unitypackage
+
+FBCaptureSDK\.txt
+
+Assets/Plugins/Octane
+
+Assets/Plugins/Octane\.meta
+
+
+Assets/Plugins/GitHub/
+
+
+Assets/Plugins/GitHub\.meta
+
+# User-specific stuff (Rider):
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+\.idea/\.idea\.the_edge/\.idea/contentModel\.xml
+
+/vive_role_bindings.cfg
