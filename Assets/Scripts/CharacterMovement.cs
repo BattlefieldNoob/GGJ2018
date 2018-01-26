@@ -13,7 +13,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector3 dir = new Vector3(-Input.GetAxis("Horizontal"),0,-Input.GetAxis("Vertical")).normalized;
 		if (dir != Vector3.zero)
 		{
