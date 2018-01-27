@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musMainMenu: event:/MUSIC/MUS_MainMenu
+  _musGameplay: event:/MUSIC/MUS_Gameplay
 --- !u!114 &114817770821729434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,3 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ambMainMenu: event:/AMB/AMB_MainMenu
+  _ambGameplay: event:/AMB/AMB_Gameplay
