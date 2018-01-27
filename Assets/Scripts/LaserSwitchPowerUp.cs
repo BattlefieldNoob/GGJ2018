@@ -24,6 +24,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
 			}
 		}
 		lr = GetComponent<LineRenderer>();
+		Status.GetPlayerUIPanel().SetPowerUpIcon(iconSprite);
 	}
 
 	private void Update()
@@ -99,11 +100,13 @@ public class LaserSwitchPowerUp : GenericPowerUp
 		lr.enabled = false;
 		SwitchPositions(t);
 		EnableDisableCommands(t.gameObject, true);
+		Status.GetPlayerUIPanel().SetPowerUpIcon(null);
 		Destroy(gameObject);
 	}
 
 	public override void SelfDestruct()
 	{
+		Status.GetPlayerUIPanel().SetPowerUpIcon(null);
 		Status.SetPowerUp(null);
 		Destroy(gameObject);
 	}

@@ -29,7 +29,8 @@ public class PlayerStatus : MonoBehaviour
 
     private Animator Animator;
 	public ParticleSystem SplashParticles;
-	
+
+	PlayerUIPanel UIPanel; 
 
     // Use this for initialization
     void Start()
@@ -39,7 +40,19 @@ public class PlayerStatus : MonoBehaviour
         Animator = GetComponentInChildren<Animator>();
         CollidedWithPlayer = new CollisionWithPlayerEvent();
 		PowerUp = null;
+
+		int id = Movement.PlayerID;
+		foreach(PlayerUIPanel p in FindObjectsOfType<PlayerUIPanel>())
+		{
+			if (p.id == id)
+				UIPanel = p; 
+		}
     }
+
+	public PlayerUIPanel GetPlayerUIPanel()
+	{
+		return UIPanel; 
+	}
 
     // Update is called once per frame
     void Update()
@@ -71,7 +84,8 @@ public class PlayerStatus : MonoBehaviour
         CurrentState = State.Dead;
 		if (PowerUp)
 			PowerUp.SelfDestruct();
-        gameObject.SetActive(false);
+		UIPanel.PlayerIsDead();
+		gameObject.SetActive(false);
     }
 
     public bool IsDead()
@@ -91,6 +105,7 @@ public class PlayerStatus : MonoBehaviour
     {
         if(IsDead())
             CurrentState = State.Normal;
+		UIPanel.PlayerIsAlive(); 
     }
 
     public void Infect()

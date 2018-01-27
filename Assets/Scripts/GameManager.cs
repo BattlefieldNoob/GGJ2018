@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
 		
 		EventManager.Instance.OnLastPlayerInfectedPerMatch.AddListener((winner) =>
 		{
+			print("Event thrown");
 			MatchFinished(winner);
 		});
 	}
@@ -126,10 +127,11 @@ public class GameManager : MonoBehaviour
 		var waitTime = 6f;
 
 		AnotherMatch.transform.DOMoveX(-80, waitTime).OnComplete(() => { AnotherMatch.transform.DOMoveX(23, 0.01f); });
-		
+
+		Debug.Log("waiting 6 seconds");
 		//Todo Aspetto animazione zoom
 		yield return new WaitForSeconds(waitTime);
-
+		Debug.Log("Waited 6 seconds");
 
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{

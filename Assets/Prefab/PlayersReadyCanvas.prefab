@@ -1332,7 +1332,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4979590fb8c9c4692232f6f1adb2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersStatus: []
+  playersStatus:
+  - {fileID: 114765091229642924}
+  - {fileID: 114028826264252866}
+  - {fileID: 114243931803497100}
+  - {fileID: 114915372816508792}
   CanStart: {fileID: 114606291225724040}
 --- !u!114 &114765091229642924
 MonoBehaviour:

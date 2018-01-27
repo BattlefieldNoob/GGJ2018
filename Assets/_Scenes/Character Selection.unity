@@ -456,26 +456,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114017546276832966, guid: 2a110e243f53fb9409bd248602ed3393,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114017546276832966, guid: 2a110e243f53fb9409bd248602ed3393,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301272177093048, guid: 2a110e243f53fb9409bd248602ed3393,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114301272177093048, guid: 2a110e243f53fb9409bd248602ed3393,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 223313437621784118, guid: 2a110e243f53fb9409bd248602ed3393,
         type: 2}
       propertyPath: m_Camera
@@ -497,6 +477,26 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114346097420893192, guid: 2a110e243f53fb9409bd248602ed3393,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301272177093048, guid: 2a110e243f53fb9409bd248602ed3393,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114301272177093048, guid: 2a110e243f53fb9409bd248602ed3393,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017546276832966, guid: 2a110e243f53fb9409bd248602ed3393,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017546276832966, guid: 2a110e243f53fb9409bd248602ed3393,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1

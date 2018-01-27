@@ -15,10 +15,12 @@ public class SpeedUpPowerUp : GenericPowerUp
 		transform.SetParent(g.transform);
 		Status = GetComponentInParent<PlayerStatus>();
 		Status.SetPowerUp(this);
+		Status.GetPlayerUIPanel().SetPowerUpIcon(iconSprite); 
 	}
 
 	public override void Use()
 	{
+		Status.GetPlayerUIPanel().SetPowerUpIcon(null);
 		Status.SpeedUp();
 		Destroy(gameObject);
 	}
