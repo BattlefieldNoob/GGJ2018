@@ -35,7 +35,7 @@ public class PlayerSelectionManager : MonoBehaviour
 	void Update () {
 		for (int i = 0; i < joysticks.Length; i++)
 		{
-			if (!joystickIsReady[i] && Input.GetButtonDown("ButtonPL" + (i+1)))
+			if (!joystickIsReady[i] && Input.GetButtonDown("Button" + (i+1)))
 			{
 				joystickIsReady[i] = true;
 				playerStatus[i].text = "Ready!";
