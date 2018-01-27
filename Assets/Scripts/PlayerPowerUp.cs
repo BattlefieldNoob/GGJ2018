@@ -28,7 +28,22 @@ public class PlayerPowerUp : MonoBehaviour {
 
 	void LaserSwitch()
 	{
-
+		float minDist = 10000.0f;
+		float dist = 10000.0f;
+		GameObject closest = new GameObject();
+		foreach (GameObject player in Manager.players)
+		{
+			if (player.activeSelf && !player.GetComponent<PlayerStatus>().IsInfected() && !player.Equals(gameObject))
+			{
+				dist = Vector3.Distance(gameObject.transform.position, player.transform.position);
+				if (dist < minDist)
+				{
+					minDist = dist;
+					closest = player;
+				}
+			}
+		}
+		StartCoroutine(LaserWait(closest.transform));
 	}
 	
 	IEnumerator LaserWait(Transform t)
@@ -36,7 +51,7 @@ public class PlayerPowerUp : MonoBehaviour {
 		laser.enabled = true;
 		laser.SetPosition(0, transform.position);
 		laser.SetPosition(1, t.position);
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
 		laser.enabled = false;
 		Vector3 temp = t.position;
 		t.position = gameObject.transform.position;
@@ -60,7 +75,7 @@ public class PlayerPowerUp : MonoBehaviour {
 					Status.SpeedUp();
 					break;
 				case PowerUp.PowerUps.Grapnel:
-
+					LaserSwitch();
 					break;
 			}
 		}

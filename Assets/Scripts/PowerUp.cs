@@ -26,8 +26,8 @@ public class PowerUp : MonoBehaviour {
             {
                 active = false;
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-                target.GetComponent<PlayerPowerUp>().SetPowerUp(CurrentPowerUp);
-                StartCoroutine(Respawn());
+				target.GetComponent<PlayerPowerUp>().SetPowerUp(CurrentPowerUp);
+				StartCoroutine(Respawn());
             }
     }
 

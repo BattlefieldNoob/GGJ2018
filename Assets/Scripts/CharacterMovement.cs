@@ -29,7 +29,8 @@ public class CharacterMovement : MonoBehaviour
 			if (dir != Vector3.zero)
 			{
 				transform.rotation = Quaternion.LookRotation(dir);
-				rb.velocity = dir * Status.GetSpeed();
+				Vector3 speed = ((new Vector3(dir.x, 0.0f, dir.z)) * Status.GetSpeed()) + new Vector3(0.0f,rb.velocity.y,0.0f);
+				rb.velocity = speed;
 			}
 		}
 		
