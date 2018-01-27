@@ -10,6 +10,7 @@ public class PlayerReadyStatus : MonoBehaviour
 	
 	public void SetReady()
 	{
+		gameObject.SetActive(true);	
 		ForegroundLayer.gameObject.SetActive(false);
 		TextMeshPro.outlineWidth = 0.5f;
 	}

@@ -169,8 +169,10 @@ public class GameManager : MonoBehaviour
 		
 		yield return new WaitForSeconds(5f);
 		EndGame.transform.DOMoveX(-80, 5f).OnComplete(() => { EndGame.transform.DOMoveX(23, 0.01f); });
-
+		yield return new WaitForSeconds(5f);
 		
+		FindObjectOfType<LevelManager>()?.LoadOnSceneName("Main Menu");
+
 		//canvasText.text = "Player " + winnerOfGame + " won the game!";
 	}
 	

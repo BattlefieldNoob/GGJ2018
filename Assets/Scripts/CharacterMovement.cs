@@ -12,6 +12,8 @@ public class CharacterMovement : MonoBehaviour
 	public bool CanMove = true;
 
 	private Animator Animator;
+	public ParticleSystem WalkParticle;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -31,6 +33,13 @@ public class CharacterMovement : MonoBehaviour
 				transform.rotation = Quaternion.LookRotation(dir);
 				Vector3 speed = ((new Vector3(dir.x, 0.0f, dir.z)) * Status.GetSpeed()) + new Vector3(0.0f,rb.velocity.y,0.0f);
 				rb.velocity = speed;
+				if(!WalkParticle.isPlaying)
+					WalkParticle.Play(true);
+			}
+			else
+			{
+				if(WalkParticle.isPlaying)
+					WalkParticle.Stop(true,ParticleSystemStopBehavior.StopEmitting);
 			}
 		}
 		
