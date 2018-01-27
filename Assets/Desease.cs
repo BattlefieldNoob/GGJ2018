@@ -48,6 +48,12 @@ public class Desease : MonoBehaviour
     }
 
 
+    public void StartNewMatch()
+    {
+        InfectionTimeTimer = InfectionTimeSeconds;
+        TimerIsActive = true;
+    }
+
     public void KillCurrentPlayerAndChoseAnother()
     {
         debugtext.text = "Explode!";
@@ -69,8 +75,10 @@ public class Desease : MonoBehaviour
         var alivePlayers = players.Where(player => !player.IsDead()).ToArray();
         if (alivePlayers.Length == 1)
         {
+            Debug.Log("Last Player!");
             //il player che sto infettando è l'ultimo
             EventManager.Instance.OnLastPlayerInfectedPerMatch.Invoke(Array.IndexOf(players,alivePlayers[0]));
+            TimerIsActive = false;
         }
         
         var playerIndex = alivePlayers

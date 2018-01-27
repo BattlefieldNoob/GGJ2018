@@ -62,6 +62,12 @@ public class PlayerStatus : MonoBehaviour
 			return NormalSpeed;
 	}
 
+    public void Resurect()
+    {
+        if(IsDead())
+            CurrentState = State.Normal;
+    }
+
     public void Infect()
     {
         CurrentState = State.Stunned;

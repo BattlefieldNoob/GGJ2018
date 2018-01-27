@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -58,13 +61,32 @@ public class GameManager : MonoBehaviour
 		EventManager.Instance.OnLastPlayerInfectedPerMatch.AddListener((winner) =>
 		{
 			MatchFinished(winner);
-			
 		});
 	}
-	
 
-	public void StartGame()
+	public void WaitGameplaySceneAndStartGame()
 	{
+		SceneManager.activeSceneChanged += OnSceneLoaded;
+	}
+
+	public void OnSceneLoaded(Scene old, Scene newScene)
+	{
+		StartGame();
+		SceneManager.activeSceneChanged -= OnSceneLoaded;
+	}
+
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			StartGame();
+		}
+	}
+
+	private void StartGame()
+	{
+		
 		//Instanzio i player
 		for (int i = 0; i < NumberOfPlayers; i++)
 		{
@@ -80,12 +102,47 @@ public class GameManager : MonoBehaviour
 		var desease = Instantiate(DiseasePrefab, Vector3.zero, Quaternion.identity);
 		//TODO fare qualcosa sulla desease
 		
-		CanvasController.InitUI(Colors);
+//		CanvasController.InitUI(Colors);
 		
+	}
+
+	IEnumerator RestartMatchCoroutine(int winner)
+	{
+		
+		//TODO Zoom su giocatore vincente
+		Camera.main.GetComponent<CameraManager>().ZoomToPosition(players[winner].transform.position,3f);
+		
+		//Todo Aspetto animazione zoom
+		yield return new WaitForSeconds(3f);
+
+
+		for (int i = 0; i < NumberOfPlayers; i++)
+		{
+			players[i].transform.position=SpawnPoints[i].position;
+			players[i].transform.rotation=SpawnPoints[i].rotation;
+			players[i].gameObject.SetActive(true);
+			players[i].GetComponent<CharacterMovement>().CanMove = false;
+		}
+		
+		//TODO Camera torna nella posizone "normale"
+		Camera.main.GetComponent<CameraManager>().ReturnToOriginalPos(3f);
+
+		yield return new WaitForSeconds(3f);
+		
+		//TODO aspettare animazione
+		
+		for (int i = 0; i < NumberOfPlayers; i++)
+		{
+			players[i].GetComponent<CharacterMovement>().CanMove = true;
+			players[i].GetComponent<PlayerStatus>().Resurect();
+		}
+		
+		FindObjectOfType<Desease>().StartNewMatch();
 	}
 
 	public void MatchFinished(int winnerOfMatch)
 	{
+		Debug.Log("Player " + winnerOfMatch + " won this match!");
 		//canvasText.text = "Player " + winnerOfMatch + " won this match!";
 		//aggiungo un punto vittoria al player
 		VictoriesPerPlayer[winnerOfMatch] = VictoriesPerPlayer[winnerOfMatch] + 1;
@@ -93,12 +150,24 @@ public class GameManager : MonoBehaviour
 		if (VictoriesPerPlayer[winnerOfMatch]>=2)
 		{
 			//WINNER OF THIS GAME!
-			GameFinished(winnerOfMatch);
+			StartCoroutine(GameFinished(winnerOfMatch));
+		}
+		else
+		{
+			
+			StartCoroutine(RestartMatchCoroutine(winnerOfMatch));
 		}
 	}
 
-	public void GameFinished(int winnerOfGame)
+	public IEnumerator GameFinished(int winnerOfGame)
 	{
+		Debug.Log( "Player " + winnerOfGame + " won the game!");
+
+		Camera.main.transform.DOShakePosition(5f);
+		yield return new WaitForSeconds(5f);
+		
+		
 		//canvasText.text = "Player " + winnerOfGame + " won the game!";
 	}
+	
 }

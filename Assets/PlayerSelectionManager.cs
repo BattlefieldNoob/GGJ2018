@@ -66,7 +66,7 @@ public class PlayerSelectionManager : MonoBehaviour
 		
 		FindObjectOfType<LevelManager>().LoadOnSceneName("Managers");
 		
-		GameManager.Instance.StartGame();
+		GameManager.Instance.WaitGameplaySceneAndStartGame();
 	}
 	
 }
