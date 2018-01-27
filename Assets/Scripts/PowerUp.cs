@@ -22,7 +22,7 @@ public class PowerUp : MonoBehaviour {
     {
         GameObject target = collision.gameObject;
         if(target.tag == "Player")
-            if (active && !target.GetComponent<PlayerStatus>().IsInfected() && !target.GetComponent<PlayerPowerUp>().HasPower())
+            if (active && !target.GetComponent<PlayerStatus>().IsInfected())
             {
                 active = false;
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
