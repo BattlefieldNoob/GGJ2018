@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1764482210786686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8668776, y: 1, z: 11.9}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PowersList:
-  - {fileID: 1984442347403976, guid: abd0718ec401a1440a5258608fedc5f3, type: 2}
   - {fileID: 1539715178287568, guid: 70b72f3528634f34b87e09669b309413, type: 2}
-  StartTime: 2
-  RespawnTime: 5
+  - {fileID: 1984442347403976, guid: abd0718ec401a1440a5258608fedc5f3, type: 2}
+  StartTime: 3
+  RespawnTime: 6
 --- !u!135 &135610338640062588
 SphereCollider:
   m_ObjectHideFlags: 1
