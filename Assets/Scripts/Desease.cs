@@ -73,7 +73,7 @@ public class Desease : MonoBehaviour
     public void InfectNearestPlayer()
     {
         var alivePlayers = players.Where(player => !player.IsDead()).ToArray();
-        if (alivePlayers.Length == 3)
+        if (alivePlayers.Length == 1)
         {
             Debug.Log("Last Player!");
             //il player che sto infettando è l'ultimo
