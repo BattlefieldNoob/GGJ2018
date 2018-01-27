@@ -11,10 +11,13 @@ public class CharacterMovement : MonoBehaviour
 	Rigidbody rb;
 
 	public bool CanMove = true;
+
+	private Animator Animator;
 	// Use this for initialization
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		Animator = GetComponentInChildren<Animator>();
 	}
 
 	// Update is called once per frame
@@ -29,5 +32,7 @@ public class CharacterMovement : MonoBehaviour
 				rb.velocity = dir * Speed;
 			}
 		}
+		
+		Animator.SetFloat("Velocity",rb.velocity.magnitude);
 	}
 }

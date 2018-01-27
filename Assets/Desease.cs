@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Desease : MonoBehaviour
@@ -20,6 +21,7 @@ public class Desease : MonoBehaviour
 
     public float InfectPlayerSeconds = 2f;
 
+    public Text debugtext;
 
     void Start()
     {
@@ -35,6 +37,8 @@ public class Desease : MonoBehaviour
             if (InfectionTimeTimer > 0)
             {
                 InfectionTimeTimer -= Time.deltaTime;
+
+                debugtext.text = InfectionTimeTimer.ToString("##");
             }
             else
             {
@@ -46,6 +50,7 @@ public class Desease : MonoBehaviour
 
     public void KillCurrentPlayerAndChoseAnother()
     {
+        debugtext.text = "Explode!";
         Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
         TimerIsActive = false;
         players[CurrentPlayerIndex].Explode();
