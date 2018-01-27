@@ -1,22 +1,21 @@
 fileFormatVersion: 2
-guid: 84206f177d0bd424f936d26cbf94306a
-timeCreated: 1517011930
+guid: a23354b33f70b464cab34e2d746a8c7e
+timeCreated: 1517006084
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube12
+    4300000: Sphere_Blend_Shape
     9500000: //RootNode
+    13700000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 8bf4087ed6c000742b27768ae8517477, type: 2}
+    second: {fileID: 2100000, guid: 43c9b9ae0b3329a45b2f0a1b4b63d6ef, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
