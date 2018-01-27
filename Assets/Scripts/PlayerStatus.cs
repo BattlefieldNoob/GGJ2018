@@ -24,6 +24,8 @@ public class PlayerStatus : MonoBehaviour
     CharacterMovement Movement;
 	public Transform DeseaseSocket;
 	public float NormalSpeed,DeseaseSpeed;
+	GenericPowerUp PowerUp;
+	public GameObject PistolHand;
 
     // Use this for initialization
     void Start()
@@ -31,16 +33,32 @@ public class PlayerStatus : MonoBehaviour
         CurrentState = State.Normal;
         Movement = GetComponent<CharacterMovement>();
         CollidedWithPlayer = new CollisionWithPlayerEvent();
+		PowerUp = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Infect();
-        }
+		if(CanUsePowerUp() && Input.GetButtonDown("Button" + Movement.PlayerID))
+		{
+			PowerUp.Use();
+		}
     }
+
+	public GameObject GetHand()
+	{
+		return PistolHand;
+	}
+
+	bool CanUsePowerUp()
+	{
+		return PowerUp != null && !IsInfected();
+	}
+
+	public void SetPowerUp(GenericPowerUp pu)
+	{
+		PowerUp = pu;
+	}
 
     public void Explode()
     {
