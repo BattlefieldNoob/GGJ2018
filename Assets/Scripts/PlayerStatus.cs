@@ -22,7 +22,7 @@ public class PlayerStatus : MonoBehaviour
     State CurrentState;
     private float StunTime = 1.0f;
     CharacterMovement Movement;
-    
+	public Transform DeseaseSocket;
 
     // Use this for initialization
     void Start()
