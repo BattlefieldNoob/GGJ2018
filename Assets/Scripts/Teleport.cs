@@ -16,7 +16,7 @@ public class Teleport : MonoBehaviour {
 
     private Transform target;
 
-    private float cooldownTime = 2.0f;
+    private float cooldownTime = 5.0f;
 
     private bool onCooldown = false;
 
