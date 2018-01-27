@@ -95,7 +95,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
 		lr.enabled = true;
 		lr.SetPosition(0, transform.position);
 		lr.SetPosition(1, t.position);
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(0.4f);
 		lr.enabled = false;
 		SwitchPositions(t);
 		EnableDisableCommands(t.gameObject, true);
