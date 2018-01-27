@@ -5,17 +5,15 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour {
 
     private bool active = false;
+	
+	public List<GameObject> PowersList;
 
-	public enum PowerUps { Speed, Grapnel};
-
-	public PowerUps CurrentPowerUp;
-
-    private float startTime = 3.0f;
+	public float StartTime, RespawnTime;
 
     private void Start()
     {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        StartCoroutine(StartUp());
+        StartCoroutine(Respawn(StartTime));
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -26,23 +24,16 @@ public class PowerUp : MonoBehaviour {
             {
                 active = false;
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-				target.GetComponent<PlayerPowerUp>().SetPowerUp(CurrentPowerUp);
-				StartCoroutine(Respawn());
+				int randomIndex = Random.Range(0,PowersList.Count);
+				GameObject g= Instantiate(PowersList[randomIndex]);
+				g.GetComponent<GenericPowerUp>().SetUp(target);
+				StartCoroutine(Respawn(RespawnTime));
             }
     }
 
-    private IEnumerator Respawn()
+    private IEnumerator Respawn( float time)
     {
-        yield return new WaitForSeconds(6.0f);
-		CurrentPowerUp = (PowerUps)Random.Range(0, System.Enum.GetValues(typeof(PowerUps)).Length);
-		gameObject.GetComponent<MeshRenderer>().enabled = true;
-        active = true;
-    }
-
-    private IEnumerator StartUp()
-    {
-        yield return new WaitForSeconds(startTime);
-		CurrentPowerUp = (PowerUps)Random.Range(0, System.Enum.GetValues(typeof(PowerUps)).Length);
+        yield return new WaitForSeconds(time);
 		gameObject.GetComponent<MeshRenderer>().enabled = true;
         active = true;
     }

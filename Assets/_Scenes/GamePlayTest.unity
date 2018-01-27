@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4743299089405956, guid: f7a981d872b87c244b879db9ad615e74, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4264089371060516, guid: f7a981d872b87c244b879db9ad615e74, type: 2}
       propertyPath: m_LocalPosition.x
@@ -475,7 +475,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4192022534894978, guid: b52c0f0ace08cc7449c0169b3f46c6d2, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4663546412282220, guid: b52c0f0ace08cc7449c0169b3f46c6d2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -626,6 +626,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
+        type: 2}
+      propertyPath: PowersList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4267038725726674, guid: fbb22066317c12c4eae17210f49abcca, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -657,6 +662,28 @@ Prefab:
     - target: {fileID: 4267038725726674, guid: fbb22066317c12c4eae17210f49abcca, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
+        type: 2}
+      propertyPath: PowersList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1539715178287568, guid: 70b72f3528634f34b87e09669b309413,
+        type: 2}
+    - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
+        type: 2}
+      propertyPath: PowersList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1539715178287568, guid: 70b72f3528634f34b87e09669b309413,
+        type: 2}
+    - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
+        type: 2}
+      propertyPath: StartTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
+        type: 2}
+      propertyPath: RespawnTime
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbb22066317c12c4eae17210f49abcca, type: 2}
