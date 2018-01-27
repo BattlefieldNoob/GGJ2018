@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -46,6 +47,11 @@ public class GameManager : MonoBehaviour
 	//public Text canvasText;
 
 	public List<Color> Colors;
+
+
+	public TextMeshPro AnotherMatch;
+	public TextMeshPro EndGame;
+	
 	
 	/// <summary>
 	/// Per ogni indice del giocatore tengo traccia del numero di vittorie
@@ -55,8 +61,6 @@ public class GameManager : MonoBehaviour
 	public List<GameObject> players=new List<GameObject>();
 	
 	void Start () {
-		
-		//StartGame();
 		
 		EventManager.Instance.OnLastPlayerInfectedPerMatch.AddListener((winner) =>
 		{
@@ -76,18 +80,11 @@ public class GameManager : MonoBehaviour
 		SceneManager.activeSceneChanged -= OnSceneLoaded;
 	}
 
-
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			StartGame();
-		}
-	}
-
 	private void StartGame()
 	{
-		
+		foreach (int k in playersControllerIndexes) {
+			Debug.Log("At start -> "+k);
+		}
 		//Instanzio i player
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
@@ -102,15 +99,24 @@ public class GameManager : MonoBehaviour
 		//instanzio la Desease
 		var desease = Instantiate(DiseasePrefab, Vector3.zero, Quaternion.identity);
 		//TODO fare qualcosa sulla desease
-		
-//		CanvasController.InitUI(Colors);
-		
+
+		//		CanvasController.InitUI(Colors);
+		foreach (string k in Input.GetJoystickNames())
+		{
+			Debug.Log("Start -> " + k);
+		}
 	}
 
 	IEnumerator RestartMatchCoroutine(int winner)
 	{
+		foreach (GenericPowerUp gpu in FindObjectsOfType<GenericPowerUp>())
+		{
+			gpu.SelfDestruct();
+		}
 
-		var waitTime = 12f;
+		var waitTime = 6f;
+
+		AnotherMatch.transform.DOMoveX(-80, waitTime).OnComplete(() => { AnotherMatch.transform.DOMoveX(23, 0.01f); });
 		
 		//Todo Aspetto animazione zoom
 		yield return new WaitForSeconds(waitTime);
@@ -121,6 +127,7 @@ public class GameManager : MonoBehaviour
 			players[i].transform.position=SpawnPoints[i].position;
 			players[i].transform.rotation=SpawnPoints[i].rotation;
 			players[i].gameObject.SetActive(true);
+			players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
 			players[i].GetComponent<CharacterMovement>().CanMove = false;
 		}
 
@@ -159,11 +166,14 @@ public class GameManager : MonoBehaviour
 	public IEnumerator GameFinished(int winnerOfGame)
 	{
 		Debug.Log( "Player " + winnerOfGame + " won the game!");
-
-		Camera.main.transform.DOShakePosition(5f);
+		
+		
+		yield return new WaitForSeconds(5f);
+		EndGame.transform.DOMoveX(-80, 5f).OnComplete(() => { EndGame.transform.DOMoveX(23, 0.01f); });
 		yield return new WaitForSeconds(5f);
 		
-		
+		FindObjectOfType<LevelManager>()?.LoadOnSceneName("Main Menu");
+
 		//canvasText.text = "Player " + winnerOfGame + " won the game!";
 	}
 	

@@ -9,9 +9,9 @@ public class PlayerSelectionManager : MonoBehaviour
 {
 	private string[] joysticks;
 
-	private bool[] joystickIsReady;
+	private Dictionary<int,bool> joystickIsReady=new Dictionary<int, bool>();
 
-	public PlayerReadyStatus[] playersStatus;
+	private PlayerReadyStatus[] playersStatus;
 	
 	List<int> joystickOriginalindexes=new List<int>();
 
@@ -19,38 +19,19 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	private bool gameCanStart = false;
 	
-	void Start () {
-		//prendo la lista dei joystick connessi
-		joysticks = Input.GetJoystickNames();
-
-		for (int i = 0; i < joysticks.Length; i++)
-		{
-			if(!string.IsNullOrEmpty(joysticks[i]))
-				joystickOriginalindexes.Add(i);
-		}
-		
-		joystickIsReady=new bool[joystickOriginalindexes.Count];
-		
-		foreach (var playerinfo in playersStatus)
-		{
-			playerinfo.Disable();
-		}
-
-		//setto tutti i joystick connessi come "non pronti"
-		for (int i = 0; i < joystickOriginalindexes.Count; i++)
-		{
-			joystickIsReady[i] = false;
-			playersStatus[i].SetNotReady();
-		}
+	void Start ()
+	{
+		playersStatus = GetComponentsInChildren<PlayerReadyStatus>();
+		StartCoroutine(CheckControllerAvailability());
 	}
 	
 	
 	void Update () {
 		for (int i = 0; i < joystickOriginalindexes.Count; i++)
 		{
-			if (!joystickIsReady[i] && Input.GetButtonDown("Button" + (joystickOriginalindexes[i]+1)))
+			if (joystickIsReady.ContainsKey(joystickOriginalindexes[i]) && !joystickIsReady[joystickOriginalindexes[i]] && Input.GetButtonDown("Button" + (joystickOriginalindexes[i]+1)))
 			{
-				joystickIsReady[i] = true;
+				joystickIsReady[joystickOriginalindexes[i]]=true;
 				playersStatus[i].SetReady();
 				CheckNumberOfPlayers();
 			}
@@ -60,11 +41,62 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	public void CheckNumberOfPlayers()
 	{
-		if (joystickIsReady.Length>=2 && joystickIsReady.All(playerReady => playerReady))
+		if (joystickIsReady.Count>=2 && joystickIsReady.All(playerReady => playerReady.Value))
 		{
 			Debug.Log("Game can Start!");
 			gameCanStart = true;
 			StartCoroutine(WaitAndStartGame());
+		}
+	}
+
+	IEnumerator CheckControllerAvailability()
+	{
+		while (true)
+		{
+			//prendo la lista dei joystick connessi
+			joysticks = Input.GetJoystickNames();
+
+			joystickOriginalindexes.Clear();
+			
+			for (int i = 0; i < joysticks.Length; i++)
+			{
+				if(!string.IsNullOrEmpty(joysticks[i]))
+					joystickOriginalindexes.Add(i);
+			}
+
+			//vado a controllare se un joystick con un certo indice non è più collegato e lo rimuovo dalla dictionary di 
+			//giocatori pronti
+			var keyToRemove = joystickIsReady.Keys.Where(key => !joystickOriginalindexes.Contains(key)).ToArray();
+
+			foreach (var key in keyToRemove)
+			{
+				if(joystickIsReady.ContainsKey(key))
+					joystickIsReady.Remove(key);
+			}
+		
+			foreach (var playerinfo in playersStatus)
+			{
+				playerinfo.Disable();
+			}
+
+			//setto tutti i joystick connessi come "non pronti"
+			for (int i = 0; i < joystickOriginalindexes.Count; i++)
+			{
+				if(!joystickIsReady.ContainsKey(joystickOriginalindexes[i]))
+					joystickIsReady.Add(joystickOriginalindexes[i], false);
+
+				if (joystickIsReady[joystickOriginalindexes[i]])
+				{
+					playersStatus[i].SetReady();
+				}
+				else
+				{
+					playersStatus[i].SetNotReady();
+				}
+			}
+			
+			yield return new WaitForSeconds(2.5f);
+			//yield return new WaitForFixedUpdate();
 		}
 	}
 
@@ -77,7 +109,7 @@ public class PlayerSelectionManager : MonoBehaviour
 		CanStart.text = "Game Can Start!  1";
 		yield return new WaitForSeconds(1f);
 		
-		FindObjectOfType<LevelManager>().LoadOnSceneName("Managers");
+		FindObjectOfType<LevelManager>().LoadOnSceneName("Gameplay");
 		
 		GameManager.Instance.WaitGameplaySceneAndStartGame(joystickOriginalindexes.ToArray());
 	}

@@ -8,4 +8,5 @@ public abstract class GenericPowerUp : MonoBehaviour {
 
 	public abstract void SetUp(GameObject player);
 	public abstract void Use();
+	public abstract void SelfDestruct();
 }

@@ -7,11 +7,26 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
 
 	public int sceneIndex;
+	
+	#region Singleton
 
-	private void Start()
+	public static LevelManager Instance;
+
+
+	private void Awake()
 	{
-		DontDestroyOnLoad(gameObject);
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
+
+	#endregion
 
 	public void LoadOnSceneIndex(){
 
