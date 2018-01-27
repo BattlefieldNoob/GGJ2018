@@ -21,6 +21,9 @@ public class PlayerSelectionManager : MonoBehaviour
 		//prendo la lista dei joystick connessi
 		joysticks = Input.GetJoystickNames();
 		
+		//rimuovo i controller non esistenti
+		joysticks = joysticks.Where(name => !string.IsNullOrEmpty(name)).ToArray();
+		
 		joystickIsReady=new bool[joysticks.Length];
 
 		//setto tutti i joystick connessi come "non pronti"
