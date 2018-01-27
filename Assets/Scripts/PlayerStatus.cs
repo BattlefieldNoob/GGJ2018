@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour
     };
 
     State CurrentState;
-    private float StunTime = 1.0f;
+    public float StunTime = 1.0f;
     CharacterMovement Movement;
 	public Transform DeseaseSocket;
 	public float NormalSpeed,DeseaseSpeed;
@@ -110,6 +110,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void Infect()
     {
+		UIPanel.PlayerIsInfected(); 
 	    SplashParticles.Play(true);
         Animator.SetTrigger("Infecting");
         CurrentState = State.Stunned;
@@ -129,6 +130,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void BecomeHealthy()
     {
+		UIPanel.PlayerIsNoMoreInfected(); 
 	    Animator.SetBool("Infected",false);
         CurrentState = State.Normal;
     }

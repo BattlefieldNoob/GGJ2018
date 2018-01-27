@@ -124,14 +124,12 @@ public class GameManager : MonoBehaviour
 			gpu.SelfDestruct();
 		}
 
-		var waitTime = 6f;
+	
+		GameObject go = GameObject.Find("Fader");
 
-		AnotherMatch.transform.DOMoveX(-80, waitTime).OnComplete(() => { AnotherMatch.transform.DOMoveX(23, 0.01f); });
-
-		Debug.Log("waiting 6 seconds");
-		//Todo Aspetto animazione zoom
-		yield return new WaitForSeconds(waitTime);
-		Debug.Log("Waited 6 seconds");
+		yield return new WaitForSeconds(4);
+		go.GetComponent<Animator>().SetTrigger("EndRound");
+		yield return new WaitForSeconds(2);
 
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
@@ -142,10 +140,12 @@ public class GameManager : MonoBehaviour
 			players[i].GetComponent<CharacterMovement>().CanMove = false;
 		}
 
-		yield return new WaitForSeconds(waitTime);
-		
+		go.GetComponent<Animator>().SetTrigger("EndRound");
+		yield return new WaitForSeconds(2);
+
+
 		//TODO aspettare animazione
-		
+
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
 			players[i].GetComponent<CharacterMovement>().CanMove = true;

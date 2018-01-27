@@ -19,8 +19,19 @@ public class PlayerUIPanel : MonoBehaviour {
 		playerImage.enabled = true; 
 	}
 
+	public void PlayerIsInfected()
+	{
+		playerImage.color = Color.green; 
+	}
+
+	public void PlayerIsNoMoreInfected()
+	{
+		playerImage.color = Color.white;
+	}
+
 	public void PlayerIsDead()
 	{
+		PlayerIsNoMoreInfected(); 
 		playerImage.enabled = false;
 	}
 

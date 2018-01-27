@@ -57,7 +57,7 @@ public class Desease : MonoBehaviour
 
     public void KillCurrentPlayerAndChoseAnother()
     {
-        Debugtext.text = "Explode!";
+        Debugtext.text = "";
         Instantiate(KaboomParticlePrefab, transform.position,transform.rotation);
         Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
         
@@ -113,12 +113,20 @@ public class Desease : MonoBehaviour
             transform.localPosition=Vector3.zero;
             _players[_currentPlayerIndex].Infect();
             Animator.SetBool("Flying",false);
-            if (!isLastPlayer)
-            {
-                _timerIsActive = true; 
-            }
+
+			StartCoroutine(WaitToRestartTimer(isLastPlayer)); 
         }));
     }
+
+	IEnumerator WaitToRestartTimer(bool isLastPlayer)
+	{
+		if (!isLastPlayer)
+		{
+			yield return new WaitForSeconds(_players[_currentPlayerIndex].GetComponent<PlayerStatus>().StunTime);
+			_timerIsActive = true;
+		}
+	}
+
 
     IEnumerator ReachPlayer(Transform target, float power,Action callback)
     {
