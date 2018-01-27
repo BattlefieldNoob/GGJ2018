@@ -25,17 +25,22 @@ namespace Audio
 
 		private void SceneManager_sceneLoaded(Scene currentScene, LoadSceneMode arg1)
 		{
-			if (currentScene.IsValid())
-			{
-				AudioManager.StopAudio(_currentMusicInstance);
-			}
+
 
 			switch (currentScene.name)
 			{
-				case "":
+				case "Main Menu":
+					if (_currentMusicInstance.isValid())
+					{
+						AudioManager.StopAudio(_currentMusicInstance);
+					}
 					_currentMusicInstance = AudioManager.PlayAudio(_musMainMenu);
 					break;
 				case "Gameplay":
+					if (_currentMusicInstance.isValid())
+					{
+						AudioManager.StopAudio(_currentMusicInstance);
+					}
 					_currentMusicInstance = AudioManager.PlayAudio(_musGameplay);
 					break;
 			}
