@@ -11,7 +11,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	private Dictionary<int,bool> joystickIsReady=new Dictionary<int, bool>();
 
-	public PlayerReadyStatus[] playersStatus;
+	private PlayerReadyStatus[] playersStatus;
 	
 	List<int> joystickOriginalindexes=new List<int>();
 
@@ -21,6 +21,7 @@ public class PlayerSelectionManager : MonoBehaviour
 	
 	void Start ()
 	{
+		playersStatus = GetComponentsInChildren<PlayerReadyStatus>();
 		StartCoroutine(CheckControllerAvailability());
 	}
 	
@@ -65,12 +66,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 			//vado a controllare se un joystick con un certo indice non è più collegato e lo rimuovo dalla dictionary di 
 			//giocatori pronti
-			var keyToRemove = joystickIsReady.Keys.Where(key =>
-			{
-				return !joystickOriginalindexes.Contains(key);
-				
-				
-			}).ToArray();
+			var keyToRemove = joystickIsReady.Keys.Where(key => !joystickOriginalindexes.Contains(key)).ToArray();
 
 			foreach (var key in keyToRemove)
 			{
@@ -83,8 +79,6 @@ public class PlayerSelectionManager : MonoBehaviour
 				playerinfo.Disable();
 			}
 
-			Debug.Log("___________________________________");
-			Debug.Log(joystickOriginalindexes.Count);
 			//setto tutti i joystick connessi come "non pronti"
 			for (int i = 0; i < joystickOriginalindexes.Count; i++)
 			{
@@ -93,12 +87,10 @@ public class PlayerSelectionManager : MonoBehaviour
 
 				if (joystickIsReady[joystickOriginalindexes[i]])
 				{
-					Debug.Log("SetReady");
 					playersStatus[i].SetReady();
 				}
 				else
 				{
-					Debug.Log("NotReady");
 					playersStatus[i].SetNotReady();
 				}
 			}
