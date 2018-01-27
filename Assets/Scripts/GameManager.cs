@@ -108,12 +108,16 @@ public class GameManager : MonoBehaviour
 
 	IEnumerator RestartMatchCoroutine(int winner)
 	{
-		
+		var cameraManager=Camera.main.GetComponent<CameraManager>();
+		if(!cameraManager)
+			cameraManager=Camera.main.gameObject.AddComponent<CameraManager>();
+
+		var waitTime = 12f;
 		//TODO Zoom su giocatore vincente
-		Camera.main.GetComponent<CameraManager>().ZoomToPosition(players[winner].transform.position,3f);
+		cameraManager.ZoomToPosition(players[winner].transform.position,waitTime);
 		
 		//Todo Aspetto animazione zoom
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(waitTime);
 
 
 		for (int i = 0; i < NumberOfPlayers; i++)
@@ -125,9 +129,9 @@ public class GameManager : MonoBehaviour
 		}
 		
 		//TODO Camera torna nella posizone "normale"
-		Camera.main.GetComponent<CameraManager>().ReturnToOriginalPos(3f);
+		cameraManager.ReturnToOriginalPos(waitTime);
 
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(waitTime);
 		
 		//TODO aspettare animazione
 		

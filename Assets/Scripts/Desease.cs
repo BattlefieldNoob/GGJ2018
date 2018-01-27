@@ -10,8 +10,8 @@ using Random = UnityEngine.Random;
 
 public class Desease : MonoBehaviour
 {
-    private PlayerStatus[] players;
 
+    private PlayerStatus[] players;
     private int CurrentPlayerIndex;
 
     private bool TimerIsActive;
@@ -25,7 +25,7 @@ public class Desease : MonoBehaviour
 
     void Start()
     {
-        players = FindObjectsOfType<PlayerStatus>();
+        players = GameManager.Instance.players.Select(player => player.GetComponent<PlayerStatus>()).ToArray();
 		InfectionTimeTimer = InfectionTimeSeconds;
 		InfectRandomPlayer();
 	}
@@ -73,7 +73,7 @@ public class Desease : MonoBehaviour
     public void InfectNearestPlayer()
     {
         var alivePlayers = players.Where(player => !player.IsDead()).ToArray();
-        if (alivePlayers.Length == 1)
+        if (alivePlayers.Length == 3)
         {
             Debug.Log("Last Player!");
             //il player che sto infettando è l'ultimo
@@ -81,10 +81,10 @@ public class Desease : MonoBehaviour
             TimerIsActive = false;
         }
         
-        var playerIndex = alivePlayers
-            .OrderBy(player => Vector3.Distance(transform.position, player.transform.position)).First();
-
-            InfectPlayer(playerIndex);
+        var nearestPlayer = alivePlayers
+            .OrderBy(player => Vector3.Distance(transform.position, player.transform.position)).FirstOrDefault();
+        if(nearestPlayer)
+            InfectPlayer(nearestPlayer);
     }
 
     private void InfectPlayer(PlayerStatus player)

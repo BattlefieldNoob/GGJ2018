@@ -8,7 +8,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="CameraManager.cs" t="Include" />
         <e p="Demigiant" t="Include">
           <e p="DOTween" t="Include">
             <e p="DOTween43.xml" t="Include" />
@@ -21,19 +20,14 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
-        <e p="Desease.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="FMODMigrationUtil.cs" t="Include" />
         </e>
-        <e p="EventManager.cs" t="Include" />
-        <e p="GameManager.cs" t="Include" />
         <e p="MainThreadDispatcher" t="Include">
           <e p="Dispatcher Documentation.txt" t="Include" />
           <e p="Dispatcher.cs" t="Include" />
           <e p="DispatcherTest.cs" t="Include" />
         </e>
-        <e p="PlayerCanvasController.cs" t="Include" />
-        <e p="PlayerSelectionManager.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="FMOD" t="Include">
@@ -253,14 +247,19 @@
             <e p="AudioManager.cs" t="Include" />
             <e p="Music.cs" t="Include" />
           </e>
+          <e p="CameraManager.cs" t="Include" />
           <e p="CharacterMovement.cs" t="Include" />
+          <e p="Desease.cs" t="Include" />
+          <e p="EventManager.cs" t="Include" />
+          <e p="GameManager.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
+          <e p="PlayerCanvasController.cs" t="Include" />
           <e p="PlayerPowerUp.cs" t="Include" />
+          <e p="PlayerSelectionManager.cs" t="Include" />
           <e p="PlayerStatus.cs" t="Include" />
           <e p="PowerUp.cs" t="Include" />
           <e p="Teleport.cs" t="Include" />
         </e>
-        <e p="TestBlendShape.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
