@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
 			players[i].transform.position=SpawnPoints[i].position;
 			players[i].transform.rotation=SpawnPoints[i].rotation;
 			players[i].gameObject.SetActive(true);
+			players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
 			players[i].GetComponent<CharacterMovement>().CanMove = false;
 		}
 
@@ -150,14 +151,6 @@ public class GameManager : MonoBehaviour
 		}
 		
 		FindObjectOfType<Desease>().StartNewMatch();
-		foreach (string k in Input.GetJoystickNames())
-		{
-			Debug.Log("Restart -> "+k);
-		}
-		foreach (int k in playersControllerIndexes)
-		{
-			Debug.Log("At Restart -> " + k);
-		}
 	}
 
 	public void MatchFinished(int winnerOfMatch)
