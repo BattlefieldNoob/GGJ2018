@@ -16,14 +16,13 @@ public class Teleport : MonoBehaviour {
 
     private Transform target;
 
+    private float cooldownTime = 2.0f;
+
+    private bool onCooldown = false;
+
     public void Start()
     {
         target = transform.GetChild(0);
-    }
-
-    private void Curve()
-    {
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,8 +33,13 @@ public class Teleport : MonoBehaviour {
                 break;
             case Type.targeted: collision.gameObject.transform.position = target.position;
                 break;
-            case Type.jump: collision.gameObject.GetComponent<CharacterMovement>().CanMove = false;
-                            StartCoroutine(jump(collision.gameObject, 20));
+            case Type.jump: if (!onCooldown)
+                            {
+                                onCooldown = true;
+                                collision.gameObject.GetComponent<CharacterMovement>().CanMove = false;
+                                StartCoroutine(jump(collision.gameObject, 20));
+                                StartCoroutine(Cooldown());
+                            }
                 break;
             case Type.shootUp: collision.gameObject.GetComponent<CharacterMovement>().CanMove = false; ;
                                StartCoroutine(jump(collision.gameObject, 90));
@@ -63,5 +67,13 @@ public class Teleport : MonoBehaviour {
             yield return null;
         }
         player.GetComponent<CharacterMovement>().CanMove = true;
+    }
+
+    private IEnumerator Cooldown()
+    {
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
+        yield return new WaitForSeconds(cooldownTime);
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.magenta;
+        onCooldown = false;
     }
 }
