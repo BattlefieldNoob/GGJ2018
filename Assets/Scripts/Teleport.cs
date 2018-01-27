@@ -6,45 +6,26 @@ public class Teleport : MonoBehaviour {
 
     public enum Type
     {
-        upper = 0,
-        lower = 1,
-        right = 2,
-        left = 3
+        border = 0,
+        targeted = 1
     }
 
-    public Type Border;
+    public Type teleporter_type;
 
-    public float width;
-
-    public float height;
-
-    private List<Vector3> axis = new List<Vector3>();
-
+    private Transform child;
 
     public void Start()
     {
-        axis =  new List<Vector3>
-        {
-            new Vector3( 0, 0, height),
-            new Vector3( 0, 0, -height),
-            new Vector3( width, 0, 0),
-            new Vector3( -width, 0, 0),
-        };
+        child = transform.GetChild(0);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("TELEPORT");
-        Vector3 pos = collision.gameObject.transform.position;
-        switch (Border)
+        switch (teleporter_type)
         {
-            case Type.upper: collision.gameObject.transform.position += axis[0];
+            case Type.border: collision.gameObject.transform.position += child.localPosition;
                 break;
-            case Type.lower: collision.gameObject.transform.position += axis[1];
-                break;
-            case Type.right: collision.gameObject.transform.position += axis[2];
-                break;
-            case Type.left: collision.gameObject.transform.position += axis[3];
+            case Type.targeted: collision.gameObject.transform.position = child.position;
                 break;
         }
     }
