@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
 
 	public float InfectDuration;
-	public Image InfectTimeFilledImage;
+	//public Image InfectTimeFilledImage;
 
 	public GameObject PlayerPrefab;
 	public GameObject DiseasePrefab;
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
 	public int NumberOfPlayers = 2;
 
-	public Text canvasText;
+	//public Text canvasText;
 	
 	/// <summary>
 	/// Per ogni indice del giocatore tengo traccia del numero di vittorie
@@ -46,9 +46,7 @@ public class GameManager : MonoBehaviour
 			var player=Instantiate(PlayerPrefab, SpawnPoints[i].position, SpawnPoints[i].rotation);
 			players.Add(player);
 			//TODO setto alcune impostazioni sui player, tipo colore
-			if(i!=0)
-			player.GetComponent<CharacterMovement>().CanMove = false;
-			
+			player.GetComponent<CharacterMovement>().PlayerID = i+1;
 			//inizializzo il numero di vittorie 
 			VictoriesPerPlayer.Add(i,0);
 		}
@@ -62,7 +60,7 @@ public class GameManager : MonoBehaviour
 
 	public void MatchFinished(int winnerOfMatch)
 	{
-		canvasText.text = "Player " + winnerOfMatch + " won this match!";
+		//canvasText.text = "Player " + winnerOfMatch + " won this match!";
 		//aggiungo un punto vittoria al player
 		VictoriesPerPlayer[winnerOfMatch] = VictoriesPerPlayer[winnerOfMatch] + 1;
 
@@ -75,6 +73,6 @@ public class GameManager : MonoBehaviour
 
 	public void GameFinished(int winnerOfGame)
 	{
-		canvasText.text = "Player " + winnerOfGame + " won the game!";
+		//canvasText.text = "Player " + winnerOfGame + " won the game!";
 	}
 }

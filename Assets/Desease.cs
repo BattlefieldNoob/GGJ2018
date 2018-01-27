@@ -24,8 +24,9 @@ public class Desease : MonoBehaviour
     void Start()
     {
         players = FindObjectsOfType<PlayerStatus>();
-        InfectRandomPlayer();
-    }
+		InfectionTimeTimer = InfectionTimeSeconds;
+		InfectRandomPlayer();
+	}
 
     void Update()
     {
@@ -48,8 +49,9 @@ public class Desease : MonoBehaviour
         Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
         TimerIsActive = false;
         players[CurrentPlayerIndex].Explode();
-        InfectNearestPlayer();
-    }
+		InfectionTimeTimer = InfectionTimeSeconds;
+		InfectNearestPlayer();
+	}
 
 
     public void InfectRandomPlayer()
@@ -75,8 +77,8 @@ public class Desease : MonoBehaviour
     private void InfectPlayer(PlayerStatus player)
     {
         Debug.Log("[" + GetType().Name + "]" + " Infecting Player");
-
-        CurrentPlayerIndex = Array.IndexOf(players, player);
+		TimerIsActive = false;
+		CurrentPlayerIndex = Array.IndexOf(players, player);
         //infetto il player
         players[CurrentPlayerIndex].Infect();
 
@@ -89,7 +91,6 @@ public class Desease : MonoBehaviour
         transform.DOLocalMove(players[CurrentPlayerIndex].GetDeseaseSocket().localPosition, InfectPlayerSeconds)
             .OnComplete(() =>
             {
-                InfectionTimeTimer = InfectionTimeSeconds;
                 TimerIsActive = true;
             });
     }
