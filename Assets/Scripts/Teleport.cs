@@ -34,6 +34,7 @@ public class Teleport : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("TELEPORT");
         Vector3 pos = collision.gameObject.transform.position;
         switch (Border)
         {
