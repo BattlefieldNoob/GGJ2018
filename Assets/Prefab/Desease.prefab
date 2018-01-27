@@ -742,7 +742,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170102642313392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06624342, y: -0.28662783, z: 0.50830185}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 224008364784422060}
@@ -1279,6 +1279,8 @@ MonoBehaviour:
   InfectPlayerSeconds: 1.5
   debugtext: {fileID: 114412618668490320}
   Animator: {fileID: 0}
+  KaboomParticlePrefab: {fileID: 1365396129245054, guid: aeb571909c3f4304893366bde52f01c1,
+    type: 2}
 --- !u!114 &114412618668490320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1342,7 +1344,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e152519130e83d74f8745b818372e33f, type: 2}
+  - {fileID: 2100000, guid: bb69a2fa848364a4aa6613203e1dad6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

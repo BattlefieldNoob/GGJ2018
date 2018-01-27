@@ -25,6 +25,8 @@ public class Desease : MonoBehaviour
 
     public Animator Animator;
 
+    public GameObject KaboomParticlePrefab;
+
     void Start()
     {
         Animator = transform.Find("Model").GetComponentInChildren<Animator>();
@@ -60,7 +62,9 @@ public class Desease : MonoBehaviour
     public void KillCurrentPlayerAndChoseAnother()
     {
         debugtext.text = "Explode!";
+        Instantiate(KaboomParticlePrefab, transform.position,transform.rotation);
         Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
+        
         TimerIsActive = false;
         transform.SetParent(null);
         players[CurrentPlayerIndex].Explode();

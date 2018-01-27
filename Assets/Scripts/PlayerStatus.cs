@@ -27,7 +27,9 @@ public class PlayerStatus : MonoBehaviour
 	GenericPowerUp PowerUp;
 	public GameObject PistolHand;
 
-    public Animator Animator;
+    private Animator Animator;
+	public ParticleSystem SplashParticles;
+	
 
     // Use this for initialization
     void Start()
@@ -91,6 +93,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void Infect()
     {
+	    SplashParticles.Play(true);
         Animator.SetTrigger("Infecting");
         CurrentState = State.Stunned;
         GetComponent<CharacterMovement>().enabled = false;
@@ -109,6 +112,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void BecomeHealthy()
     {
+	    Animator.SetBool("Infected",false);
         CurrentState = State.Normal;
     }
 

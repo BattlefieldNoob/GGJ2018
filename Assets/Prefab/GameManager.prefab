@@ -161,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792737833742162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -73.08, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4431130436716860}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b61a84885d8b75449823a34978c39b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InfectDuration: 15
+  InfectDuration: 40
   PlayerPrefab: {fileID: 1399618317227246, guid: cc1f93adc35f0a8498db0566e90bb8a0,
     type: 2}
   DiseasePrefab: {fileID: 1170102642313392, guid: c29b0f741fe4a744ab6fd26ef5c3eeab,
