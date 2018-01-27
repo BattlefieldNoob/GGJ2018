@@ -14,7 +14,7 @@ public class Teleport : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
 
     }
