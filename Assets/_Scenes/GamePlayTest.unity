@@ -629,7 +629,7 @@ Prefab:
     - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
         type: 2}
       propertyPath: PowersList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4267038725726674, guid: fbb22066317c12c4eae17210f49abcca, type: 2}
       propertyPath: m_LocalPosition.x
@@ -667,7 +667,8 @@ Prefab:
         type: 2}
       propertyPath: PowersList.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1539715178287568, guid: 70b72f3528634f34b87e09669b309413,
+        type: 2}
     - target: {fileID: 114702426345545814, guid: fbb22066317c12c4eae17210f49abcca,
         type: 2}
       propertyPath: PowersList.Array.data[1]
