@@ -47,7 +47,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	public void CheckNumberOfPlayers()
 	{
-		if (PlayerStatusForIndex.Count>=2 && PlayerStatusForIndex.All(playerReady => playerReady.Value))
+		if (PlayerStatusForIndex.Count>=2 && PlayerStatusForIndex.All(playerReady => playerReady.Value.isReady))
 		{
 			Debug.Log("Game can Start!");
 			gameCanStart = true;
