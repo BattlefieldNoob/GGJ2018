@@ -20,7 +20,7 @@ public class EventManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            OnInfectWaveFinished=new UnityEvent();
+            DontDestroyOnLoad(gameObject);
             OnLastPlayerInfectedPerMatch=new PlayerInfectedEvent();
         }
         else
@@ -30,9 +30,6 @@ public class EventManager : MonoBehaviour
     }
 
     #endregion
-
-
-    public UnityEvent OnInfectWaveFinished;
 
     public PlayerInfectedEvent OnLastPlayerInfectedPerMatch;
 
