@@ -95,7 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66314bcac625f941bf46f5b6e5f046e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPowerUp: 0
+  PowersList:
+  - {fileID: 1984442347403976, guid: abd0718ec401a1440a5258608fedc5f3, type: 2}
+  - {fileID: 1539715178287568, guid: 70b72f3528634f34b87e09669b309413, type: 2}
+  StartTime: 2
+  RespawnTime: 5
 --- !u!135 &135610338640062588
 SphereCollider:
   m_ObjectHideFlags: 1
