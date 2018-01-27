@@ -32,10 +32,10 @@ namespace Audio
 
 			switch (currentScene.name)
 			{
-				case "MainMenu":
+				case "":
 					_currentMusicInstance = AudioManager.PlayAudio(_musMainMenu);
 					break;
-				case "GameScene":
+				case "Gameplay":
 					_currentMusicInstance = AudioManager.PlayAudio(_musGameplay);
 					break;
 			}

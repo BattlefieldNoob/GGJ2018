@@ -113,6 +113,10 @@ public class GameManager : MonoBehaviour
 
 	IEnumerator RestartMatchCoroutine(int winner)
 	{
+		foreach (GenericPowerUp gpu in FindObjectsOfType<GenericPowerUp>())
+		{
+			gpu.SelfDestruct();
+		}
 
 		var waitTime = 6f;
 
