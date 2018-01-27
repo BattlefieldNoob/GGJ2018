@@ -28,6 +28,7 @@
           <e p="Dispatcher.cs" t="Include" />
           <e p="DispatcherTest.cs" t="Include" />
         </e>
+        <e p="PlayerReadyStatus.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="FMOD" t="Include">
@@ -247,7 +248,6 @@
             <e p="AudioManager.cs" t="Include" />
             <e p="Music.cs" t="Include" />
           </e>
-          <e p="CameraManager.cs" t="Include" />
           <e p="CharacterMovement.cs" t="Include" />
           <e p="Desease.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />

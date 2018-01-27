@@ -11,7 +11,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	private bool[] joystickIsReady;
 
-	public RectTransform[] playerStatus;
+	public PlayerReadyStatus[] playersStatus;
 
 	public Text CanStart;
 
@@ -21,17 +21,20 @@ public class PlayerSelectionManager : MonoBehaviour
 		//prendo la lista dei joystick connessi
 		joysticks = Input.GetJoystickNames();
 		
-		//rimuovo i controller non esistenti
-		joysticks = joysticks.Where(name => !string.IsNullOrEmpty(name)).ToArray();
 		
 		joystickIsReady=new bool[joysticks.Length];
+		
+		foreach (var playerinfo in playersStatus)
+		{
+			playerinfo.Disable();
+		}
 
 		//setto tutti i joystick connessi come "non pronti"
 		for (int i = 0; i < joysticks.Length; i++)
 		{
 			joystickIsReady[i] = false;
+			playersStatus[i].SetNotReady();
 		}
-		
 	}
 	
 	
@@ -41,9 +44,7 @@ public class PlayerSelectionManager : MonoBehaviour
 			if (!joystickIsReady[i] && Input.GetButtonDown("Button" + (i+1)))
 			{
 				joystickIsReady[i] = true;
-				var player=playerStatus[i];
-					player.Find("Player Icon").Find("Oscurante").gameObject.SetActive(false);
-				player.GetComponentInChildren<TextMeshProUGUI>().outlineWidth = 0.5f;
+				playersStatus[i].SetReady();
 				CheckNumberOfPlayers();
 			}
 		}

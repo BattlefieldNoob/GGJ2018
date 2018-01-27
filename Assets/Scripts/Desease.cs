@@ -10,9 +10,9 @@ using Random = UnityEngine.Random;
 
 public class Desease : MonoBehaviour
 {
-
     private PlayerStatus[] players;
     private int CurrentPlayerIndex;
+    private int OldPlayer;
 
     private bool TimerIsActive;
 
@@ -26,9 +26,9 @@ public class Desease : MonoBehaviour
     void Start()
     {
         players = GameManager.Instance.players.Select(player => player.GetComponent<PlayerStatus>()).ToArray();
-		InfectionTimeTimer = InfectionTimeSeconds;
-		InfectRandomPlayer();
-	}
+        InfectionTimeTimer = InfectionTimeSeconds;
+        InfectRandomPlayer();
+    }
 
     void Update()
     {
@@ -59,15 +59,16 @@ public class Desease : MonoBehaviour
         debugtext.text = "Explode!";
         Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
         TimerIsActive = false;
+        transform.SetParent(null);
         players[CurrentPlayerIndex].Explode();
-		InfectionTimeTimer = InfectionTimeSeconds;
-		InfectNearestPlayer();
-	}
+        InfectionTimeTimer = InfectionTimeSeconds;
+        InfectNearestPlayer();
+    }
 
 
     public void InfectRandomPlayer()
     {
-        InfectPlayer(players[Random.Range(0, players.Length)]);
+        InfectPlayer(players[Random.Range(0, players.Length)],false);
     }
 
     public void InfectNearestPlayer()
@@ -77,41 +78,68 @@ public class Desease : MonoBehaviour
         {
             Debug.Log("Last Player!");
             //il player che sto infettando è l'ultimo
-            EventManager.Instance.OnLastPlayerInfectedPerMatch.Invoke(Array.IndexOf(players,alivePlayers[0]));
+            EventManager.Instance.OnLastPlayerInfectedPerMatch.Invoke(Array.IndexOf(players, alivePlayers[0]));
             TimerIsActive = false;
         }
-        
+
         var nearestPlayer = alivePlayers
             .OrderBy(player => Vector3.Distance(transform.position, player.transform.position)).FirstOrDefault();
-        if(nearestPlayer)
-            InfectPlayer(nearestPlayer);
+        if (nearestPlayer)
+            InfectPlayer(nearestPlayer,alivePlayers.Length == 1);
     }
 
-    private void InfectPlayer(PlayerStatus player)
+    private void InfectPlayer(PlayerStatus player,bool isLastPlayer)
     {
         Debug.Log("[" + GetType().Name + "]" + " Infecting Player");
-		TimerIsActive = false;
-		CurrentPlayerIndex = Array.IndexOf(players, player);
-        //infetto il player
-        players[CurrentPlayerIndex].Infect();
+        TimerIsActive = false;
+        OldPlayer = CurrentPlayerIndex;
+        CurrentPlayerIndex = Array.IndexOf(players, player);
+
+        transform.SetParent(null);
 
         //mi registro all'evento collisione del player
         players[CurrentPlayerIndex].CollidedWithPlayer.AddListener(OnCollisionWithHealtyPlayer);
 
-        //mi metto come figlio dell'oggetto
-        transform.SetParent(players[CurrentPlayerIndex].transform);
-        //mi sposto nella stessa posizione del nuovo padre
-        transform.DOLocalMove(players[CurrentPlayerIndex].GetDeseaseSocket().localPosition, InfectPlayerSeconds)
-            .OnComplete(() =>
+        StartCoroutine(ReachPlayer(players[CurrentPlayerIndex].GetDeseaseSocket(), 10, callback:() =>
+        {
+            Debug.Log("Animation Finished!");
+            //mi metto come figlio dell'oggetto
+            transform.SetParent(players[CurrentPlayerIndex].GetDeseaseSocket());
+            transform.localPosition=Vector3.zero;
+            players[CurrentPlayerIndex].Infect();
+            if (!isLastPlayer)
             {
-                TimerIsActive = true;
-            });
+                TimerIsActive = true; 
+            }
+        }));
+    }
+
+    IEnumerator ReachPlayer(Transform target, float power,Action callback)
+    {
+        float duration = 1.0f;
+        Vector3 startPosition = transform.position;
+
+        float startY = startPosition.y;
+        float endY = target.position.y;
+        float bezierY = transform.position.y + power;
+
+        for (float t = 0.0f; t <= duration; t += Time.deltaTime)
+        {
+            float progress = t / duration;
+            float y = ((1 - t) * (1 - t) * startY + 2 * (1 - t) * t * bezierY + t * t * endY);
+            Vector3 horizontal = Vector3.Lerp(startPosition, target.position, progress);
+
+            transform.position = new Vector3(horizontal.x, y, horizontal.z);
+
+            yield return null;
+        }
+        callback(); 
     }
 
     private void OnCollisionWithHealtyPlayer(PlayerStatus healtyPlayer)
     {
         Debug.Log("[" + GetType().Name + "]" + " Change Infected Player");
         //il padre ha colliso con un player sano, quindi mi sposto su quello
-        InfectPlayer(healtyPlayer);
+        InfectPlayer(healtyPlayer,false);
     }
 }
