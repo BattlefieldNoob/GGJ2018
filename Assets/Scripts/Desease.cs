@@ -12,6 +12,7 @@ public class Desease : MonoBehaviour
 {
     private PlayerStatus[] players;
     private int CurrentPlayerIndex;
+    private int OldPlayer;
 
     private bool TimerIsActive;
 
@@ -91,13 +92,17 @@ public class Desease : MonoBehaviour
     {
         Debug.Log("[" + GetType().Name + "]" + " Infecting Player");
         TimerIsActive = false;
+        OldPlayer = CurrentPlayerIndex;
         CurrentPlayerIndex = Array.IndexOf(players, player);
+
+        transform.SetParent(null);
 
         //mi registro all'evento collisione del player
         players[CurrentPlayerIndex].CollidedWithPlayer.AddListener(OnCollisionWithHealtyPlayer);
 
-        StartCoroutine(ReachPlayer(players[CurrentPlayerIndex], 15, callback:() =>
+        StartCoroutine(ReachPlayer(players[CurrentPlayerIndex].GetDeseaseSocket(), 10, callback:() =>
         {
+            Debug.Log("Animation Finished!");
             //mi metto come figlio dell'oggetto
             transform.SetParent(players[CurrentPlayerIndex].GetDeseaseSocket());
             transform.localPosition=Vector3.zero;
@@ -109,20 +114,20 @@ public class Desease : MonoBehaviour
         }));
     }
 
-    IEnumerator ReachPlayer(PlayerStatus target, float power,Action callback)
+    IEnumerator ReachPlayer(Transform target, float power,Action callback)
     {
-        float duration = 2f;
+        float duration = 1.0f;
         Vector3 startPosition = transform.position;
 
         float startY = startPosition.y;
-        float endY = target.transform.position.y;
+        float endY = target.position.y;
         float bezierY = transform.position.y + power;
 
         for (float t = 0.0f; t <= duration; t += Time.deltaTime)
         {
             float progress = t / duration;
             float y = ((1 - t) * (1 - t) * startY + 2 * (1 - t) * t * bezierY + t * t * endY);
-            Vector3 horizontal = Vector3.Lerp(startPosition, target.transform.position, progress);
+            Vector3 horizontal = Vector3.Lerp(startPosition, target.position, progress);
 
             transform.position = new Vector3(horizontal.x, y, horizontal.z);
 
