@@ -6,6 +6,8 @@ public class PlayerPowerUp : MonoBehaviour {
 
 	PlayerStatus Status;
 	CharacterMovement Movement;
+	GameManager Manager;
+	LineRenderer laser;
 
 	PowerUp.PowerUps CurrentPowerUp;
 	private bool HasPowerUp;
@@ -14,13 +16,33 @@ public class PlayerPowerUp : MonoBehaviour {
 		Status = GetComponent<PlayerStatus>();
 		Movement = GetComponent<CharacterMovement>();
 		HasPowerUp = false;
+		Manager = GameManager.Instance;
+		laser = GetComponent<LineRenderer>();
+		laser.enabled = false;
 	}
 
 	public bool HasPower()
 	{
 		return HasPowerUp;
 	}
+
+	void LaserSwitch()
+	{
+
+	}
 	
+	IEnumerator LaserWait(Transform t)
+	{
+		laser.enabled = true;
+		laser.SetPosition(0, transform.position);
+		laser.SetPosition(1, t.position);
+		yield return new WaitForSeconds(0.2f);
+		laser.enabled = false;
+		Vector3 temp = t.position;
+		t.position = gameObject.transform.position;
+		gameObject.transform.position = temp;
+	}
+
 	public void SetPowerUp(PowerUp.PowerUps p)
 	{
 		CurrentPowerUp = p;
@@ -36,6 +58,9 @@ public class PlayerPowerUp : MonoBehaviour {
 			{
 				case PowerUp.PowerUps.Speed:
 					Status.SpeedUp();
+					break;
+				case PowerUp.PowerUps.Grapnel:
+
 					break;
 			}
 		}
