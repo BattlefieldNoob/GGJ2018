@@ -7,6 +7,27 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+	
+	
+	#region Singleton
+
+	public static GameManager Instance;
+
+
+	private void Awake()
+	{
+		if (Instance == null)
+		{
+			Instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	#endregion
 
 	public float InfectDuration;
 	//public Image InfectTimeFilledImage;
@@ -18,7 +39,10 @@ public class GameManager : MonoBehaviour
 
 	public int NumberOfPlayers = 2;
 
+	public PlayerCanvasController CanvasController;
 	//public Text canvasText;
+
+	public List<Color> Colors;
 	
 	/// <summary>
 	/// Per ogni indice del giocatore tengo traccia del numero di vittorie
@@ -28,7 +52,8 @@ public class GameManager : MonoBehaviour
 	public List<GameObject> players=new List<GameObject>();
 	
 	void Start () {
-		StartGame();
+		
+		//StartGame();
 		
 		EventManager.Instance.OnLastPlayerInfectedPerMatch.AddListener((winner) =>
 		{
@@ -38,7 +63,7 @@ public class GameManager : MonoBehaviour
 	}
 	
 
-	void StartGame()
+	public void StartGame()
 	{
 		//Instanzio i player
 		for (int i = 0; i < NumberOfPlayers; i++)
@@ -55,6 +80,7 @@ public class GameManager : MonoBehaviour
 		var desease = Instantiate(DiseasePrefab, Vector3.zero, Quaternion.identity);
 		//TODO fare qualcosa sulla desease
 		
+		CanvasController.InitUI(Colors);
 		
 	}
 
