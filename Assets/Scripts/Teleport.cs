@@ -25,7 +25,7 @@ public class Teleport : MonoBehaviour {
         target = transform.GetChild(0);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         switch (teleporter_type)
         {
