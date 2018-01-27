@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 81c5c0ad165ebcb4db75c168e15ec07c
+timeCreated: 1517062869
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: barre
+    100002: barre1
+    100004: barre2
+    100006: barre3
+    100008: barre4
+    100010: barre5
+    100012: barre6
+    100014: barre7
+    100016: cornicione
+    100018: macerie
+    100020: macerie1
+    100022: macerie2
+    100024: macerie3
+    100026: //RootNode
+    100028: piano
+    100030: piano1
+    100032: piano2
+    100034: piano3
+    400000: barre
+    400002: barre1
+    400004: barre2
+    400006: barre3
+    400008: barre4
+    400010: barre5
+    400012: barre6
+    400014: barre7
+    400016: cornicione
+    400018: macerie
+    400020: macerie1
+    400022: macerie2
+    400024: macerie3
+    400026: //RootNode
+    400028: piano
+    400030: piano1
+    400032: piano2
+    400034: piano3
+    2300000: barre
+    2300002: barre1
+    2300004: barre2
+    2300006: barre3
+    2300008: barre4
+    2300010: barre5
+    2300012: barre6
+    2300014: barre7
+    2300016: cornicione
+    2300018: macerie
+    2300020: macerie1
+    2300022: macerie2
+    2300024: macerie3
+    2300026: piano
+    2300028: piano1
+    2300030: piano2
+    2300032: piano3
+    3300000: barre
+    3300002: barre1
+    3300004: barre2
+    3300006: barre3
+    3300008: barre4
+    3300010: barre5
+    3300012: barre6
+    3300014: barre7
+    3300016: cornicione
+    3300018: macerie
+    3300020: macerie1
+    3300022: macerie2
+    3300024: macerie3
+    3300026: piano
+    3300028: piano1
+    3300030: piano2
+    3300032: piano3
+    4300000: piano
+    4300002: piano1
+    4300004: piano2
+    4300006: piano3
+    4300008: cornicione
+    4300010: macerie
+    4300012: macerie1
+    4300014: macerie2
+    4300016: macerie3
+    4300018: barre
+    4300020: barre1
+    4300022: barre2
+    4300024: barre3
+    4300026: barre4
+    4300028: barre5
+    4300030: barre6
+    4300032: barre7
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: env
+    second: {fileID: 2100000, guid: 20571ab0bb484154b82de93892d8df53, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

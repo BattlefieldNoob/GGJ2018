@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: dde528fd24f1ded4d9c7f1ed8ba24232
+timeCreated: 1517062869
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: angolo
+    100002: angolo1
+    100004: asta_pens
+    100006: asta_pens1
+    100008: cornici
+    100010: edificio2
+    100012: //RootNode
+    100014: interno
+    100016: pensilina
+    100018: pensilina_lunga
+    400000: angolo
+    400002: angolo1
+    400004: asta_pens
+    400006: asta_pens1
+    400008: cornici
+    400010: edificio2
+    400012: //RootNode
+    400014: interno
+    400016: pensilina
+    400018: pensilina_lunga
+    2300000: angolo
+    2300002: angolo1
+    2300004: asta_pens
+    2300006: asta_pens1
+    2300008: cornici
+    2300010: edificio2
+    2300012: interno
+    2300014: pensilina
+    2300016: pensilina_lunga
+    3300000: angolo
+    3300002: angolo1
+    3300004: asta_pens
+    3300006: asta_pens1
+    3300008: cornici
+    3300010: edificio2
+    3300012: interno
+    3300014: pensilina
+    3300016: pensilina_lunga
+    4300000: pensilina
+    4300002: pensilina_lunga
+    4300004: edificio2
+    4300006: interno
+    4300008: angolo
+    4300010: asta_pens1
+    4300012: asta_pens
+    4300014: angolo1
+    4300016: cornici
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: env
+    second: {fileID: 2100000, guid: 20571ab0bb484154b82de93892d8df53, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
