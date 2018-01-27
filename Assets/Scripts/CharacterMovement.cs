@@ -5,16 +5,19 @@ using DG.Tweening;
 
 public class CharacterMovement : MonoBehaviour
 {
-
-	public float Speed;
+	PlayerStatus Status;
 	public int PlayerID;
 	Rigidbody rb;
 
 	public bool CanMove = true;
+
+	private Animator Animator;
 	// Use this for initialization
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		Animator = GetComponentInChildren<Animator>();
+		Status = GetComponent<PlayerStatus>();
 	}
 
 	// Update is called once per frame
@@ -26,8 +29,10 @@ public class CharacterMovement : MonoBehaviour
 			if (dir != Vector3.zero)
 			{
 				transform.rotation = Quaternion.LookRotation(dir);
-				rb.velocity = dir * Speed;
+				rb.velocity = dir * Status.GetSpeed();
 			}
 		}
+		
+		Animator.SetFloat("Velocity",rb.velocity.magnitude);
 	}
 }

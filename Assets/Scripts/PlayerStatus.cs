@@ -23,6 +23,7 @@ public class PlayerStatus : MonoBehaviour
     private float StunTime = 1.0f;
     CharacterMovement Movement;
 	public Transform DeseaseSocket;
+	public float NormalSpeed,DeseaseSpeed;
 
     // Use this for initialization
     void Start()
@@ -52,6 +53,14 @@ public class PlayerStatus : MonoBehaviour
     {
         return CurrentState == State.Dead;
     }
+
+	public float GetSpeed()
+	{
+		if (CurrentState == State.Infected)
+			return DeseaseSpeed;
+		else
+			return NormalSpeed;
+	}
 
     public void Infect()
     {

@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeseaseSocket: {fileID: 4622761233917102}
+  NormalSpeed: 10
+  DeseaseSpeed: 15
 --- !u!114 &114288783260410680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,5 +167,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ff2d5c0fa83bd409817e6bb67fc8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  PlayerID: 0
   CanMove: 1
