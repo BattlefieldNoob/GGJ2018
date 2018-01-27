@@ -7,6 +7,8 @@ public class CharacterMovement : MonoBehaviour {
 
 	public float Speed;
 	Rigidbody rb;
+
+	public bool CanMove=true;
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();
@@ -14,11 +16,14 @@ public class CharacterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		Vector3 dir = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical")).normalized;
-		if (dir != Vector3.zero)
+		if (CanMove)
 		{
-			transform.rotation = Quaternion.LookRotation(dir);
-			rb.velocity = dir * Speed;
+			Vector3 dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+			if (dir != Vector3.zero)
+			{
+				transform.rotation = Quaternion.LookRotation(dir);
+				rb.velocity = dir * Speed;
+			}
 		}
 	}
 }

@@ -5,6 +5,11 @@ using UnityEngine.Events;
 
 public class EventManager : MonoBehaviour
 {
+    
+    
+    public class PlayerInfectedEvent:UnityEvent<int>{}
+    
+    
     #region Singleton
 
     public static EventManager Instance;
@@ -12,9 +17,11 @@ public class EventManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance == null)
         {
             Instance = this;
+            OnInfectWaveFinished=new UnityEvent();
+            OnLastPlayerInfectedPerMatch=new PlayerInfectedEvent();
         }
         else
         {
@@ -27,10 +34,7 @@ public class EventManager : MonoBehaviour
 
     public UnityEvent OnInfectWaveFinished;
 
-    void Start()
-    {
-        OnInfectWaveFinished=new UnityEvent();
-    }
+    public PlayerInfectedEvent OnLastPlayerInfectedPerMatch;
 
     // Update is called once per frame
     void Update()
