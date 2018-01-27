@@ -34,10 +34,10 @@ public class Teleport : MonoBehaviour {
                 break;
             case Type.targeted: collision.gameObject.transform.position = target.position;
                 break;
-            case Type.jump: //collision.gameObject.GetComponent<CharacterMovement>().StopMovement();
-                            StartCoroutine(jump(collision.gameObject, 15));
+            case Type.jump: collision.gameObject.GetComponent<CharacterMovement>().CanMove = false;
+                            StartCoroutine(jump(collision.gameObject, 20));
                 break;
-            case Type.shootUp: //collision.gameObject.GetComponent<CharacterMovement>().StopMovement();
+            case Type.shootUp: collision.gameObject.GetComponent<CharacterMovement>().CanMove = false; ;
                                StartCoroutine(jump(collision.gameObject, 90));
                 break;
         }
@@ -62,5 +62,6 @@ public class Teleport : MonoBehaviour {
 
             yield return null;
         }
+        player.GetComponent<CharacterMovement>().CanMove = true;
     }
 }
