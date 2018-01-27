@@ -81,6 +81,14 @@ public class GameManager : MonoBehaviour
 		SceneManager.activeSceneChanged -= OnSceneLoaded;
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			StartGame();
+		}
+	}
+
 	private void StartGame()
 	{
 		foreach (int k in playersControllerIndexes) {

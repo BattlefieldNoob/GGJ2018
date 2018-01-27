@@ -33,6 +33,7 @@ public class PlayerUIPanel : MonoBehaviour {
 	{
 		PlayerIsNoMoreInfected(); 
 		playerImage.enabled = false;
+		SetPowerUpIcon(null);
 	}
 
 	public void SetPowerUpIcon(Sprite sprite)
