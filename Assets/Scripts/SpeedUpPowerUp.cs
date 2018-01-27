@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SpeedUpPowerUp : GenericPowerUp
 {
-	
+	public override void SelfDestruct()
+	{
+		Status.SetPowerUp(null);
+		Destroy(gameObject);
+	}
 
 	public override void SetUp(GameObject g)
 	{

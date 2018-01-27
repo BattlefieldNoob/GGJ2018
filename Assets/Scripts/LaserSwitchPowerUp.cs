@@ -101,4 +101,10 @@ public class LaserSwitchPowerUp : GenericPowerUp
 		EnableDisableCommands(t.gameObject, true);
 		Destroy(gameObject);
 	}
+
+	public override void SelfDestruct()
+	{
+		Status.SetPowerUp(null);
+		Destroy(gameObject);
+	}
 }
