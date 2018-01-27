@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
 	public void ZoomToPosition(Vector3 pos,float AnimationSeconds)
 	{
 		originalPos = transform.position;
-		transform.DOMove(pos * 0.9f,AnimationSeconds);
+		transform.DOMove((pos * 0.7f)+new Vector3(0,2,0),AnimationSeconds);
 	}
 
 	public void ReturnToOriginalPos(float AnimationSeconds)
