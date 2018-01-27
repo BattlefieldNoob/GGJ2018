@@ -91,7 +91,9 @@ public class GameManager : MonoBehaviour
 
 	private void StartGame()
 	{
-		
+		foreach (int k in playersControllerIndexes) {
+			Debug.Log("At start -> "+k);
+		}
 		//Instanzio i player
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
@@ -106,9 +108,12 @@ public class GameManager : MonoBehaviour
 		//instanzio la Desease
 		var desease = Instantiate(DiseasePrefab, Vector3.zero, Quaternion.identity);
 		//TODO fare qualcosa sulla desease
-		
-//		CanvasController.InitUI(Colors);
-		
+
+		//		CanvasController.InitUI(Colors);
+		foreach (string k in Input.GetJoystickNames())
+		{
+			Debug.Log("Start -> " + k);
+		}
 	}
 
 	IEnumerator RestartMatchCoroutine(int winner)
@@ -145,6 +150,14 @@ public class GameManager : MonoBehaviour
 		}
 		
 		FindObjectOfType<Desease>().StartNewMatch();
+		foreach (string k in Input.GetJoystickNames())
+		{
+			Debug.Log("Restart -> "+k);
+		}
+		foreach (int k in playersControllerIndexes)
+		{
+			Debug.Log("At Restart -> " + k);
+		}
 	}
 
 	public void MatchFinished(int winnerOfMatch)
