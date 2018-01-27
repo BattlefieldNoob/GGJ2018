@@ -23,8 +23,11 @@ public class Desease : MonoBehaviour
 
     public Text debugtext;
 
+    public Animator Animator;
+
     void Start()
     {
+        Animator = transform.Find("Model").GetComponentInChildren<Animator>();
         players = GameManager.Instance.players.Select(player => player.GetComponent<PlayerStatus>()).ToArray();
         InfectionTimeTimer = InfectionTimeSeconds;
         InfectRandomPlayer();
@@ -99,14 +102,18 @@ public class Desease : MonoBehaviour
 
         //mi registro all'evento collisione del player
         players[CurrentPlayerIndex].CollidedWithPlayer.AddListener(OnCollisionWithHealtyPlayer);
+        
+        Animator.SetBool("Flying",true);
 
         StartCoroutine(ReachPlayer(players[CurrentPlayerIndex].GetDeseaseSocket(), 10, callback:() =>
         {
+            Animator.SetTrigger("Attacking");
             Debug.Log("Animation Finished!");
             //mi metto come figlio dell'oggetto
             transform.SetParent(players[CurrentPlayerIndex].GetDeseaseSocket());
             transform.localPosition=Vector3.zero;
             players[CurrentPlayerIndex].Infect();
+            Animator.SetBool("Flying",false);
             if (!isLastPlayer)
             {
                 TimerIsActive = true; 

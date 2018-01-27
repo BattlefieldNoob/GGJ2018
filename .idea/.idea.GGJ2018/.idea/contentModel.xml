@@ -28,7 +28,6 @@
           <e p="Dispatcher.cs" t="Include" />
           <e p="DispatcherTest.cs" t="Include" />
         </e>
-        <e p="PlayerReadyStatus.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="FMOD" t="Include">
@@ -253,8 +252,10 @@
           <e p="EventManager.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
+          <e p="MainMenuManager.cs" t="Include" />
           <e p="PlayerCanvasController.cs" t="Include" />
           <e p="PlayerPowerUp.cs" t="Include" />
+          <e p="PlayerReadyStatus.cs" t="Include" />
           <e p="PlayerSelectionManager.cs" t="Include" />
           <e p="PlayerStatus.cs" t="Include" />
           <e p="PowerUp.cs" t="Include" />

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-	public  int sceneIndex;
+	public int sceneIndex;
 
 	private void Start()
 	{
@@ -32,5 +32,11 @@ public class LevelManager : MonoBehaviour {
 
 	public void LoadAfter(float wait){
 		Invoke ("LoadOnSceneIndex", wait);
+	}
+
+	public void GoToCharactersSelections()
+	{
+		sceneIndex = 1;
+		LoadAfter(1.2f);
 	}
 }

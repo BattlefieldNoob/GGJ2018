@@ -12,6 +12,8 @@ public class PlayerSelectionManager : MonoBehaviour
 	private bool[] joystickIsReady;
 
 	public PlayerReadyStatus[] playersStatus;
+	
+	List<int> joystickOriginalindexes=new List<int>();
 
 	public Text CanStart;
 
@@ -20,9 +22,14 @@ public class PlayerSelectionManager : MonoBehaviour
 	void Start () {
 		//prendo la lista dei joystick connessi
 		joysticks = Input.GetJoystickNames();
+
+		for (int i = 0; i < joysticks.Length; i++)
+		{
+			if(!string.IsNullOrEmpty(joysticks[i]))
+				joystickOriginalindexes.Add(i);
+		}
 		
-		
-		joystickIsReady=new bool[joysticks.Length];
+		joystickIsReady=new bool[joystickOriginalindexes.Count];
 		
 		foreach (var playerinfo in playersStatus)
 		{
@@ -30,7 +37,7 @@ public class PlayerSelectionManager : MonoBehaviour
 		}
 
 		//setto tutti i joystick connessi come "non pronti"
-		for (int i = 0; i < joysticks.Length; i++)
+		for (int i = 0; i < joystickOriginalindexes.Count; i++)
 		{
 			joystickIsReady[i] = false;
 			playersStatus[i].SetNotReady();
@@ -39,9 +46,9 @@ public class PlayerSelectionManager : MonoBehaviour
 	
 	
 	void Update () {
-		for (int i = 0; i < joysticks.Length; i++)
+		for (int i = 0; i < joystickOriginalindexes.Count; i++)
 		{
-			if (!joystickIsReady[i] && Input.GetButtonDown("Button" + (i+1)))
+			if (!joystickIsReady[i] && Input.GetButtonDown("Button" + (joystickOriginalindexes[i]+1)))
 			{
 				joystickIsReady[i] = true;
 				playersStatus[i].SetReady();
@@ -53,7 +60,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	public void CheckNumberOfPlayers()
 	{
-		if (joystickIsReady.Length>=1 && joystickIsReady.All(playerReady => playerReady))
+		if (joystickIsReady.Length>=2 && joystickIsReady.All(playerReady => playerReady))
 		{
 			Debug.Log("Game can Start!");
 			gameCanStart = true;
@@ -72,7 +79,7 @@ public class PlayerSelectionManager : MonoBehaviour
 		
 		FindObjectOfType<LevelManager>().LoadOnSceneName("Managers");
 		
-		GameManager.Instance.WaitGameplaySceneAndStartGame();
+		GameManager.Instance.WaitGameplaySceneAndStartGame(joystickOriginalindexes.ToArray());
 	}
 	
 }

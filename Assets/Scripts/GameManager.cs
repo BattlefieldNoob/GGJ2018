@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
 	public Transform[] SpawnPoints;
 
-	public int NumberOfPlayers = 2;
+	public int[] playersControllerIndexes;
 
 	public PlayerCanvasController CanvasController;
 	//public Text canvasText;
@@ -64,8 +64,9 @@ public class GameManager : MonoBehaviour
 		});
 	}
 
-	public void WaitGameplaySceneAndStartGame()
+	public void WaitGameplaySceneAndStartGame(int[] playersCount)
 	{
+		playersControllerIndexes = playersCount;
 		SceneManager.activeSceneChanged += OnSceneLoaded;
 	}
 
@@ -88,12 +89,12 @@ public class GameManager : MonoBehaviour
 	{
 		
 		//Instanzio i player
-		for (int i = 0; i < NumberOfPlayers; i++)
+		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
 			var player=Instantiate(PlayerPrefab, SpawnPoints[i].position, SpawnPoints[i].rotation);
 			players.Add(player);
 			//TODO setto alcune impostazioni sui player, tipo colore
-			player.GetComponent<CharacterMovement>().PlayerID = i+1;
+			player.GetComponent<CharacterMovement>().PlayerID = playersControllerIndexes[i]+1;
 			//inizializzo il numero di vittorie 
 			VictoriesPerPlayer.Add(i,0);
 		}
@@ -115,7 +116,7 @@ public class GameManager : MonoBehaviour
 		yield return new WaitForSeconds(waitTime);
 
 
-		for (int i = 0; i < NumberOfPlayers; i++)
+		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
 			players[i].transform.position=SpawnPoints[i].position;
 			players[i].transform.rotation=SpawnPoints[i].rotation;
@@ -127,7 +128,7 @@ public class GameManager : MonoBehaviour
 		
 		//TODO aspettare animazione
 		
-		for (int i = 0; i < NumberOfPlayers; i++)
+		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
 			players[i].GetComponent<CharacterMovement>().CanMove = true;
 			players[i].GetComponent<PlayerStatus>().Resurect();
