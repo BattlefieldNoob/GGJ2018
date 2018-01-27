@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class CharacterMovement : MonoBehaviour {
+public class CharacterMovement : MonoBehaviour
+{
 
 	public float Speed;
 	public int PlayerID;
 	Rigidbody rb;
+
+	public bool CanMove = true;
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		rb = GetComponent<Rigidbody>();
 	}
-	
+
 	// Update is called once per frame
-	void FixedUpdate () {
-		Vector3 dir = new Vector3(Input.GetAxis("HorizontalPL"+PlayerID),0,Input.GetAxis("VerticalPL"+PlayerID)).normalized;
-		foreach(string s in Input.GetJoystickNames())
+	void FixedUpdate()
+	{
+		if (CanMove)
 		{
-			print(s);
-		}
-		if (dir != Vector3.zero)
-		{
-			transform.rotation = Quaternion.LookRotation(dir);
-			rb.velocity = dir * Speed;
+			Vector3 dir = new Vector3(Input.GetAxis("HorizontalPL" + PlayerID), 0, Input.GetAxis("VerticalPL" + PlayerID)).normalized;
+			if (dir != Vector3.zero)
+			{
+				transform.rotation = Quaternion.LookRotation(dir);
+				rb.velocity = dir * Speed;
+			}
 		}
 	}
 }
