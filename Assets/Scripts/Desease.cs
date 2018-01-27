@@ -10,8 +10,8 @@ using Random = UnityEngine.Random;
 
 public class Desease : MonoBehaviour
 {
-    private PlayerStatus[] players;
 
+    private PlayerStatus[] players;
     private int CurrentPlayerIndex;
 
     private bool TimerIsActive;
@@ -25,7 +25,7 @@ public class Desease : MonoBehaviour
 
     void Start()
     {
-        players = FindObjectsOfType<PlayerStatus>();
+        players = GameManager.Instance.players.Select(player => player.GetComponent<PlayerStatus>()).ToArray();
 		InfectionTimeTimer = InfectionTimeSeconds;
 		InfectRandomPlayer();
 	}

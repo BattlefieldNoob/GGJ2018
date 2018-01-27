@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	private bool[] joystickIsReady;
 
-	public Text[] playerStatus;
+	public RectTransform[] playerStatus;
 
 	public Text CanStart;
 
@@ -26,7 +27,6 @@ public class PlayerSelectionManager : MonoBehaviour
 		for (int i = 0; i < joysticks.Length; i++)
 		{
 			joystickIsReady[i] = false;
-			playerStatus[i].text = "Not Ready!";
 		}
 		
 	}
@@ -38,7 +38,9 @@ public class PlayerSelectionManager : MonoBehaviour
 			if (!joystickIsReady[i] && Input.GetButtonDown("Button" + (i+1)))
 			{
 				joystickIsReady[i] = true;
-				playerStatus[i].text = "Ready!";
+				var player=playerStatus[i];
+					player.Find("Player Icon").Find("Oscurante").gameObject.SetActive(false);
+				player.GetComponentInChildren<TextMeshProUGUI>().outlineWidth = 0.5f;
 				CheckNumberOfPlayers();
 			}
 		}
@@ -47,7 +49,7 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	public void CheckNumberOfPlayers()
 	{
-		if (joystickIsReady.Length>=2 && joystickIsReady.All(playerReady => playerReady))
+		if (joystickIsReady.Length>=1 && joystickIsReady.All(playerReady => playerReady))
 		{
 			Debug.Log("Game can Start!");
 			gameCanStart = true;
