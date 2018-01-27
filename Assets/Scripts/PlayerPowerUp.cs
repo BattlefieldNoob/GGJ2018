@@ -31,7 +31,13 @@ public class PlayerPowerUp : MonoBehaviour {
 	void Update () {
 		if(HasPowerUp && Input.GetButtonDown("Button" + Movement.PlayerID) && !Status.IsInfected())
 		{
-			print("CACCA");
+			HasPowerUp = false;
+			switch (CurrentPowerUp)
+			{
+				case PowerUp.PowerUps.Speed:
+					Status.SpeedUp();
+					break;
+			}
 		}
 	}
 }
