@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using UnityEngine.UI;
 
 
 public class LevelManager : MonoBehaviour {
@@ -28,6 +31,44 @@ public class LevelManager : MonoBehaviour {
 
 	#endregion
 
+	private string waitForScene;
+
+	private Image FadePanel;
+
+	public float fadeSeconds=2;
+
+
+	private void Start()
+	{
+		FadePanel = transform.GetChild(0).GetComponentInChildren<Image>();
+		FadePanel.DOFade(0, fadeSeconds);
+		SceneManager.activeSceneChanged+=OnChangeScene;
+	}
+
+	private void OnChangeScene(Scene oldScene, Scene newScene)
+	{
+		if (!string.IsNullOrEmpty(waitForScene))
+		{
+			if (newScene.name.Contains(waitForScene))
+			{
+				waitForScene = "";
+				// sono sulla scena che attendevo, posso eseguire un FadeIn
+				FadePanel.DOFade(0, fadeSeconds);
+			}
+		}
+	}
+
+	public void ChangeSceneTo(string sceneName)
+	{
+		Debug.Log("Fading to "+sceneName);
+		waitForScene = sceneName;
+		FadePanel.DOFade(1, fadeSeconds).OnComplete(() =>
+		{
+			SceneManager.LoadScene(sceneName);
+		});
+
+	}
+
 	public void LoadOnSceneIndex(){
 
 		SceneManager.LoadScene (sceneIndex);
@@ -47,11 +88,5 @@ public class LevelManager : MonoBehaviour {
 
 	public void LoadAfter(float wait){
 		Invoke ("LoadOnSceneIndex", wait);
-	}
-
-	public void GoToCharactersSelections()
-	{
-		sceneIndex = 1;
-		LoadAfter(1.2f);
 	}
 }

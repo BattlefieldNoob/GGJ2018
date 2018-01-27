@@ -23,6 +23,9 @@
         <e p="Editor" t="Include">
           <e p="FMODMigrationUtil.cs" t="Include" />
         </e>
+        <e p="Elementi UI" t="Include">
+          <e p="InfoManager.cs" t="Include" />
+        </e>
         <e p="MainThreadDispatcher" t="Include">
           <e p="Dispatcher Documentation.txt" t="Include" />
           <e p="Dispatcher.cs" t="Include" />

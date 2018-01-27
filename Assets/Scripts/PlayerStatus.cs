@@ -98,7 +98,7 @@ public class PlayerStatus : MonoBehaviour
 	    SplashParticles.Play(true);
         Animator.SetTrigger("Infecting");
         CurrentState = State.Stunned;
-        GetComponent<CharacterMovement>().CanMove = false;
+        Movement.CanMove = false;
         StartCoroutine(Stun());
     }
 
@@ -106,7 +106,7 @@ public class PlayerStatus : MonoBehaviour
     {
         yield return new WaitForSeconds(StunTime);
         CurrentState = State.Infected;
-        GetComponent<CharacterMovement>().CanMove = true;
+        Movement.CanMove = true;
         Animator.SetBool("Infected",true);
 
         //Riabilito controlli

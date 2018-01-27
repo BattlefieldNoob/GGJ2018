@@ -11,8 +11,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-	
-	
 	#region Singleton
 
 	public static GameManager Instance;
@@ -43,9 +41,6 @@ public class GameManager : MonoBehaviour
 
 	public int[] playersControllerIndexes;
 
-	public PlayerCanvasController CanvasController;
-	//public Text canvasText;
-
 	public List<Color> Colors;
 
 
@@ -59,6 +54,8 @@ public class GameManager : MonoBehaviour
 	public Dictionary<int,int> VictoriesPerPlayer=new Dictionary<int, int>();
 
 	public List<GameObject> players=new List<GameObject>();
+
+	private Desease _desease;
 	
 	void Start () {
 		
@@ -74,7 +71,7 @@ public class GameManager : MonoBehaviour
 		SceneManager.activeSceneChanged += OnSceneLoaded;
 	}
 
-	public void OnSceneLoaded(Scene old, Scene newScene)
+	private void OnSceneLoaded(Scene old, Scene newScene)
 	{
 		StartGame();
 		SceneManager.activeSceneChanged -= OnSceneLoaded;
@@ -97,7 +94,7 @@ public class GameManager : MonoBehaviour
 		}
 		
 		//instanzio la Desease
-		var desease = Instantiate(DiseasePrefab, Vector3.zero, Quaternion.identity);
+		_desease = Instantiate(DiseasePrefab, Vector3.zero, Quaternion.identity).GetComponent<Desease>();
 		//TODO fare qualcosa sulla desease
 
 		//		CanvasController.InitUI(Colors);
@@ -107,7 +104,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	IEnumerator RestartMatchCoroutine(int winner)
+	private IEnumerator RestartMatchCoroutine()
 	{
 		foreach (GenericPowerUp gpu in FindObjectsOfType<GenericPowerUp>())
 		{
@@ -116,7 +113,7 @@ public class GameManager : MonoBehaviour
 
 		var waitTime = 6f;
 
-		AnotherMatch.transform.DOMoveX(-80, waitTime).OnComplete(() => { AnotherMatch.transform.DOMoveX(23, 0.01f); });
+		AnotherMatch?.transform.DOMoveX(-80, waitTime).OnComplete(() => { AnotherMatch?.transform.DOMoveX(23, 0.01f); });
 		
 		//Todo Aspetto animazione zoom
 		yield return new WaitForSeconds(waitTime);
@@ -141,10 +138,10 @@ public class GameManager : MonoBehaviour
 			players[i].GetComponent<PlayerStatus>().Resurect();
 		}
 		
-		FindObjectOfType<Desease>().StartNewMatch();
+		_desease.StartNewMatch();
 	}
 
-	public void MatchFinished(int winnerOfMatch)
+	private void MatchFinished(int winnerOfMatch)
 	{
 		Debug.Log("Player " + winnerOfMatch + " won this match!");
 		//canvasText.text = "Player " + winnerOfMatch + " won this match!";
@@ -159,22 +156,19 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			
-			StartCoroutine(RestartMatchCoroutine(winnerOfMatch));
+			StartCoroutine(RestartMatchCoroutine());
 		}
 	}
 
-	public IEnumerator GameFinished(int winnerOfGame)
+	private IEnumerator GameFinished(int winnerOfGame)
 	{
 		Debug.Log( "Player " + winnerOfGame + " won the game!");
 		
 		
 		yield return new WaitForSeconds(5f);
-		EndGame.transform.DOMoveX(-80, 5f).OnComplete(() => { EndGame.transform.DOMoveX(23, 0.01f); });
+		EndGame?.transform.DOMoveX(-80, 5f).OnComplete(() => { EndGame?.transform.DOMoveX(23, 0.01f); });
 		yield return new WaitForSeconds(5f);
 		
-		FindObjectOfType<LevelManager>()?.LoadOnSceneName("Main Menu");
-
-		//canvasText.text = "Player " + winnerOfGame + " won the game!";
+		LevelManager.Instance.ChangeSceneTo("Main Menu");
 	}
-	
 }
