@@ -135,8 +135,10 @@ public class Desease : MonoBehaviour
             float progress = t / duration;
             float y = ((1 - t) * (1 - t) * startY + 2 * (1 - t) * t * bezierY + t * t * endY);
             Vector3 horizontal = Vector3.Lerp(startPosition, target.position, progress);
-
+            transform.rotation = Quaternion.Lerp(transform.rotation,target.rotation,progress);
+            
             transform.position = new Vector3(horizontal.x, y, horizontal.z);
+            
 
             yield return null;
         }

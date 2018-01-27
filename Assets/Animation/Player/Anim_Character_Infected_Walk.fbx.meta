@@ -1,0 +1,375 @@
+fileFormatVersion: 2
+guid: ef7c9248386564a47b10db71d8389742
+timeCreated: 1517074242
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: alien_low
+    100002: //RootNode
+    100004: Belly_Ctrl
+    100006: Belly_CtrlGroup
+    100008: Belly_Jnt
+    100010: Body
+    100012: Body 1
+    100014: Body1
+    100016: CoG_Ctrl
+    100018: CoG_CtrlGroup
+    100020: Cog_Jnt
+    100022: group1
+    100024: haz_Body:Group7414
+    100026: HAZ_Bup
+    100028: haz_Gloves:Group44115
+    100030: HAZ_Mesh
+    100032: haz_Tank:Group8950
+    100034: haz_Tubes:Group60870
+    100036: Head_Ctrl
+    100038: Head_CtrlGroup
+    100040: Head_Jnt
+    100042: Hips_Ctrl
+    100044: Hips_CtrlGroup
+    100046: Hips_Jnt
+    100048: HP
+    100050: Jaw_Ctrl
+    100052: Jaw_CtrlGroup
+    100054: Jaw_Jnt
+    100056: L_Arm_Ctrl
+    100058: L_Arm_CtrlGroup
+    100060: L_Arm_Jnt
+    100062: L_Clavicle_Ctrl
+    100064: L_Clavicle_CtrlGroup
+    100066: L_Elbow_Jnt
+    100068: L_ElbowCtrl
+    100070: L_ElbowCtrlGroup
+    100072: L_Fingers_Ctrl
+    100074: L_Fingers_CtrlGroup
+    100076: L_Fingers_Jnt
+    100078: L_Foot
+    100080: L_Foot_Ctrl
+    100082: L_Foot_CtrlGroup
+    100084: L_Foot_IK
+    100086: L_Hand_Ctrl
+    100088: L_Hand_CtrlGroup
+    100090: L_Knee_Jnt
+    100092: L_Leg_Jnt
+    100094: L_Shoulder_Jnt
+    100096: L_Tank
+    100098: L_Tank 1
+    100100: L_Thumb_Ctrl
+    100102: L_Thumb_CtrlGroup
+    100104: L_Thumb_Jnt
+    100106: L_Wrist_Jnt
+    100108: Neck_Ctrl
+    100110: Neck_CtrlGroup
+    100112: Neck_Jnt
+    100114: polySurface1
+    100116: polySurface3
+    100118: polySurface4
+    100120: R_Arm_Ctrl
+    100122: R_Arm_CtrlGroup
+    100124: R_Arm_Jnt
+    100126: R_Clavicle_Ctrl
+    100128: R_Clavicle_CtrlGroup
+    100130: R_Elbow_Ctrl
+    100132: R_Elbow_CtrlGroup
+    100134: R_Elbow_Jnt
+    100136: R_Finger_Ctrl
+    100138: R_Finger_CtrlGroup
+    100140: R_Fingers_Jnt
+    100142: R_Foot
+    100144: R_Foot_Ctrl
+    100146: R_Foot_CtrlGroup
+    100148: R_Foot_IK
+    100150: R_Knee_Jnt
+    100152: R_Leg_Jnt
+    100154: R_Shoulder_Jnt
+    100156: R_Tank
+    100158: R_Tank 1
+    100160: R_Thumb_Ctrl
+    100162: R_Thumb_CtrlGroup
+    100164: R_Thumb_Jnt
+    100166: R_Wrist_Ctrl
+    100168: R_Wrist_CtrlGroup
+    100170: R_Wrist_Jnt
+    100172: ROOT_Ctrl
+    100174: ROOT_CtrlGroup
+    100176: ROOT_Jnt
+    100178: Spine_A_Ctrl
+    100180: Spine_A_CtrlGroup
+    100182: Spine_A_Jnt
+    100184: Spine_B_Ctrl
+    100186: Spine_B_CtrlGroup
+    100188: Spine_B_Jnt
+    100190: Tank_Ctrl
+    100192: Tank_CtrlGroup
+    100194: Tanks
+    100196: Tubes
+    100198: Tubes 1
+    100200: Valve
+    100202: Valve 1
+    400000: alien_low
+    400002: //RootNode
+    400004: Belly_Ctrl
+    400006: Belly_CtrlGroup
+    400008: Belly_Jnt
+    400010: Body
+    400012: Body 1
+    400014: Body1
+    400016: CoG_Ctrl
+    400018: CoG_CtrlGroup
+    400020: Cog_Jnt
+    400022: group1
+    400024: haz_Body:Group7414
+    400026: HAZ_Bup
+    400028: haz_Gloves:Group44115
+    400030: HAZ_Mesh
+    400032: haz_Tank:Group8950
+    400034: haz_Tubes:Group60870
+    400036: Head_Ctrl
+    400038: Head_CtrlGroup
+    400040: Head_Jnt
+    400042: Hips_Ctrl
+    400044: Hips_CtrlGroup
+    400046: Hips_Jnt
+    400048: HP
+    400050: Jaw_Ctrl
+    400052: Jaw_CtrlGroup
+    400054: Jaw_Jnt
+    400056: L_Arm_Ctrl
+    400058: L_Arm_CtrlGroup
+    400060: L_Arm_Jnt
+    400062: L_Clavicle_Ctrl
+    400064: L_Clavicle_CtrlGroup
+    400066: L_Elbow_Jnt
+    400068: L_ElbowCtrl
+    400070: L_ElbowCtrlGroup
+    400072: L_Fingers_Ctrl
+    400074: L_Fingers_CtrlGroup
+    400076: L_Fingers_Jnt
+    400078: L_Foot
+    400080: L_Foot_Ctrl
+    400082: L_Foot_CtrlGroup
+    400084: L_Foot_IK
+    400086: L_Hand_Ctrl
+    400088: L_Hand_CtrlGroup
+    400090: L_Knee_Jnt
+    400092: L_Leg_Jnt
+    400094: L_Shoulder_Jnt
+    400096: L_Tank
+    400098: L_Tank 1
+    400100: L_Thumb_Ctrl
+    400102: L_Thumb_CtrlGroup
+    400104: L_Thumb_Jnt
+    400106: L_Wrist_Jnt
+    400108: Neck_Ctrl
+    400110: Neck_CtrlGroup
+    400112: Neck_Jnt
+    400114: polySurface1
+    400116: polySurface3
+    400118: polySurface4
+    400120: R_Arm_Ctrl
+    400122: R_Arm_CtrlGroup
+    400124: R_Arm_Jnt
+    400126: R_Clavicle_Ctrl
+    400128: R_Clavicle_CtrlGroup
+    400130: R_Elbow_Ctrl
+    400132: R_Elbow_CtrlGroup
+    400134: R_Elbow_Jnt
+    400136: R_Finger_Ctrl
+    400138: R_Finger_CtrlGroup
+    400140: R_Fingers_Jnt
+    400142: R_Foot
+    400144: R_Foot_Ctrl
+    400146: R_Foot_CtrlGroup
+    400148: R_Foot_IK
+    400150: R_Knee_Jnt
+    400152: R_Leg_Jnt
+    400154: R_Shoulder_Jnt
+    400156: R_Tank
+    400158: R_Tank 1
+    400160: R_Thumb_Ctrl
+    400162: R_Thumb_CtrlGroup
+    400164: R_Thumb_Jnt
+    400166: R_Wrist_Ctrl
+    400168: R_Wrist_CtrlGroup
+    400170: R_Wrist_Jnt
+    400172: ROOT_Ctrl
+    400174: ROOT_CtrlGroup
+    400176: ROOT_Jnt
+    400178: Spine_A_Ctrl
+    400180: Spine_A_CtrlGroup
+    400182: Spine_A_Jnt
+    400184: Spine_B_Ctrl
+    400186: Spine_B_CtrlGroup
+    400188: Spine_B_Jnt
+    400190: Tank_Ctrl
+    400192: Tank_CtrlGroup
+    400194: Tanks
+    400196: Tubes
+    400198: Tubes 1
+    400200: Valve
+    400202: Valve 1
+    2300000: Body
+    2300002: Body1
+    2300004: haz_Body:Group7414
+    2300006: haz_Gloves:Group44115
+    2300008: haz_Tank:Group8950
+    2300010: haz_Tubes:Group60870
+    2300012: L_Tank
+    2300014: polySurface1
+    2300016: polySurface3
+    2300018: polySurface4
+    2300020: R_Tank
+    2300022: Tubes
+    2300024: Valve
+    3300000: Body
+    3300002: Body1
+    3300004: haz_Body:Group7414
+    3300006: haz_Gloves:Group44115
+    3300008: haz_Tank:Group8950
+    3300010: haz_Tubes:Group60870
+    3300012: L_Tank
+    3300014: polySurface1
+    3300016: polySurface3
+    3300018: polySurface4
+    3300020: R_Tank
+    3300022: Tubes
+    3300024: Valve
+    4300000: haz_Tank:Group8950
+    4300002: haz_Tubes:Group60870
+    4300004: haz_Gloves:Group44115
+    4300006: haz_Body:Group7414
+    4300008: R_Tank
+    4300010: Tubes
+    4300012: L_Tank
+    4300014: Valve
+    4300016: Body
+    4300018: R_Tank
+    4300020: Tubes
+    4300022: L_Tank
+    4300024: Valve
+    4300026: Body
+    4300028: Body1
+    4300030: polySurface4
+    4300032: polySurface3
+    4300034: polySurface1
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Body 1
+    13700002: L_Tank 1
+    13700004: R_Tank 1
+    13700006: Tubes 1
+    13700008: Valve 1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alien_Mat
+    second: {fileID: 2100000, guid: f26ff4987a64fd3438f0df1fb15a399b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: ed30257d984d4ba449335e5c0e3d0007, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: 735062d6fe54c5142b7a1a072246c405, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn2
+    second: {fileID: 2100000, guid: 66dd626e65ec04e548cde264f3e66a61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn3
+    second: {fileID: 2100000, guid: bb4b645bd07bd48f49b0f84f4ef44c9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: haz_Tank_defaultMat1
+    second: {fileID: 2100000, guid: 25ac972c47c556a45ba770e0b2bb20f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 5bae46d446a3b4698864d85e27291e30, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

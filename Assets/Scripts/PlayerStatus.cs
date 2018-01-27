@@ -102,7 +102,7 @@ public class PlayerStatus : MonoBehaviour
         yield return new WaitForSeconds(StunTime);
         CurrentState = State.Infected;
         GetComponent<CharacterMovement>().enabled = true;
-        Animator.SetTrigger("Infected");
+        Animator.SetBool("Infected",true);
 
         //Riabilito controlli
     }
