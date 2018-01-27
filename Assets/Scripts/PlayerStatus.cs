@@ -23,23 +23,45 @@ public class PlayerStatus : MonoBehaviour
     private float StunTime = 1.0f;
     CharacterMovement Movement;
 	public Transform DeseaseSocket;
+	public float NormalSpeed,DeseaseSpeed;
+	GenericPowerUp PowerUp;
+	public GameObject PistolHand;
+
+    public Animator Animator;
 
     // Use this for initialization
     void Start()
     {
         CurrentState = State.Normal;
         Movement = GetComponent<CharacterMovement>();
+        Animator = GetComponentInChildren<Animator>();
         CollidedWithPlayer = new CollisionWithPlayerEvent();
+		PowerUp = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Infect();
-        }
+		if(CanUsePowerUp() && Input.GetButtonDown("Button" + Movement.PlayerID))
+		{
+			PowerUp.Use();
+		}
     }
+
+	public GameObject GetHand()
+	{
+		return PistolHand;
+	}
+
+	bool CanUsePowerUp()
+	{
+		return PowerUp != null && !IsInfected();
+	}
+
+	public void SetPowerUp(GenericPowerUp pu)
+	{
+		PowerUp = pu;
+	}
 
     public void Explode()
     {
@@ -53,8 +75,23 @@ public class PlayerStatus : MonoBehaviour
         return CurrentState == State.Dead;
     }
 
+	public float GetSpeed()
+	{
+		if (CurrentState == State.Infected)
+			return DeseaseSpeed;
+		else
+			return NormalSpeed;
+	}
+
+    public void Resurect()
+    {
+        if(IsDead())
+            CurrentState = State.Normal;
+    }
+
     public void Infect()
     {
+        Animator.SetTrigger("Infecting");
         CurrentState = State.Stunned;
         GetComponent<CharacterMovement>().enabled = false;
         StartCoroutine(Stun());
@@ -65,6 +102,8 @@ public class PlayerStatus : MonoBehaviour
         yield return new WaitForSeconds(StunTime);
         CurrentState = State.Infected;
         GetComponent<CharacterMovement>().enabled = true;
+        Animator.SetTrigger("Infected");
+
         //Riabilito controlli
     }
 
@@ -87,5 +126,22 @@ public class PlayerStatus : MonoBehaviour
             BecomeHealthy();
             CollidedWithPlayer.Invoke(other);
         }
+    }
+
+    public void SpeedUp()
+    {
+        StartCoroutine(IncreaseSpeed());
+    }
+
+    private IEnumerator IncreaseSpeed()
+    {
+        NormalSpeed += 10;
+        yield return new WaitForSeconds(2.0f);
+        NormalSpeed -= 10;
+    }
+
+    public bool IsInfected()
+    {
+        return CurrentState == State.Infected;
     }
 }
