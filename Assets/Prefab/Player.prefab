@@ -3422,9 +3422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57e341188449a64eb068518cd855810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeseaseSocket: {fileID: 4622761233917102}
+  DeseaseSocket: {fileID: 4699552402191848}
   NormalSpeed: 10
   DeseaseSpeed: 15
+  Animator: {fileID: 0}
 --- !u!114 &114092876846936300
 MonoBehaviour:
   m_ObjectHideFlags: 1

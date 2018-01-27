@@ -247,7 +247,6 @@
             <e p="AudioManager.cs" t="Include" />
             <e p="Music.cs" t="Include" />
           </e>
-          <e p="CameraManager.cs" t="Include" />
           <e p="CharacterMovement.cs" t="Include" />
           <e p="Desease.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />

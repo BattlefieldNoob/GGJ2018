@@ -25,11 +25,14 @@ public class PlayerStatus : MonoBehaviour
 	public Transform DeseaseSocket;
 	public float NormalSpeed,DeseaseSpeed;
 
+    public Animator Animator;
+
     // Use this for initialization
     void Start()
     {
         CurrentState = State.Normal;
         Movement = GetComponent<CharacterMovement>();
+        Animator = GetComponentInChildren<Animator>();
         CollidedWithPlayer = new CollisionWithPlayerEvent();
     }
 
@@ -70,6 +73,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void Infect()
     {
+        Animator.SetTrigger("Infecting");
         CurrentState = State.Stunned;
         GetComponent<CharacterMovement>().enabled = false;
         StartCoroutine(Stun());
@@ -80,6 +84,8 @@ public class PlayerStatus : MonoBehaviour
         yield return new WaitForSeconds(StunTime);
         CurrentState = State.Infected;
         GetComponent<CharacterMovement>().enabled = true;
+        Animator.SetTrigger("Infected");
+
         //Riabilito controlli
     }
 
