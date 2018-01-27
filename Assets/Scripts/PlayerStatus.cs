@@ -22,7 +22,7 @@ public class PlayerStatus : MonoBehaviour
     State CurrentState;
     private float StunTime = 1.0f;
     CharacterMovement Movement;
-    
+	public Transform DeseaseSocket;
 
     // Use this for initialization
     void Start()
@@ -75,8 +75,8 @@ public class PlayerStatus : MonoBehaviour
 
     public Transform GetDeseaseSocket()
     {
-        //BUG Risolvere!!!!!!!
-        return transform.Find("DeseaseSocket");
+		//BUG Risolvere!!!!!!!
+		return DeseaseSocket;
     }
 
     private void OnCollisionEnter(Collision collision)
