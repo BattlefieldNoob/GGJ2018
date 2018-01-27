@@ -1277,7 +1277,7 @@ MonoBehaviour:
   InfectionTimeSeconds: 15
   InfectionTimeTimer: 0
   InfectPlayerSeconds: 1.5
-  debugtext: {fileID: 114412618668490320}
+  Debugtext: {fileID: 114412618668490320}
   Animator: {fileID: 0}
   KaboomParticlePrefab: {fileID: 1365396129245054, guid: aeb571909c3f4304893366bde52f01c1,
     type: 2}
