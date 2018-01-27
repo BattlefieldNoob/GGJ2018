@@ -43,6 +43,6 @@ public class CharacterMovement : MonoBehaviour
 			}
 		}
 		
-		Animator.SetFloat("Velocity",rb.velocity.magnitude);
+		Animator.SetFloat("Velocity",rb.velocity.magnitude/Status.GetSpeed());
 	}
 }
