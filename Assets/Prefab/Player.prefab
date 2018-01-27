@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114288783260410680}
   - component: {fileID: 54125764654925716}
   - component: {fileID: 65801886658023950}
+  - component: {fileID: 114092876846936300}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,6 +157,17 @@ MonoBehaviour:
   DeseaseSocket: {fileID: 4622761233917102}
   NormalSpeed: 10
   DeseaseSpeed: 15
+--- !u!114 &114092876846936300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1399618317227246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dfa4737313c0049a8c4e915d652e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114288783260410680
 MonoBehaviour:
   m_ObjectHideFlags: 1
