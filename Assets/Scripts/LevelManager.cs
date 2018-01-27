@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-	public  void LoadOnSceneIndex(int sceneIndex){
+	public  int sceneIndex;
+
+	public  void LoadOnSceneIndex(){
 
 		SceneManager.LoadScene (sceneIndex);
 		Debug.Log (" Loading  scene number " + sceneIndex);		
@@ -21,5 +23,9 @@ public class LevelManager : MonoBehaviour {
 	public void CloseGame (){
 		Application.Quit ();
 		Debug.Log ("Closing the Application");
+	}
+
+	public void LoadAfter(float wait){
+		Invoke ("LoadOnSceneIndex", wait);
 	}
 }
