@@ -6,9 +6,9 @@ public class PowerUp : MonoBehaviour {
 
     private bool active = false;
 
-    private int powerUps = 1;
+	public enum PowerUps { Speed};
 
-    private int actualPowerUp = 1;
+	public PowerUps CurrentPowerUp;
 
     private float startTime = 3.0f;
 
@@ -22,15 +22,11 @@ public class PowerUp : MonoBehaviour {
     {
         GameObject target = collision.gameObject;
         if(target.tag == "Player")
-            if (active && !target.GetComponent<PlayerStatus>().IsInfected())
+            if (active && !target.GetComponent<PlayerStatus>().IsInfected() && !target.GetComponent<PlayerPowerUp>().HasPower())
             {
                 active = false;
                 gameObject.GetComponent<MeshRenderer>().enabled = false;
-                switch (actualPowerUp)
-                {
-                    case 1: target.GetComponent<PlayerStatus>().SpeedUp();
-                        break;
-                }
+                target.GetComponent<PlayerPowerUp>().SetPowerUp(CurrentPowerUp);
                 StartCoroutine(Respawn());
             }
     }
@@ -38,16 +34,16 @@ public class PowerUp : MonoBehaviour {
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(3.0f);
-        actualPowerUp = Random.Range(1, powerUps);
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+		CurrentPowerUp = (PowerUps)Random.Range(0, System.Enum.GetValues(typeof(PowerUps)).Length);
+		gameObject.GetComponent<MeshRenderer>().enabled = true;
         active = true;
     }
 
     private IEnumerator StartUp()
     {
         yield return new WaitForSeconds(startTime);
-        actualPowerUp = Random.Range(1, powerUps);
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+		CurrentPowerUp = (PowerUps)Random.Range(0, System.Enum.GetValues(typeof(PowerUps)).Length);
+		gameObject.GetComponent<MeshRenderer>().enabled = true;
         active = true;
     }
 }
