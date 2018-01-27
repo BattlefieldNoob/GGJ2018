@@ -36,7 +36,7 @@ namespace Audio
 				case "MainMenu":
 					_currentAmbienceInstance = AudioManager.PlayAudio(_ambMainMenu);
 					break;
-				case "GameScene":
+				case "Gameplay":
 					_currentAmbienceInstance = AudioManager.PlayAudio(_ambGameplay);
 					break;
 			}
