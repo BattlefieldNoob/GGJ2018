@@ -6,7 +6,7 @@ public class PowerUp : MonoBehaviour {
 
     private bool active = false;
 
-	public enum PowerUps { Speed};
+	public enum PowerUps { Speed, Grapnel};
 
 	public PowerUps CurrentPowerUp;
 
