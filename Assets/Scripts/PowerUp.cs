@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
 
+    private bool active = true;
+
+    private int powerUps = 1;
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        gameObject.SetActive(false);
-        StartCoroutine(SpeedUp(collision.gameObject));
-        
+        GameObject target = collision.gameObject;
+        if (active)
+        {
+            active = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            switch (powerUps)
+            {
+                case 1: target.GetComponent<PlayerStatus>().SpeedUp();
+                    break;
+                default:
+                    break;
+            }
+            StartCoroutine(Respawn());
+        }
     }
 
-    private IEnumerator SpeedUp(GameObject target)
+    private IEnumerator Respawn()
     {
-        target.GetComponent<CharacterMovement>().Speed += 20;
-        yield return new WaitForSeconds(2.0f);
-        target.GetComponent<CharacterMovement>().Speed -= 20;
+        yield return new WaitForSeconds(10.0f);
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        active = true;
     }
 }

@@ -97,4 +97,16 @@ public class PlayerStatus : MonoBehaviour
             CollidedWithPlayer.Invoke(other);
         }
     }
+
+    public void SpeedUp()
+    {
+        StartCoroutine(IncreaseSpeed());
+    }
+
+    private IEnumerator IncreaseSpeed()
+    {
+        NormalSpeed += 10;
+        yield return new WaitForSeconds(2.0f);
+        NormalSpeed -= 10;
+    }
 }
