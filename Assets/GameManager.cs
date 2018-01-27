@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 	
 	void Start () {
 		
-		StartGame();
+		//StartGame();
 		
 		EventManager.Instance.OnLastPlayerInfectedPerMatch.AddListener((winner) =>
 		{
