@@ -19,6 +19,7 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
+        <e p="Desease.cs" t="Include" />
         <e p="EventManager.cs" t="Include" />
         <e p="GameManager.cs" t="Include" />
         <e p="MainThreadDispatcher" t="Include">
@@ -194,6 +195,11 @@
               </e>
             </e>
           </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="CharacterMovement.cs" t="Include" />
+          <e p="PlayerStatus.cs" t="Include" />
+          <e p="Teleport.cs" t="Include" />
         </e>
         <e p="TestBlendShape.cs" t="Include" />
       </e>

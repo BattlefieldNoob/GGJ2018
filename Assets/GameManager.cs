@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 	public float InfectDuration;
 	public Image InfectTimeFilledImage;
 
+	public GameObject DiseasePrefab;
+	
 	void Start () {
 		
 	}
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
 		InfectTimeFilledImage.DOFillAmount(0, InfectDuration).OnComplete(() =>
 		{
 			EventManager.Instance.OnInfectWaveFinished.Invoke();
+			
+			
 			Debug.Log("Start next wave!");
 		});
 	}
