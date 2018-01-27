@@ -4,32 +4,49 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
 
-    private bool active = true;
+    private bool active = false;
 
     private int powerUps = 1;
 
+    private int actualPowerUp = 1;
 
-    private void OnCollisionEnter(Collision collision)
+    private float startTime = 3.0f;
+
+    private void Start()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        StartCoroutine(StartUp());
+    }
+
+    private void OnTriggerEnter(Collider collision)
     {
         GameObject target = collision.gameObject;
-        if (active)
-        {
-            active = false;
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            switch (powerUps)
+        if(target.tag == "Player")
+            if (active && !target.GetComponent<PlayerStatus>().IsInfected())
             {
-                case 1: target.GetComponent<PlayerStatus>().SpeedUp();
-                    break;
-                default:
-                    break;
+                active = false;
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                switch (actualPowerUp)
+                {
+                    case 1: target.GetComponent<PlayerStatus>().SpeedUp();
+                        break;
+                }
+                StartCoroutine(Respawn());
             }
-            StartCoroutine(Respawn());
-        }
     }
 
     private IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(3.0f);
+        actualPowerUp = Random.Range(1, powerUps);
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        active = true;
+    }
+
+    private IEnumerator StartUp()
+    {
+        yield return new WaitForSeconds(startTime);
+        actualPowerUp = Random.Range(1, powerUps);
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         active = true;
     }

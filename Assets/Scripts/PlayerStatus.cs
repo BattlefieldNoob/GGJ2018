@@ -109,4 +109,9 @@ public class PlayerStatus : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         NormalSpeed -= 10;
     }
+
+    public bool IsInfected()
+    {
+        return CurrentState == State.Infected;
+    }
 }
