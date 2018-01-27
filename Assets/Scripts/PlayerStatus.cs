@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerStatus : MonoBehaviour {
 
-	public UnityEvent CollidedWithPlayer;
+	public class CollisionWithPlayerEvent : UnityEvent<PlayerStatus> { };
+	public CollisionWithPlayerEvent CollidedWithPlayer;
 	enum State {Normal,Infected,Stunned,Dead};
 	State CurrentState;
 	private float StunTime = 1.0f;
@@ -15,7 +16,7 @@ public class PlayerStatus : MonoBehaviour {
 	void Start () {
 		CurrentState = State.Normal;
 		Movement = GetComponent<CharacterMovement>();
-		CollidedWithPlayer = new UnityEvent();
+		CollidedWithPlayer = new CollisionWithPlayerEvent();
 	}
 	
 	// Update is called once per frame
@@ -63,7 +64,7 @@ public class PlayerStatus : MonoBehaviour {
 		var other = collision.transform.GetComponent<PlayerStatus>();
 		if (other && CurrentState == State.Infected)
 		{
-			CollidedWithPlayer.Invoke();
+			CollidedWithPlayer.Invoke(other);
 		}
 	}
 }
