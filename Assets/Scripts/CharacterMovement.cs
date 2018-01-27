@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		Animator = GetComponentInChildren<Animator>();
+//		Animator = GetComponentInChildren<Animator>();
 		Status = GetComponent<PlayerStatus>();
 	}
 
@@ -33,6 +33,6 @@ public class CharacterMovement : MonoBehaviour
 			}
 		}
 		
-		Animator.SetFloat("Velocity",rb.velocity.magnitude);
+//		Animator.SetFloat("Velocity",rb.velocity.magnitude);
 	}
 }
