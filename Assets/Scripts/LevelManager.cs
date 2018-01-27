@@ -8,7 +8,12 @@ public class LevelManager : MonoBehaviour {
 
 	public  int sceneIndex;
 
-	public  void LoadOnSceneIndex(){
+	private void Start()
+	{
+		DontDestroyOnLoad(gameObject);
+	}
+
+	public void LoadOnSceneIndex(){
 
 		SceneManager.LoadScene (sceneIndex);
 		Debug.Log (" Loading  scene number " + sceneIndex);		

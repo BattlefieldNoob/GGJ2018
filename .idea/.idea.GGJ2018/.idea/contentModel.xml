@@ -27,6 +27,8 @@
           <e p="Dispatcher.cs" t="Include" />
           <e p="DispatcherTest.cs" t="Include" />
         </e>
+        <e p="PlayerCanvasController.cs" t="Include" />
+        <e p="PlayerSelectionManager.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">
