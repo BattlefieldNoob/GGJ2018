@@ -100,7 +100,8 @@ public class GameManager : MonoBehaviour
 			var player=Instantiate(PlayerPrefab, SpawnPoints[i].position, SpawnPoints[i].rotation);
 			players.Add(player);
 			//TODO setto alcune impostazioni sui player, tipo colore
-			player.GetComponent<CharacterMovement>().PlayerID = playersControllerIndexes[i]+1;
+			player.GetComponent<CharacterMovement>().ControllerID = playersControllerIndexes[i]+1;
+            player.GetComponent<PlayerStatus>().PlayerID = i+1; 
 			//inizializzo il numero di vittorie 
 			VictoriesPerPlayer.Add(i,0);
 		}

@@ -19,6 +19,7 @@ public class PlayerStatus : MonoBehaviour
         Dead
     };
 
+    public int PlayerID;
     State CurrentState;
     public float StunTime = 1.0f;
     CharacterMovement Movement;
@@ -41,7 +42,7 @@ public class PlayerStatus : MonoBehaviour
         CollidedWithPlayer = new CollisionWithPlayerEvent();
 		PowerUp = null;
 
-		int id = Movement.PlayerID;
+		int id = PlayerID;
 		foreach(PlayerUIPanel p in FindObjectsOfType<PlayerUIPanel>())
 		{
 			if (p.id == id)
@@ -58,7 +59,7 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(CanUsePowerUp() && Input.GetButtonDown("Button" + Movement.PlayerID))
+		if(CanUsePowerUp() && Input.GetButtonDown("Button" + Movement.ControllerID))
 		{
 			PowerUp.Use();
 		}
