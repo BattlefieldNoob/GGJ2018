@@ -8,11 +8,13 @@ public class PlayerUIPanel : MonoBehaviour {
 	public int id;
 	public Image powerUpImage;
 	public Image playerImage;
+    public Image alienImage; 
 
 	public void Present()
 	{
 		transform.GetChild(0).gameObject.SetActive(true);
-        playerImage.enabled = true; 
+        playerImage.enabled = true;
+        alienImage.enabled = false; 
         SetPowerUpIcon(null);
 	}
 
@@ -23,13 +25,13 @@ public class PlayerUIPanel : MonoBehaviour {
 
 	public void PlayerIsInfected()
 	{
-		playerImage.color = Color.green; 
+        alienImage.enabled = true;  
 	}
 
 	public void PlayerIsNoMoreInfected()
 	{
-		playerImage.color = Color.white;
-	}
+        alienImage.enabled = false;
+    }
 
 	public void PlayerIsDead()
 	{
