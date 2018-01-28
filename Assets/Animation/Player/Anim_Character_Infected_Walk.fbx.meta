@@ -280,12 +280,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: blinn2
-    second: {fileID: 2100000, guid: 66dd626e65ec04e548cde264f3e66a61, type: 2}
+    second: {fileID: 2100000, guid: 986413f360228e749a2eef3cd0ed70b4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: blinn3
-    second: {fileID: 2100000, guid: bb4b645bd07bd48f49b0f84f4ef44c9b, type: 2}
+    second: {fileID: 2100000, guid: 49dc96f04bafffb40968678d1a5110b9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -295,7 +295,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: 5bae46d446a3b4698864d85e27291e30, type: 2}
+    second: {fileID: 2100000, guid: 2db0a2b063b36dc46862342a29d51a43, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -345,35 +345,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.26234046
-        functionName: OnFoot
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.481294
-        functionName: OnFoot
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.6253983
-        functionName: OnFoot
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.74080414
-        functionName: OnFoot
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

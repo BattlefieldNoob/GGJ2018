@@ -11,7 +11,6 @@ public class FootAnimationListener : MonoBehaviour
 
 	public void OnFoot()
 	{
-		//Debug.Log("Foot!");
 		AudioManager.PlayOneShotAudio(footStepSfx,gameObject);
 	}
 }
