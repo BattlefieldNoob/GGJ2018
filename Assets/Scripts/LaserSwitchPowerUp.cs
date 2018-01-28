@@ -38,6 +38,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
 		GameObject target = GetTarget();
 		if (target!=null)
 		{
+			Status.GunShoot();
 			EnableDisableCommands(target, false);
 			StartCoroutine(LaserWait(target.transform));
 		}
