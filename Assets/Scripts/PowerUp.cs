@@ -10,9 +10,15 @@ public class PowerUp : MonoBehaviour {
 
 	public float StartTime, RespawnTime;
 
-    private void Start()
+    public GameObject speed;
+    public GameObject gun;
+
+    int randomIndex; 
+
+    private void OnEnable()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
         StartCoroutine(Respawn(StartTime));
     }
 
@@ -22,9 +28,8 @@ public class PowerUp : MonoBehaviour {
         if(target.tag == "Player")
             if (active && !target.GetComponent<PlayerStatus>().IsInfected())
             {
+                transform.GetChild(randomIndex).gameObject.SetActive(false);
                 active = false;
-                gameObject.GetComponent<MeshRenderer>().enabled = false;
-				int randomIndex = Random.Range(0,PowersList.Count);
 				GameObject g= Instantiate(PowersList[randomIndex]);
 				g.GetComponent<GenericPowerUp>().SetUp(target);
 				StartCoroutine(Respawn(RespawnTime));
@@ -34,7 +39,8 @@ public class PowerUp : MonoBehaviour {
     private IEnumerator Respawn( float time)
     {
         yield return new WaitForSeconds(time);
-		gameObject.GetComponent<MeshRenderer>().enabled = true;
+        randomIndex = Random.Range(0, PowersList.Count);
+        transform.GetChild(randomIndex).gameObject.SetActive(true); 
         active = true;
     }
 }

@@ -39,7 +39,6 @@ public class UFO : MonoBehaviour
 			Vector3 dir = endPos - startPos;
 			dir.Normalize();
 
-;
 			transform.position += dir * speed * Time.deltaTime;
 
 			if (transform.position.x >= halfPos.x && !done)
