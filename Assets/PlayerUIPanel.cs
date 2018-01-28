@@ -9,9 +9,10 @@ public class PlayerUIPanel : MonoBehaviour {
 	public Image powerUpImage;
 	public Image playerImage;
 
-	private void Start()
+	public void Present()
 	{
-		SetPowerUpIcon(null); 
+		transform.GetChild(0).gameObject.SetActive(true); 
+		SetPowerUpIcon(null);
 	}
 
 	public void PlayerIsAlive()

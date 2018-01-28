@@ -179,10 +179,15 @@ public class PlayerSelectionManager : MonoBehaviour
         CanStart.text = "Game Can Start!  1";
         yield return new WaitForSeconds(1f);
 
-        GameManager.Instance.WaitGameplaySceneAndStartGame(LastCycleJoystickIndexes.ToArray());
-        
+		print("pippo");
+		foreach(int i in LastCycleJoystickIndexes)
+		{
+			print(i);
+		}
+		GameManager.Instance.WaitGameplaySceneAndStartGame(LastCycleJoystickIndexes.ToArray());
+		print("pippo"); 
         FindObjectOfType<HighLevelGameManager>().EnterGameState();
-
+		print("pluto"); 
         
     }
 }
