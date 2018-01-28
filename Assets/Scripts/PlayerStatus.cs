@@ -47,6 +47,7 @@ public class PlayerStatus : MonoBehaviour
 			if (p.id == id)
 				UIPanel = p; 
 		}
+		UIPanel.Present(); 
     }
 
 	public PlayerUIPanel GetPlayerUIPanel()

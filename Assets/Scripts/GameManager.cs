@@ -52,7 +52,9 @@ public class GameManager : MonoBehaviour
 	public TextMeshPro AnotherMatch;
 	public TextMeshPro EndGame;
 
-	public Text WhoWonText; 
+	public Text WhoWonText;
+
+	public Button backButton; 
 	
 	
 	/// <summary>
@@ -87,6 +89,8 @@ public class GameManager : MonoBehaviour
 
 	private void StartGame()
 	{
+		WhoWonText.text = "";
+
 		foreach (int k in playersControllerIndexes) {
 			Debug.Log("At start -> "+k);
 		}
@@ -175,9 +179,13 @@ public class GameManager : MonoBehaviour
 			Destroy(ps); 
 		}
 
+		players.Clear();
+		VictoriesPerPlayer.Clear();
+
 		yield return new WaitForSeconds(1); 
 
 		WhoWonText.text = "Player " + winnerOfGame + " won the game!";
+		backButton.gameObject.SetActive(true);
 	}
-	
+
 }
