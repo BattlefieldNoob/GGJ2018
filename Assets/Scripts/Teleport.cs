@@ -24,6 +24,8 @@ public class Teleport : MonoBehaviour
     private bool onCooldown = false;
 
     [EventRef] private string TeleportSfx = "event:/SFX/Player/SFX_Playr_Teleport";
+    [EventRef] private string JumpSfx = "event:/SFX/Player/SFX_Player_Tombino";
+
     
     public void Start()
     {
@@ -32,7 +34,6 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        AudioManager.PlayOneShotAudio(TeleportSfx,gameObject);
         switch (teleporter_type)
         {
             case Type.border:
@@ -40,6 +41,7 @@ public class Teleport : MonoBehaviour
                 collision.gameObject.transform.position = transform.GetChild(rand).position;
                 break;
             case Type.targeted:
+                AudioManager.PlayOneShotAudio(TeleportSfx,gameObject);
                 collision.gameObject.transform.position = target.position;
                 break;
             case Type.jump:
@@ -61,6 +63,7 @@ public class Teleport : MonoBehaviour
 
     private IEnumerator tombinJump()
     {
+        AudioManager.PlayOneShotAudio(JumpSfx,gameObject);
         float duration = 0.1f;
         Vector3 start = gameObject.transform.position;
         Vector3 end = gameObject.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
