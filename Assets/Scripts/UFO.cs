@@ -5,8 +5,10 @@ using UnityEngine;
 public class UFO : MonoBehaviour
 {
 
-	public Vector3 startPos;
-	public Vector3 endPos;
+	public float startingX;
+	public float endX; 
+	Vector3 startPos;
+	Vector3 endPos;
 	bool moving;
 	public float speed = 2;
 	Vector3 halfPos;
@@ -14,6 +16,12 @@ public class UFO : MonoBehaviour
 
 	private void Awake()
 	{
+		startPos = transform.position;
+		startPos.x = startingX;
+
+		endPos = transform.position;
+		endPos.x = endX; 
+
 		transform.position = startPos;
 		halfPos = (endPos + startPos) / 2;
 	}

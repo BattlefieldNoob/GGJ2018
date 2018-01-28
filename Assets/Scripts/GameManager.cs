@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
 
 	public TextMeshPro AnotherMatch;
 	public TextMeshPro EndGame;
+
+	public Text WhoWonText; 
 	
 	
 	/// <summary>
@@ -73,15 +75,6 @@ public class GameManager : MonoBehaviour
 	{
 		playersControllerIndexes = playersCount;
 		StartGame(); 
-	}
-
-
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			StartGame();
-		}
 	}
 
 	private void StartGame()
@@ -166,15 +159,17 @@ public class GameManager : MonoBehaviour
 	public IEnumerator GameFinished(int winnerOfGame)
 	{
 		Debug.Log( "Player " + winnerOfGame + " won the game!");
-		
-		
-		yield return new WaitForSeconds(5f);
-		EndGame.transform.DOMoveX(-80, 5f).OnComplete(() => { EndGame.transform.DOMoveX(23, 0.01f); });
-		yield return new WaitForSeconds(5f);
-		
-		FindObjectOfType<LevelManager>()?.LoadOnSceneName("Main Menu");
 
-		//canvasText.text = "Player " + winnerOfGame + " won the game!";
+		Destroy(FindObjectOfType<Desease>().gameObject);
+
+		foreach (GameObject ps in players)
+		{
+			Destroy(ps); 
+		}
+
+		yield return new WaitForSeconds(1); 
+
+		WhoWonText.text = "Player " + winnerOfGame + " won the game!";
 	}
 	
 }
