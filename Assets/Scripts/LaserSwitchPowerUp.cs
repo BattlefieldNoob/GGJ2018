@@ -6,7 +6,8 @@ public class LaserSwitchPowerUp : GenericPowerUp
 {
 
     List<PlayerStatus> OtherPlayers;
-    LineRenderer lr;
+	public GameObject Projectile;
+	public float Duration;
 
     public override void SetUp(GameObject player)
     {
@@ -24,7 +25,6 @@ public class LaserSwitchPowerUp : GenericPowerUp
                 OtherPlayers.Add(ps);
             }
         }
-        lr = GetComponent<LineRenderer>();
         Status.GetPlayerUIPanel().SetPowerUpIcon(iconSprite);
     }
 
@@ -50,7 +50,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
         float mindistance = Mathf.Infinity;
         foreach (PlayerStatus ps in OtherPlayers)
         {
-            if (!ps.IsDead() && !ps.IsInfected())
+            if (!ps.IsDead() /*&& !ps.IsInfected()*/)
             {
                 //Check if davanti
                 if (IsInSight(ps.transform))
@@ -95,11 +95,9 @@ public class LaserSwitchPowerUp : GenericPowerUp
     IEnumerator LaserWait(Transform t)
     {
         Debug.Log("Into the coroutine");
-        lr.enabled = true;
-        lr.SetPosition(0, transform.position);
-        lr.SetPosition(1, t.position);
-        yield return new WaitForSeconds(0.4f);
-        lr.enabled = false;
+		GameObject g = Instantiate(Projectile,transform.position,Quaternion.identity);
+		g.GetComponent<SwitchProjectile>().Shoot(t, Duration);
+        yield return new WaitForSeconds(Duration);
         SwitchPositions(t);
         EnableDisableCommands(t.gameObject, true);
         Status.GetPlayerUIPanel().SetPowerUpIcon(null);
