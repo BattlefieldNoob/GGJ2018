@@ -2875,11 +2875,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57e341188449a64eb068518cd855810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StunTime: 1
   DeseaseSocket: {fileID: 4345451103001502}
   NormalSpeed: 10
   DeseaseSpeed: 15
   PistolHand: {fileID: 1914938014945362}
   SplashParticles: {fileID: 198987431500430372}
+  body: {fileID: 137610105304004028}
 --- !u!114 &114288783260410680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2891,8 +2893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ff2d5c0fa83bd409817e6bb67fc8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 0
+  ControllerID: 0
   CanMove: 1
+  CanDash: 1
   WalkParticle: {fileID: 198439985469623552}
 --- !u!137 &137083055218295578
 SkinnedMeshRenderer:

@@ -19,7 +19,22 @@ public class PlayerStatus : MonoBehaviour
         Dead
     };
 
-    public int PlayerID;
+    private int temp; 
+
+
+
+    public int PlayerID {
+        set 
+        {
+            temp = value;
+            SetMaterialFromPlayerID();  
+        }
+        get
+        {
+            return temp; 
+        }
+    }
+
     State CurrentState;
     public float StunTime = 1.0f;
     CharacterMovement Movement;
@@ -31,7 +46,9 @@ public class PlayerStatus : MonoBehaviour
     private Animator Animator;
 	public ParticleSystem SplashParticles;
 
-	PlayerUIPanel UIPanel; 
+	PlayerUIPanel UIPanel;
+
+    public SkinnedMeshRenderer body; 
 
     // Use this for initialization
     void Start()
@@ -51,7 +68,17 @@ public class PlayerStatus : MonoBehaviour
 		UIPanel.Present(); 
     }
 
-	public PlayerUIPanel GetPlayerUIPanel()
+    private void SetMaterialFromPlayerID()
+    {
+        print("player ID to material = "+temp);
+        Material[] tempMat = body.materials;
+        Material m = GameManager.Instance.GetMaterialFromPlayerID(temp);
+        tempMat[0] = m;
+        print(m);
+        body.materials = tempMat;  
+    }
+
+    public PlayerUIPanel GetPlayerUIPanel()
 	{
 		return UIPanel; 
 	}

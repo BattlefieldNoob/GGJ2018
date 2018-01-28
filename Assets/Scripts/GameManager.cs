@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 	public PlayerCanvasController CanvasController;
 	//public Text canvasText;
 
-	public List<Color> Colors;
+	public List<Material> playerMaterials;
 
 
 	public TextMeshPro AnotherMatch;
@@ -116,6 +116,11 @@ public class GameManager : MonoBehaviour
 			Debug.Log("Start -> " + k);
 		}
 	}
+
+    public Material GetMaterialFromPlayerID(int playerID)
+    {
+        return playerMaterials[playerID - 1]; 
+    }
 
 	public void ResetScene()
 	{
