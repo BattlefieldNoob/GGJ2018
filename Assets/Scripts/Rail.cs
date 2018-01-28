@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Rail : MonoBehaviour {
@@ -39,12 +40,17 @@ public class Rail : MonoBehaviour {
 
 	IEnumerator MoveCoroutine(GameObject target)
 	{
-		Vector3 startPos = MyCamera.transform.position;
+		MyCamera.transform.DOMove(target.transform.position, TimeToPosition);
+		yield return MyCamera.transform.DORotateQuaternion(target.transform.rotation, TimeToPosition).WaitForCompletion();
+		
+		// Quello che scrivete sotto viene eseguito alla fine dell'animazione
+		yield break;
+	/*	Vector3 startPos = MyCamera.transform.position;
 		Quaternion startRot = MyCamera.transform.rotation;
 		float counter = 0;
 		while (counter < TimeToPosition)
 		{
-			float delta = Time.deltaTime;
+			float delta = 0.01f;
 			counter += delta;
 			float alpha = counter / TimeToPosition;
 			print(alpha);
@@ -52,6 +58,6 @@ public class Rail : MonoBehaviour {
 			MyCamera.transform.rotation = Quaternion.Lerp(startRot, target.transform.rotation, alpha);
 			yield return new WaitForSeconds(delta);
 		}
-		SetCameraPosition(target);
+		SetCameraPosition(target);*/
 	}
 }
