@@ -128,8 +128,8 @@ public class GameManager : MonoBehaviour
 	{
 		foreach (GameObject g in levels)
 			g.SetActive(false);
-		levels[Random.Range(0, 2)].SetActive(true);
-		for (int i = 0; i < playersControllerIndexes.Length; i++)
+        levels[Random.Range(0, 2)].SetActive(true);
+        for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
 			players[i].transform.position = SpawnPoints[i].position;
 			players[i].transform.rotation = SpawnPoints[i].rotation;
