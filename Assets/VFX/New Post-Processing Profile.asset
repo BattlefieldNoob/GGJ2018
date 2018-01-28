@@ -25,7 +25,7 @@ MonoBehaviour:
         motionVectorsResolution: 24
         motionVectorsAmplitude: 64
   fog:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       excludeSkybox: 1
   antialiasing:
@@ -46,11 +46,11 @@ MonoBehaviour:
       radius: 0.38
       sampleCount: 10
       downsampling: 1
-      forceForwardCompatibility: 0
+      forceForwardCompatibility: 1
       ambientOnly: 0
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       reflection:
         blendType: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
       logMin: -8
       logMax: 4
   bloom:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.55
+        intensity: 0.36
         threshold: 1.28
         softKnee: 0.5
         radius: 4
@@ -109,7 +109,7 @@ MonoBehaviour:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       tonemapping:
         tonemapper: 2
@@ -121,7 +121,7 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 0
+        temperature: 2.9
         tint: 0
         hueShift: 0
         saturation: 1
@@ -281,10 +281,10 @@ MonoBehaviour:
       lut: {fileID: 0}
       contribution: 1
   chromaticAberration:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.166
   grain:
     m_Enabled: 0
     m_Settings:
@@ -293,12 +293,12 @@ MonoBehaviour:
       size: 1
       luminanceContribution: 0.8
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
+      intensity: 0.284
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}

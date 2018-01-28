@@ -567,7 +567,6 @@ MonoBehaviour:
   - {fileID: 4140629386743714}
   - {fileID: 4792252769225180}
   playersControllerIndexes: 00000000010000000200000003000000
-  CanvasController: {fileID: 0}
   Colors:
   - {r: 1, g: 0.058823526, b: 0.058823526, a: 1}
   - {r: 0.19999981, g: 0, b: 1, a: 1}

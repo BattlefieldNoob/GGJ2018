@@ -7,32 +7,38 @@ using UnityEngine.UI;
 
 public class PlayerSelectionManager : MonoBehaviour
 {
-	private string[] joysticks;
 
-	private Dictionary<int,bool> joystickIsReady=new Dictionary<int, bool>();
+	private Dictionary<int,PlayerReadyStatus> PlayerStatusForIndex=new Dictionary<int, PlayerReadyStatus>();
 
 	private PlayerReadyStatus[] playersStatus;
 	
-	List<int> joystickOriginalindexes=new List<int>();
-
 	public Text CanStart;
 
 	private bool gameCanStart = false;
 	
+	public int[] LastCycleJoystickIndexes;
+	
+	
 	void Start ()
 	{
 		playersStatus = GetComponentsInChildren<PlayerReadyStatus>();
+		
+		foreach (var playerStatus in playersStatus)
+		{
+			playerStatus.Disable();
+		}
+		
 		StartCoroutine(CheckControllerAvailability());
 	}
 	
 	
 	void Update () {
-		for (int i = 0; i < joystickOriginalindexes.Count; i++)
+
+		foreach (var key in PlayerStatusForIndex.Keys)
 		{
-			if (joystickIsReady.ContainsKey(joystickOriginalindexes[i]) && !joystickIsReady[joystickOriginalindexes[i]] && Input.GetButtonDown("Button" + (joystickOriginalindexes[i]+1)))
+			if(!PlayerStatusForIndex[key].isReady && Input.GetButtonDown("Button" + (key+1)))
 			{
-				joystickIsReady[joystickOriginalindexes[i]]=true;
-				playersStatus[i].SetReady();
+				PlayerStatusForIndex[key].SetReady();
 				CheckNumberOfPlayers();
 			}
 		}
@@ -41,66 +47,120 @@ public class PlayerSelectionManager : MonoBehaviour
 
 	public void CheckNumberOfPlayers()
 	{
-		if (joystickIsReady.Count>=2 && joystickIsReady.All(playerReady => playerReady.Value))
+		if (PlayerStatusForIndex.Count>=2 && PlayerStatusForIndex.All(playerReady => playerReady.Value.isReady))
 		{
 			Debug.Log("Game can Start!");
 			gameCanStart = true;
 			StartCoroutine(WaitAndStartGame());
 		}
 	}
+	
 
 	IEnumerator CheckControllerAvailability()
 	{
+		List<int> joystickOriginalindexes=new List<int>();
+		
 		while (true)
 		{
 			//prendo la lista dei joystick connessi
-			joysticks = Input.GetJoystickNames();
-
-			joystickOriginalindexes.Clear();
+			var joysticks = Input.GetJoystickNames();
 			
+			joystickOriginalindexes.Clear();
+			//rimuovo dalla lista i controller senza nome e tengo i loro indici
 			for (int i = 0; i < joysticks.Length; i++)
 			{
 				if(!string.IsNullOrEmpty(joysticks[i]))
 					joystickOriginalindexes.Add(i);
 			}
 
-			//vado a controllare se un joystick con un certo indice non è più collegato e lo rimuovo dalla dictionary di 
-			//giocatori pronti
-			var keyToRemove = joystickIsReady.Keys.Where(key => !joystickOriginalindexes.Contains(key)).ToArray();
-
-			foreach (var key in keyToRemove)
+			//controllo il numero di joystick rispetto al ciclo precedente
+			if (joystickOriginalindexes.Count != LastCycleJoystickIndexes.Length)
 			{
-				if(joystickIsReady.ContainsKey(key))
-					joystickIsReady.Remove(key);
-			}
-		
-			foreach (var playerinfo in playersStatus)
-			{
-				playerinfo.Disable();
-			}
-
-			//setto tutti i joystick connessi come "non pronti"
-			for (int i = 0; i < joystickOriginalindexes.Count; i++)
-			{
-				if(!joystickIsReady.ContainsKey(joystickOriginalindexes[i]))
-					joystickIsReady.Add(joystickOriginalindexes[i], false);
-
-				if (joystickIsReady[joystickOriginalindexes[i]])
+				
+				//è stato aggiunto o rimosso un joystick
+				if (joystickOriginalindexes.Count > LastCycleJoystickIndexes.Length)
 				{
-					playersStatus[i].SetReady();
+					//è stato aggiunto un controller
+					//faccio un'operazione di intersezione tra gli indici vecchi e quelli nuovi
+					var intersection = joystickOriginalindexes.Except(LastCycleJoystickIndexes);
+					//ciclo sull'enumerable chiamando la callback n volte
+					foreach (var i in intersection)
+					{
+						Debug.Log("New Device:"+i);
+						OnDeviceConnected(i);
+					}
 				}
 				else
 				{
-					playersStatus[i].SetNotReady();
+					//è stato rimosso un controller
+					//faccio un'operazione di intersezione tra gli indici vecchi e quelli nuovi
+					var intersection = LastCycleJoystickIndexes.Except(joystickOriginalindexes);
+					//ciclo sull'enumerable chiamando la callback n volte
+					foreach (var i in intersection)
+					{
+						Debug.Log("Removed Device:"+i);
+						OnDeviceDisconnected(i);
+					}
 				}
 			}
+
+			LastCycleJoystickIndexes = joystickOriginalindexes.ToArray();
 			
-			yield return new WaitForSeconds(2.5f);
-			//yield return new WaitForFixedUpdate();
+			yield return new WaitForSeconds(2f);
 		}
 	}
 
-	IEnumerator WaitAndStartGame()
+	public void OnDeviceConnected(int controllerIndex)
+	{
+		//Rendo disponibile un nuovo player sulla UI
+		
+		//se lo contiene già vuol dire che ho riconnesso un joystick
+		if (PlayerStatusForIndex.ContainsKey(controllerIndex))
+		{
+			PlayerStatusForIndex[controllerIndex].SetNotReady();
+		}
+		else
+		{
+			//devo aggiungere un nuovo elemento
+			if (PlayerStatusForIndex.Count > 3)
+			{
+				var key = -1;
+				//ho troppi joystick, ne cerco uno che non è connesso
+				foreach (var pair in PlayerStatusForIndex)
+				{
+					if (!pair.Value.isEnabled)
+					{
+						//ho trovato un joystick da rimuovere
+						key=PlayerStatusForIndex.FirstOrDefault(x => x.Value == pair.Value).Key;
+					}
+				}
+
+				if (key != -1)
+				{
+					PlayerStatusForIndex.Remove(key);
+				}
+				else
+				{
+					return;
+				}
+			}
+			playersStatus[PlayerStatusForIndex.Count].SetNotReady();
+			PlayerStatusForIndex.Add(controllerIndex, playersStatus[PlayerStatusForIndex.Count]);
+		}
+
+	}
+	
+	public void OnDeviceDisconnected(int controllerIndex)
+	{
+		//Rimuovo un dispositivo dalla UI
+		if (PlayerStatusForIndex.ContainsKey(controllerIndex))
+		{
+			PlayerStatusForIndex[controllerIndex].Disable();
+		}
+	}
+	
+
+	private IEnumerator WaitAndStartGame()
 	{
 		CanStart.text = "Game Can Start!  3";
 		yield return new WaitForSeconds(1f);
@@ -109,9 +169,9 @@ public class PlayerSelectionManager : MonoBehaviour
 		CanStart.text = "Game Can Start!  1";
 		yield return new WaitForSeconds(1f);
 		
-		FindObjectOfType<LevelManager>().LoadOnSceneName("Gameplay");
+		LevelManager.Instance.ChangeSceneTo("Gameplay");
 		
-		GameManager.Instance.WaitGameplaySceneAndStartGame(joystickOriginalindexes.ToArray());
+		GameManager.Instance.WaitGameplaySceneAndStartGame(LastCycleJoystickIndexes.ToArray());
 	}
 	
 }
