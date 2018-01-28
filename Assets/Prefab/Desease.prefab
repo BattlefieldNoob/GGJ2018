@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3abd90e76498944ac0d9dd11b93a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InfectionTimeSeconds: 15
+  InfectionTimeSeconds: 3
   InfectionTimeTimer: 0
   InfectPlayerSeconds: 1.5
   Debugtext: {fileID: 114412618668490320}
