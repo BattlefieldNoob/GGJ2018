@@ -33,14 +33,14 @@ public class LevelManager : MonoBehaviour {
 
 	private string waitForScene;
 
-	private Image FadePanel;
+	public Image FadePanel;
 
 	public float fadeSeconds=2;
 
 
 	private void Start()
 	{
-		FadePanel = transform.GetChild(0).GetComponentInChildren<Image>();
+		//FadePanel = transform.GetChild(0).GetComponentInChildren<Image>();
 		FadePanel.DOFade(0, fadeSeconds);
 		SceneManager.activeSceneChanged+=OnChangeScene;
 	}
