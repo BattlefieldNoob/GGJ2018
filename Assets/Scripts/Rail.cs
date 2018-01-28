@@ -21,19 +21,17 @@ public class Rail : MonoBehaviour {
 		MyCamera.transform.rotation = g.transform.rotation;
 	}
 
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			MoveCamera(MenuPosition);
-		}
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			MoveCamera(GamePosition);
-		}
+	public void MoveToMenu()
+	{
+		MoveCamera(MenuPosition); 
 	}
 
-	public void MoveCamera(GameObject g)
+	public void MoveToGame()
+	{
+		MoveCamera(GamePosition);
+	}
+
+	void MoveCamera(GameObject g)
 	{
 		StartCoroutine(MoveCoroutine(g));
 	}
