@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleport : MonoBehaviour {
+public class Teleport : MonoBehaviour
+{
 
     public enum Type
     {
@@ -29,22 +30,26 @@ public class Teleport : MonoBehaviour {
     {
         switch (teleporter_type)
         {
-            case Type.border:   int rand = Random.Range(0, 4);
-                                collision.gameObject.transform.position = transform.GetChild(rand).position;
+            case Type.border:
+                int rand = Random.Range(0, 4);
+                collision.gameObject.transform.position = transform.GetChild(rand).position;
                 break;
-            case Type.targeted: collision.gameObject.transform.position = target.position;
+            case Type.targeted:
+                collision.gameObject.transform.position = target.position;
                 break;
-            case Type.jump: if (!onCooldown)
-                            {
-                                onCooldown = true;
-                                collision.gameObject.GetComponent<CharacterMovement>().CanMove = false;
-                                StartCoroutine(tombinJump());
-                                StartCoroutine(jump(collision.gameObject, 20));
-                                StartCoroutine(Cooldown());
-                            }
+            case Type.jump:
+                if (!onCooldown)
+                {
+                    onCooldown = true;
+                    collision.gameObject.GetComponent<CharacterMovement>().CanMove = false;
+                    StartCoroutine(tombinJump());
+                    StartCoroutine(jump(collision.gameObject, 20));
+                    StartCoroutine(Cooldown());
+                }
                 break;
-            case Type.shootUp: collision.gameObject.GetComponent<CharacterMovement>().CanMove = false; ;
-                               StartCoroutine(jump(collision.gameObject, 90));
+            case Type.shootUp:
+                collision.gameObject.GetComponent<CharacterMovement>().CanMove = false; ;
+                StartCoroutine(jump(collision.gameObject, 90));
                 break;
         }
     }
@@ -71,7 +76,7 @@ public class Teleport : MonoBehaviour {
         gameObject.transform.position = start;
     }
 
-        private IEnumerator jump(GameObject player, float power)
+    private IEnumerator jump(GameObject player, float power)
     {
         float duration = 1.0f;
         Vector3 startPosition = player.transform.position;
@@ -80,7 +85,7 @@ public class Teleport : MonoBehaviour {
         float endY = target.position.y;
         float bezierY = transform.position.y + power;
 
-        for (float t = 0.0f; t <= duration; t += Time.deltaTime)
+        for (float t = 0.0f; t <= duration && player; t += Time.deltaTime)
         {
             float progress = t / duration;
             float y = ((1 - t) * (1 - t) * startY + 2 * (1 - t) * t * bezierY + t * t * endY);
@@ -89,7 +94,8 @@ public class Teleport : MonoBehaviour {
 
             yield return null;
         }
-        player.GetComponent<CharacterMovement>().CanMove = true;
+        if (player)
+            player.GetComponent<CharacterMovement>().CanMove = true;
     }
 
     private IEnumerator Cooldown()
