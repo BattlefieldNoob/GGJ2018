@@ -11,8 +11,9 @@ public class LaserSwitchPowerUp : GenericPowerUp
 	public override void SetUp(GameObject player)
 	{
 		Status = player.GetComponent<PlayerStatus>();
-		transform.SetParent(Status.transform);
+		transform.SetParent(Status.GetHand().transform);
 		transform.localPosition = Vector3.zero;
+		transform.rotation = Quaternion.identity;
 		Status.SetPowerUp(this);
 		PlayerStatus[] temp = FindObjectsOfType<PlayerStatus>();
 		OtherPlayers = new List<PlayerStatus>();
@@ -27,10 +28,10 @@ public class LaserSwitchPowerUp : GenericPowerUp
 		Status.GetPlayerUIPanel().SetPowerUpIcon(iconSprite);
 	}
 
-	private void Update()
+	/*private void Update()
 	{
 		transform.position = Status.GetHand().transform.position;
-	}
+	}*/
 
 	public override void Use()
 	{
