@@ -65,13 +65,14 @@ public class CharacterMovement : MonoBehaviour
 
     private IEnumerator dashMove(Vector3 dash)
     {
+	    Animator.SetBool("Dash",true);
         rb.velocity = Vector3.zero;
         transform.rotation = Quaternion.LookRotation(dash);
         rb.AddForce(dash * 10, ForceMode.Impulse);
-        Animator.SetTrigger("Dash");
         yield return new WaitForSeconds(0.5f);
         rb.velocity = Vector3.zero;
         CanMove = true;
+	    Animator.SetBool("Dash",false);
     }
 
     private IEnumerator dashCooldown()

@@ -77,6 +77,14 @@ public class GameManager : MonoBehaviour
 		StartGame(); 
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			StartGame();
+		}
+	}
+
 	private void StartGame()
 	{
 		foreach (int k in playersControllerIndexes) {

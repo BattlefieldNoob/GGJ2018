@@ -33,7 +33,7 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Dash
-    m_Type: 9
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -84,7 +84,10 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Dash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102497272432445706}
   m_Solo: 0
@@ -616,6 +619,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Velocity
     m_EventTreshold: 0.3
+  - m_ConditionMode: 2
+    m_ConditionEvent: Dash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102772695488721132}
   m_Solo: 0
@@ -694,6 +700,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Infected
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Dash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102667030819777064}
   m_Solo: 0
@@ -721,6 +730,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Infected
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Dash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102667030819777064}
   m_Solo: 0
@@ -744,17 +756,20 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: Velocity
-    m_EventTreshold: 0.3
+    m_EventTreshold: 0.8
+  - m_ConditionMode: 1
+    m_ConditionEvent: Dash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102497272432445706}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.0018849373
   m_TransitionOffset: 0
-  m_ExitTime: 0.93697476
-  m_HasExitTime: 1
+  m_ExitTime: 0.9369747
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -772,6 +787,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: Velocity
     m_EventTreshold: 0.3
+  - m_ConditionMode: 2
+    m_ConditionEvent: Dash
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102784362074835618}
   m_Solo: 0
@@ -1116,7 +1134,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102667030819777064}
-    m_Position: {x: 168, y: 444, z: 0}
+    m_Position: {x: 348, y: 468, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102772695488721132}
     m_Position: {x: 401, y: 202, z: 0}
@@ -1134,7 +1152,7 @@ AnimatorStateMachine:
     m_Position: {x: 672, y: 456, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102497272432445706}
-    m_Position: {x: 408, y: 336, z: 0}
+    m_Position: {x: 240, y: 348, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
