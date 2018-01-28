@@ -12,7 +12,7 @@ public class CharacterMovement : MonoBehaviour
 
 	public bool CanMove = true;
     
-    public bool CanDash = true;
+    //public bool CanDash = true;
 
 	private Animator Animator;
 	public ParticleSystem WalkParticle;
@@ -28,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate()
 	{
-        // TEST DASH BRUH
+        /*// TEST DASH BRUH
         if (CanDash && CanMove)
         {
             CanMove = false;
@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
             {
                 CanMove = true;
             }
-        }
+        }*/
         if (CanMove)
 		{
 			Vector3 dir = new Vector3(Input.GetAxis("HorizontalPL" + ControllerID), 0, Input.GetAxis("VerticalPL" + ControllerID)).normalized;
@@ -64,7 +64,7 @@ public class CharacterMovement : MonoBehaviour
 		Animator.SetFloat("Velocity",rb.velocity.magnitude/Status.GetSpeed());
 	}
 
-    private IEnumerator dashMove(Vector3 dash)
+    /*private IEnumerator dashMove(Vector3 dash)
     {
 	    Animator.SetBool("Dash",true);
         rb.velocity = Vector3.zero;
@@ -74,11 +74,11 @@ public class CharacterMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
         CanMove = true;
 	    Animator.SetBool("Dash",false);
-    }
+    }*/
 
-    private IEnumerator dashCooldown()
+    /*private IEnumerator dashCooldown()
     {
         yield return new WaitForSeconds(2.0f);
         CanDash = true;
-    }
+    }*/
 }
