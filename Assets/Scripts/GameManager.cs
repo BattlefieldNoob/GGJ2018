@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -54,7 +54,9 @@ public class GameManager : MonoBehaviour
 
 	public Text WhoWonText;
 
-	public Button backButton; 
+	public Button backButton;
+
+	public List<GameObject> levels;
 	
 	
 	/// <summary>
@@ -118,6 +120,9 @@ public class GameManager : MonoBehaviour
 
 	public void ResetScene()
 	{
+		foreach (GameObject g in levels)
+			g.SetActive(false);
+		levels[Random.Range(0, 2)].SetActive(true);
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
 		{
 			players[i].transform.position = SpawnPoints[i].position;
