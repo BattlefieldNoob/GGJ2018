@@ -37,6 +37,7 @@ public class Teleport : MonoBehaviour
         switch (teleporter_type)
         {
             case Type.border:
+                AudioManager.PlayOneShotAudio(TeleportSfx,gameObject);
                 int rand = Random.Range(0, 4);
                 collision.gameObject.transform.position = transform.GetChild(rand).position;
                 break;
