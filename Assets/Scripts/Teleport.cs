@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Audio;
+using FMODUnity;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
@@ -21,6 +23,8 @@ public class Teleport : MonoBehaviour
 
     private bool onCooldown = false;
 
+    [EventRef] private string TeleportSfx = "event:/SFX/Player/SFX_Playr_Teleport";
+    
     public void Start()
     {
         target = transform.GetChild(0);
@@ -28,6 +32,7 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+        AudioManager.PlayOneShotAudio(TeleportSfx,gameObject);
         switch (teleporter_type)
         {
             case Type.border:
