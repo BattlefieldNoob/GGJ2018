@@ -8,7 +8,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Clouds.cs" t="Include" />
         <e p="Demigiant" t="Include">
           <e p="DOTween" t="Include">
             <e p="DOTween43.xml" t="Include" />
@@ -21,7 +20,6 @@
             <e p="readme.txt" t="Include" />
           </e>
         </e>
-        <e p="Donnina.cs" t="Include" />
         <e p="Editor" t="Include">
           <e p="FMODMigrationUtil.cs" t="Include" />
         </e>
@@ -254,7 +252,9 @@
             <e p="Music.cs" t="Include" />
           </e>
           <e p="CharacterMovement.cs" t="Include" />
+          <e p="Clouds.cs" t="Include" />
           <e p="Desease.cs" t="Include" />
+          <e p="Donnina.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GenericPowerUp.cs" t="Include" />
@@ -270,6 +270,7 @@
           <e p="Rail.cs" t="Include" />
           <e p="SpeedUpPowerUp.cs" t="Include" />
           <e p="Teleport.cs" t="Include" />
+          <e p="UFO.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
