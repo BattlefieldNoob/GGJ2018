@@ -76,7 +76,7 @@ public class PlayerStatus : MonoBehaviour
 
 	public void SetPowerUp(GenericPowerUp pu)
 	{
-		if (PowerUp)
+		if (PowerUp!=null)
 		{
 			PowerUp.SelfDestruct();
 		}

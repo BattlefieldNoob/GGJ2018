@@ -11,8 +11,9 @@ public class PlayerUIPanel : MonoBehaviour {
 
 	public void Present()
 	{
-		transform.GetChild(0).gameObject.SetActive(true); 
-		SetPowerUpIcon(null);
+		transform.GetChild(0).gameObject.SetActive(true);
+        playerImage.enabled = true; 
+        SetPowerUpIcon(null);
 	}
 
 	public void PlayerIsAlive()

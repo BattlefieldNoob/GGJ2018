@@ -57,12 +57,14 @@ public class Desease : MonoBehaviour
 
     public void KillCurrentPlayerAndChoseAnother()
     {
+        print("kill current and choose another"); 
         Debugtext.text = "";
         Instantiate(KaboomParticlePrefab, transform.position,transform.rotation);
         Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
         
         _timerIsActive = false;
         transform.SetParent(null);
+
         _players[_currentPlayerIndex].Explode();
         InfectionTimeTimer = InfectionTimeSeconds;
         InfectNearestPlayer();
