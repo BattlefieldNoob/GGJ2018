@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Audio;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -48,7 +50,10 @@ public class PlayerStatus : MonoBehaviour
 
 	PlayerUIPanel UIPanel;
 
-    public SkinnedMeshRenderer body; 
+    public SkinnedMeshRenderer body;
+
+	[EventRef] public string PlayerExplosionSfx;
+	[EventRef] public string PlayerStunnedSfx;
 
     // Use this for initialization
     void Start()
@@ -119,6 +124,7 @@ public class PlayerStatus : MonoBehaviour
 			PowerUp.SelfDestruct();
 		UIPanel.PlayerIsDead();
 		gameObject.SetActive(false);
+	    AudioManager.PlayOneShotAudio(PlayerExplosionSfx,gameObject);
     }
 
     public bool IsDead()
@@ -148,6 +154,7 @@ public class PlayerStatus : MonoBehaviour
         Animator.SetTrigger("Infecting");
         CurrentState = State.Stunned;
         Movement.CanMove = false;
+	    AudioManager.PlayOneShotAudio(PlayerStunnedSfx,gameObject);
         StartCoroutine(Stun());
     }
 
@@ -175,7 +182,6 @@ public class PlayerStatus : MonoBehaviour
 
     public Transform GetDeseaseSocket()
     {
-		//BUG Risolvere!!!!!!!
 		return DeseaseSocket;
     }
 

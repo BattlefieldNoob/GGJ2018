@@ -26,6 +26,7 @@
         <e p="Elementi UI" t="Include">
           <e p="InfoManager.cs" t="Include" />
         </e>
+        <e p="FootAnimationListener.cs" t="Include" />
         <e p="MainThreadDispatcher" t="Include">
           <e p="Dispatcher Documentation.txt" t="Include" />
           <e p="Dispatcher.cs" t="Include" />
@@ -269,6 +270,7 @@
           <e p="PowerUp.cs" t="Include" />
           <e p="Rail.cs" t="Include" />
           <e p="SpeedUpPowerUp.cs" t="Include" />
+          <e p="SwitchProjectile.cs" t="Include" />
           <e p="Teleport.cs" t="Include" />
           <e p="UFO.cs" t="Include" />
         </e>

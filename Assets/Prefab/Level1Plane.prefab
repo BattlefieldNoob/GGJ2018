@@ -3499,6 +3499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 1
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114400637212640070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3529,6 +3530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 1
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114630402958549156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3541,6 +3543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 2
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114700604004579706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3553,6 +3556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 2
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114890469437492086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3565,6 +3569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 2
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114949090353017114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3577,6 +3582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 1
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114977063425794260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3589,6 +3595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 1
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!114 &114984170919246134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3601,6 +3608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleporter_type: 2
+  TeleportSfx: event:/SFX/Player/SFX_Playr_Teleport
 --- !u!135 &135693791446324242
 SphereCollider:
   m_ObjectHideFlags: 1
