@@ -228,8 +228,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792737833742162}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.8, y: 0, z: -96.9}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.86, y: 5.2, z: 46.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4431130436716860}
@@ -567,13 +567,16 @@ MonoBehaviour:
   - {fileID: 4140629386743714}
   - {fileID: 4792252769225180}
   playersControllerIndexes: 00000000010000000200000003000000
-  Colors:
-  - {r: 1, g: 0.058823526, b: 0.058823526, a: 1}
-  - {r: 0.19999981, g: 0, b: 1, a: 1}
-  - {r: 0.32413793, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.9724138, b: 0, a: 1}
+  CanvasController: {fileID: 0}
+  playerMaterials:
+  - {fileID: 2100000, guid: 62b4e771011a5f644a10bd40524b8584, type: 2}
+  - {fileID: 2100000, guid: 08829bb9ffb06c34c9caa67cd7939f39, type: 2}
+  - {fileID: 2100000, guid: 7280ab3eb7a0acd45b11f908746e294d, type: 2}
+  - {fileID: 2100000, guid: b31b5f500e8630e418f0847b79125277, type: 2}
   AnotherMatch: {fileID: 114300353191484096}
   EndGame: {fileID: 114503621595565334}
+  WhoWonText: {fileID: 0}
+  backButton: {fileID: 0}
   players: []
 --- !u!222 &222321406726784670
 CanvasRenderer:

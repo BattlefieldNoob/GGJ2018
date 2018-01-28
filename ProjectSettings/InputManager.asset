@@ -422,6 +422,22 @@ InputManager:
     axis: 1
     joyNum: 4
   - serializedVersion: 3
+    m_Name: VerticalPL5
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 5
+  - serializedVersion: 3
     m_Name: Button1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -485,6 +501,22 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 4
+  - serializedVersion: 3
+    m_Name: Button5
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 5 button 1
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 5
   - serializedVersion: 3
     m_Name: HorizontalPR1
     descriptiveName: 
@@ -613,3 +645,19 @@ InputManager:
     type: 2
     axis: 4
     joyNum: 4
+  - serializedVersion: 3
+    m_Name: VerticalPR5
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 4
+    joyNum: 5

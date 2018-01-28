@@ -19,6 +19,22 @@ public class PlayerStatus : MonoBehaviour
         Dead
     };
 
+    private int temp; 
+
+
+
+    public int PlayerID {
+        set 
+        {
+            temp = value;
+            SetMaterialFromPlayerID();  
+        }
+        get
+        {
+            return temp; 
+        }
+    }
+
     State CurrentState;
     public float StunTime = 1.0f;
     CharacterMovement Movement;
@@ -30,7 +46,9 @@ public class PlayerStatus : MonoBehaviour
     private Animator Animator;
 	public ParticleSystem SplashParticles;
 
-	PlayerUIPanel UIPanel; 
+	PlayerUIPanel UIPanel;
+
+    public SkinnedMeshRenderer body; 
 
     // Use this for initialization
     void Start()
@@ -41,7 +59,7 @@ public class PlayerStatus : MonoBehaviour
         CollidedWithPlayer = new CollisionWithPlayerEvent();
 		PowerUp = null;
 
-		int id = Movement.PlayerID;
+		int id = PlayerID;
 		foreach(PlayerUIPanel p in FindObjectsOfType<PlayerUIPanel>())
 		{
 			if (p.id == id)
@@ -50,7 +68,17 @@ public class PlayerStatus : MonoBehaviour
 		UIPanel.Present(); 
     }
 
-	public PlayerUIPanel GetPlayerUIPanel()
+    private void SetMaterialFromPlayerID()
+    {
+        print("player ID to material = "+temp);
+        Material[] tempMat = body.materials;
+        Material m = GameManager.Instance.GetMaterialFromPlayerID(temp);
+        tempMat[0] = m;
+        print(m);
+        body.materials = tempMat;  
+    }
+
+    public PlayerUIPanel GetPlayerUIPanel()
 	{
 		return UIPanel; 
 	}
@@ -58,7 +86,7 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(CanUsePowerUp() && Input.GetButtonDown("Button" + Movement.PlayerID))
+		if(CanUsePowerUp() && Input.GetButtonDown("Button" + Movement.ControllerID))
 		{
 			PowerUp.Use();
 		}

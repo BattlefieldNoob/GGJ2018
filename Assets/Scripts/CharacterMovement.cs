@@ -6,11 +6,12 @@ using DG.Tweening;
 public class CharacterMovement : MonoBehaviour
 {
 	PlayerStatus Status;
-	public int PlayerID;
+	public int ControllerID;
+
 	Rigidbody rb;
 
 	public bool CanMove = true;
-
+    
     public bool CanDash = true;
 
 	private Animator Animator;
@@ -31,7 +32,7 @@ public class CharacterMovement : MonoBehaviour
         if (CanDash && CanMove)
         {
             CanMove = false;
-            Vector3 dash = new Vector3(Input.GetAxis("HorizontalPR" + PlayerID), 0, Input.GetAxis("VerticalPR" + PlayerID)).normalized;
+            Vector3 dash = new Vector3(Input.GetAxis("HorizontalPR" + ControllerID), 0, Input.GetAxis("VerticalPR" + ControllerID)).normalized;
             if (dash != Vector3.zero)
             {
                 CanDash = false;
@@ -45,7 +46,7 @@ public class CharacterMovement : MonoBehaviour
         }
         if (CanMove)
 		{
-			Vector3 dir = new Vector3(Input.GetAxis("HorizontalPL" + PlayerID), 0, Input.GetAxis("VerticalPL" + PlayerID)).normalized;
+			Vector3 dir = new Vector3(Input.GetAxis("HorizontalPL" + ControllerID), 0, Input.GetAxis("VerticalPL" + ControllerID)).normalized;
 			if (dir != Vector3.zero)
 			{
 				transform.rotation = Quaternion.LookRotation(dir);
