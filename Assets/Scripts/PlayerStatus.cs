@@ -122,6 +122,11 @@ public class PlayerStatus : MonoBehaviour
         StartCoroutine(Stun());
     }
 
+	public void GunShoot()
+	{
+		Animator.SetTrigger("GunShoot");
+	}
+
     private IEnumerator Stun()
     {
         yield return new WaitForSeconds(StunTime);
