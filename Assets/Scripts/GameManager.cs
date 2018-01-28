@@ -72,14 +72,9 @@ public class GameManager : MonoBehaviour
 	public void WaitGameplaySceneAndStartGame(int[] playersCount)
 	{
 		playersControllerIndexes = playersCount;
-		SceneManager.activeSceneChanged += OnSceneLoaded;
+		StartGame(); 
 	}
 
-	public void OnSceneLoaded(Scene old, Scene newScene)
-	{
-		StartGame();
-		SceneManager.activeSceneChanged -= OnSceneLoaded;
-	}
 
 	private void Update()
 	{
@@ -124,10 +119,10 @@ public class GameManager : MonoBehaviour
 		}
 
 	
-		GameObject go = GameObject.Find("Fader");
+		//GameObject go = GameObject.Find("Fader");
 
-		yield return new WaitForSeconds(4);
-		go.GetComponent<Animator>().SetTrigger("EndRound");
+		//yield return new WaitForSeconds(4);
+		//go.GetComponent<Animator>().SetTrigger("EndRound");
 		yield return new WaitForSeconds(2);
 
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
@@ -139,7 +134,7 @@ public class GameManager : MonoBehaviour
 			players[i].GetComponent<CharacterMovement>().CanMove = false;
 		}
 
-		go.GetComponent<Animator>().SetTrigger("EndRound");
+		//go.GetComponent<Animator>().SetTrigger("EndRound");
 		yield return new WaitForSeconds(2);
 
 
