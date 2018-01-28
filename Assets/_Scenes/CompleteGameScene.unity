@@ -7772,7 +7772,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 945396064}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &567926320
@@ -10025,6 +10025,11 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &945396064 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1998276083702298, guid: 5669fe9fe65e1e842a80c7be164af6e4,
+    type: 2}
+  m_PrefabInternal: {fileID: 381899390}
 --- !u!1 &947214275
 GameObject:
   m_ObjectHideFlags: 0
@@ -16419,6 +16424,41 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198457942098690324, guid: 848d27e47c8a9a74b82acb5ee88fb2af,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 848d27e47c8a9a74b82acb5ee88fb2af, type: 2}
   m_IsPrefabParent: 0
@@ -20938,6 +20978,41 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198628332630927706, guid: fd1b95cb43ed8254d8964666a8f2970b,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd1b95cb43ed8254d8964666a8f2970b, type: 2}
   m_IsPrefabParent: 0
@@ -21574,6 +21649,10 @@ Prefab:
     - target: {fileID: 114943555175937132, guid: 45191845f5c15ea45a0767a7f2a579be,
         type: 2}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985615694939856, guid: 45191845f5c15ea45a0767a7f2a579be, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
