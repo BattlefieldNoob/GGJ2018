@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
 
 	public TextMeshPro AnotherMatch;
 	public TextMeshPro EndGame;
+
+	public Text WhoWonText; 
 	
 	
 	/// <summary>
@@ -73,15 +75,6 @@ public class GameManager : MonoBehaviour
 	{
 		playersControllerIndexes = playersCount;
 		StartGame(); 
-	}
-
-
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			StartGame();
-		}
 	}
 
 	private void StartGame()
@@ -111,6 +104,29 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	public void ResetScene()
+	{
+		for (int i = 0; i < playersControllerIndexes.Length; i++)
+		{
+			players[i].transform.position = SpawnPoints[i].position;
+			players[i].transform.rotation = SpawnPoints[i].rotation;
+			players[i].gameObject.SetActive(true);
+			players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+			players[i].GetComponent<CharacterMovement>().CanMove = false;
+		}
+	}
+
+	public void Restart()
+	{
+		for (int i = 0; i < playersControllerIndexes.Length; i++)
+		{
+			players[i].GetComponent<CharacterMovement>().CanMove = true;
+			players[i].GetComponent<PlayerStatus>().Resurect();
+		}
+
+		FindObjectOfType<Desease>().StartNewMatch();
+	}
+
 	IEnumerator RestartMatchCoroutine(int winner)
 	{
 		foreach (GenericPowerUp gpu in FindObjectsOfType<GenericPowerUp>())
@@ -118,35 +134,8 @@ public class GameManager : MonoBehaviour
 			gpu.SelfDestruct();
 		}
 
-	
-		//GameObject go = GameObject.Find("Fader");
-
-		//yield return new WaitForSeconds(4);
-		//go.GetComponent<Animator>().SetTrigger("EndRound");
-		yield return new WaitForSeconds(2);
-
-		for (int i = 0; i < playersControllerIndexes.Length; i++)
-		{
-			players[i].transform.position=SpawnPoints[i].position;
-			players[i].transform.rotation=SpawnPoints[i].rotation;
-			players[i].gameObject.SetActive(true);
-			players[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
-			players[i].GetComponent<CharacterMovement>().CanMove = false;
-		}
-
-		//go.GetComponent<Animator>().SetTrigger("EndRound");
-		yield return new WaitForSeconds(2);
-
-
-		//TODO aspettare animazione
-
-		for (int i = 0; i < playersControllerIndexes.Length; i++)
-		{
-			players[i].GetComponent<CharacterMovement>().CanMove = true;
-			players[i].GetComponent<PlayerStatus>().Resurect();
-		}
-		
-		FindObjectOfType<Desease>().StartNewMatch();
+		FindObjectOfType<UFO>().StartTransition();
+		yield return null; 
 	}
 
 	public void MatchFinished(int winnerOfMatch)
@@ -162,8 +151,7 @@ public class GameManager : MonoBehaviour
 			StartCoroutine(GameFinished(winnerOfMatch));
 		}
 		else
-		{
-			
+		{	
 			StartCoroutine(RestartMatchCoroutine(winnerOfMatch));
 		}
 	}
@@ -171,15 +159,17 @@ public class GameManager : MonoBehaviour
 	public IEnumerator GameFinished(int winnerOfGame)
 	{
 		Debug.Log( "Player " + winnerOfGame + " won the game!");
-		
-		
-		yield return new WaitForSeconds(5f);
-		EndGame.transform.DOMoveX(-80, 5f).OnComplete(() => { EndGame.transform.DOMoveX(23, 0.01f); });
-		yield return new WaitForSeconds(5f);
-		
-		FindObjectOfType<LevelManager>()?.LoadOnSceneName("Main Menu");
 
-		//canvasText.text = "Player " + winnerOfGame + " won the game!";
+		Destroy(FindObjectOfType<Desease>().gameObject);
+
+		foreach (GameObject ps in players)
+		{
+			Destroy(ps); 
+		}
+
+		yield return new WaitForSeconds(1); 
+
+		WhoWonText.text = "Player " + winnerOfGame + " won the game!";
 	}
 	
 }

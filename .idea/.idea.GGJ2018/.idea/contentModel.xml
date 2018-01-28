@@ -252,10 +252,13 @@
             <e p="Music.cs" t="Include" />
           </e>
           <e p="CharacterMovement.cs" t="Include" />
+          <e p="Clouds.cs" t="Include" />
           <e p="Desease.cs" t="Include" />
+          <e p="Donnina.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GenericPowerUp.cs" t="Include" />
+          <e p="HighLevelGameManager.cs" t="Include" />
           <e p="LaserSwitchPowerUp.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
           <e p="MainMenuManager.cs" t="Include" />
@@ -264,8 +267,10 @@
           <e p="PlayerSelectionManager.cs" t="Include" />
           <e p="PlayerStatus.cs" t="Include" />
           <e p="PowerUp.cs" t="Include" />
+          <e p="Rail.cs" t="Include" />
           <e p="SpeedUpPowerUp.cs" t="Include" />
           <e p="Teleport.cs" t="Include" />
+          <e p="UFO.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
