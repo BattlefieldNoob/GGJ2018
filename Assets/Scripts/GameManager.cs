@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 		
 		EventManager.Instance.OnLastPlayerInfectedPerMatch.AddListener((winner) =>
 		{
-			print("Event thrown");
+			//print("Event thrown");
 			MatchFinished(winner);
 		});
 	}
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
 		WhoWonText.text = "";
 
 		foreach (int k in playersControllerIndexes) {
-			Debug.Log("At start -> "+k);
+			//Debug.Log("At start -> "+k);
 		}
 		//Instanzio i player
 		for (int i = 0; i < playersControllerIndexes.Length; i++)
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
 		//		CanvasController.InitUI(Colors);
 		foreach (string k in Input.GetJoystickNames())
 		{
-			Debug.Log("Start -> " + k);
+			//Debug.Log("Start -> " + k);
 		}
 	}
 
@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
 
 	public void MatchFinished(int winnerOfMatch)
 	{
-		Debug.Log("Player " + winnerOfMatch + " won this match!");
+		//Debug.Log("Player " + winnerOfMatch + " won this match!");
 		//canvasText.text = "Player " + winnerOfMatch + " won this match!";
 		//aggiungo un punto vittoria al player
 		VictoriesPerPlayer[winnerOfMatch] = VictoriesPerPlayer[winnerOfMatch] + 1;
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
 	public IEnumerator GameFinished(int winnerOfGame)
 	{
-		Debug.Log( "Player " + winnerOfGame + " won the game!");
+		//Debug.Log( "Player " + winnerOfGame + " won the game!");
 
 		Destroy(FindObjectOfType<Desease>().gameObject);
 

@@ -64,7 +64,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
                 }
             }
         }
-        Debug.Log("Target = " + target);
+        //Debug.Log("Target = " + target);
         return target;
     }
 
@@ -73,7 +73,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
         Vector3 totargetvector = (target.position - transform.parent.position).normalized;
         Vector3 forward = transform.parent.forward;
         float dot = Vector3.Dot(totargetvector, forward);
-        Debug.Log("Dot = " + dot);
+        //Debug.Log("Dot = " + dot);
         return dot > 0.5f;
     }
 
@@ -86,7 +86,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
 
     void EnableDisableCommands(GameObject target, bool state)
     {
-        Debug.Log("Enable disable with state " + state);
+        //Debug.Log("Enable disable with state " + state);
         GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
         target.GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponentInParent<CharacterMovement>().CanMove = state;
@@ -94,7 +94,7 @@ public class LaserSwitchPowerUp : GenericPowerUp
     }
     IEnumerator LaserWait(Transform t)
     {
-        Debug.Log("Into the coroutine");
+        //Debug.Log("Into the coroutine");
 		GameObject g = Instantiate(Projectile,transform.position,Quaternion.identity);
 		g.GetComponent<SwitchProjectile>().Shoot(t, Duration);
         yield return new WaitForSeconds(Duration);

@@ -42,7 +42,7 @@ public class PlayerUIPanel : MonoBehaviour {
 
 	public void SetPowerUpIcon(Sprite sprite)
 	{
-		print("setting" + sprite); 
+		//print("setting" + sprite); 
 		if (sprite == null)
 			powerUpImage.enabled = false;
 		else

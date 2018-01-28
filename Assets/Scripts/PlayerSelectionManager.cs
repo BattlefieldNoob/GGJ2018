@@ -60,7 +60,7 @@ public class PlayerSelectionManager : MonoBehaviour
     {
         if (PlayerStatusForIndex.Count >= 2 && PlayerStatusForIndex.All(playerReady => playerReady.Value.isReady))
         {
-            Debug.Log("Game can Start!");
+            //Debug.Log("Game can Start!");
             gameCanStart = true;
             StartCoroutine(WaitAndStartGame());
         }
@@ -96,7 +96,7 @@ public class PlayerSelectionManager : MonoBehaviour
                     //ciclo sull'enumerable chiamando la callback n volte
                     foreach (var i in intersection)
                     {
-                        Debug.Log("New Device:" + i);
+                        //Debug.Log("New Device:" + i);
                         OnDeviceConnected(i);
                     }
                 }
@@ -108,7 +108,7 @@ public class PlayerSelectionManager : MonoBehaviour
                     //ciclo sull'enumerable chiamando la callback n volte
                     foreach (var i in intersection)
                     {
-                        Debug.Log("Removed Device:" + i);
+                        //Debug.Log("Removed Device:" + i);
                         OnDeviceDisconnected(i);
                     }
                 }
@@ -179,15 +179,15 @@ public class PlayerSelectionManager : MonoBehaviour
         CanStart.text = "Game Can Start!  1";
         yield return new WaitForSeconds(1f);
 
-		print("pippo");
-		foreach(int i in LastCycleJoystickIndexes)
-		{
-			print(i);
-		}
+		//print("pippo");
+		//foreach(int i in LastCycleJoystickIndexes)
+		//{
+		//	print(i);
+		//}
 		GameManager.Instance.WaitGameplaySceneAndStartGame(LastCycleJoystickIndexes.ToArray());
-		print("pippo"); 
+		//print("pippo"); 
         FindObjectOfType<HighLevelGameManager>().EnterGameState();
-		print("pluto"); 
+		//print("pluto"); 
         
     }
 }
