@@ -57,10 +57,10 @@ public class Desease : MonoBehaviour
 
     public void KillCurrentPlayerAndChoseAnother()
     {
-        print("kill current and choose another"); 
+        //print("kill current and choose another"); 
         Debugtext.text = "";
         Instantiate(KaboomParticlePrefab, transform.position,transform.rotation);
-        Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
+        ////Debug.Log("[" + GetType().Name + "]" + " Kill current player and find another");
         
         _timerIsActive = false;
         transform.SetParent(null);
@@ -81,7 +81,7 @@ public class Desease : MonoBehaviour
         var alivePlayers = _players.Where(player => !player.IsDead()).ToArray();
         if (alivePlayers.Length == 1)
         {
-            Debug.Log("Last Player!");
+            //Debug.Log("Last Player!");
             //il player che sto infettando è l'ultimo
             EventManager.Instance.OnLastPlayerInfectedPerMatch.Invoke(Array.IndexOf(_players, alivePlayers[0]));
             _timerIsActive = false;
@@ -95,8 +95,9 @@ public class Desease : MonoBehaviour
 
     private void InfectPlayer(PlayerStatus player,bool isLastPlayer)
     {
-        Debug.Log("[" + GetType().Name + "]" + " Infecting Player");
+        //Debug.Log("[" + GetType().Name + "]" + " Infecting Player");
         _timerIsActive = false;
+        _players[_currentPlayerIndex].CollidedWithPlayer.RemoveListener(OnCollisionWithHealtyPlayer);
         _currentPlayerIndex = Array.IndexOf(_players, player);
 
         transform.SetParent(null);
@@ -109,7 +110,7 @@ public class Desease : MonoBehaviour
         StartCoroutine(ReachPlayer(_players[_currentPlayerIndex].GetDeseaseSocket(), 10, callback:() =>
         {
             Animator.SetTrigger("Attacking");
-            Debug.Log("Animation Finished!");
+            //Debug.Log("Animation Finished!");
             //mi metto come figlio dell'oggetto
             transform.SetParent(_players[_currentPlayerIndex].GetDeseaseSocket());
             transform.localPosition=Vector3.zero;
@@ -156,7 +157,7 @@ public class Desease : MonoBehaviour
 
     private void OnCollisionWithHealtyPlayer(PlayerStatus healtyPlayer)
     {
-        Debug.Log("[" + GetType().Name + "]" + " Change Infected Player");
+        //Debug.Log("[" + GetType().Name + "]" + " Change Infected Player");
         //il padre ha colliso con un player sano, quindi mi sposto su quello
         InfectPlayer(healtyPlayer,false);
     }

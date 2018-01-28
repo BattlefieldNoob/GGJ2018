@@ -33,14 +33,14 @@ public class LevelManager : MonoBehaviour {
 
 	private string waitForScene;
 
-	private Image FadePanel;
+	public Image FadePanel;
 
 	public float fadeSeconds=2;
 
 
 	private void Start()
 	{
-		FadePanel = transform.GetChild(0).GetComponentInChildren<Image>();
+		//FadePanel = transform.GetChild(0).GetComponentInChildren<Image>();
 		FadePanel.DOFade(0, fadeSeconds);
 		SceneManager.activeSceneChanged+=OnChangeScene;
 	}
@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour {
 
 	public void ChangeSceneTo(string sceneName)
 	{
-		Debug.Log("Fading to "+sceneName);
+		//Debug.Log("Fading to "+sceneName);
 		waitForScene = sceneName;
 		FadePanel.DOFade(1, fadeSeconds).OnComplete(() =>
 		{
@@ -72,18 +72,18 @@ public class LevelManager : MonoBehaviour {
 	public void LoadOnSceneIndex(){
 
 		SceneManager.LoadScene (sceneIndex);
-		Debug.Log (" Loading  scene number " + sceneIndex);		
+		//Debug.Log (" Loading  scene number " + sceneIndex);		
 	}
 
 	public void LoadOnSceneName(string sceneName){
 		
 		SceneManager.LoadScene (sceneName);
-		Debug.Log (" Loading  scene " + sceneName);
+		//Debug.Log (" Loading  scene " + sceneName);
 	}
 
 	public void CloseGame (){
 		Application.Quit ();
-		Debug.Log ("Closing the Application");
+		//Debug.Log ("Closing the Application");
 	}
 
 	public void LoadAfter(float wait){
