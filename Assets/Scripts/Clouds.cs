@@ -8,7 +8,7 @@ public class Clouds : MonoBehaviour {
 	void Start () {
 		foreach (Transform child in transform)
 		{
-			child.DOMoveX(-30, 40f).SetLoops(-1, LoopType.Yoyo).SetDelay(Random.Range(1, 4));
+			child.DOMoveX(-30,20f).SetLoops(-1, LoopType.Yoyo).SetDelay(Random.Range(1, 4));
 		}
 	}
 	
