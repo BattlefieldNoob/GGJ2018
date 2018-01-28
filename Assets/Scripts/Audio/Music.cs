@@ -20,6 +20,7 @@ namespace Audio
 		private void Awake()
 		{
 			SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+			
 		}
 
 
