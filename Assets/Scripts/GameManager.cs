@@ -167,6 +167,10 @@ public class GameManager : MonoBehaviour
 			Destroy(ps); 
 		}
 
+		players.Clear();
+		VictoriesPerPlayer.Clear();
+		WhoWonText.text = "";
+
 		yield return new WaitForSeconds(1); 
 
 		WhoWonText.text = "Player " + winnerOfGame + " won the game!";

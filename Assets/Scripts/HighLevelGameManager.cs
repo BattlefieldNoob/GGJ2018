@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HighLevelGameManager : MonoBehaviour {
 
-	enum GameState{ Menu, Selection, Game}
-	GameState myState;
+	public enum GameState{ Menu, Selection, Game}
+	public GameState myState;
 
 	public GameObject menuCanvas;
 	public GameObject selectionCanvas;
