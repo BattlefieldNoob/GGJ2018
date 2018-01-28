@@ -29,7 +29,8 @@ public class Teleport : MonoBehaviour {
     {
         switch (teleporter_type)
         {
-            case Type.border: collision.gameObject.transform.position += target.localPosition;
+            case Type.border:   int rand = Random.Range(0, 4);
+                                collision.gameObject.transform.position = transform.GetChild(rand).position;
                 break;
             case Type.targeted: collision.gameObject.transform.position = target.position;
                 break;
@@ -37,6 +38,7 @@ public class Teleport : MonoBehaviour {
                             {
                                 onCooldown = true;
                                 collision.gameObject.GetComponent<CharacterMovement>().CanMove = false;
+                                StartCoroutine(tombinJump());
                                 StartCoroutine(jump(collision.gameObject, 20));
                                 StartCoroutine(Cooldown());
                             }
@@ -47,7 +49,29 @@ public class Teleport : MonoBehaviour {
         }
     }
 
-    private IEnumerator jump(GameObject player, float power)
+    private IEnumerator tombinJump()
+    {
+        float duration = 0.1f;
+        Vector3 start = gameObject.transform.position;
+        Vector3 end = gameObject.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
+        float progress = 0.0f;
+        for (float t = 0.0f; t <= duration; t += Time.deltaTime)
+        {
+            progress = t / duration;
+            gameObject.transform.position = Vector3.Lerp(start, end, progress);
+            yield return null;
+        }
+        duration = 0.2f;
+        for (float t = 0.0f; t <= duration; t += Time.deltaTime)
+        {
+            progress = t / duration;
+            gameObject.transform.position = Vector3.Lerp(end, start, progress);
+            yield return null;
+        }
+        gameObject.transform.position = start;
+    }
+
+        private IEnumerator jump(GameObject player, float power)
     {
         float duration = 1.0f;
         Vector3 startPosition = player.transform.position;
@@ -61,7 +85,6 @@ public class Teleport : MonoBehaviour {
             float progress = t / duration;
             float y = ((1 - t) * (1 - t) * startY + 2 * (1 - t) * t * bezierY + t * t * endY);
             Vector3 horizontal = Vector3.Lerp(startPosition, target.position, progress);
-
             player.transform.position = new Vector3(horizontal.x, y, horizontal.z);
 
             yield return null;
@@ -71,9 +94,9 @@ public class Teleport : MonoBehaviour {
 
     private IEnumerator Cooldown()
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.black;
+        gameObject.GetComponentInChildren<ParticleSystem>().Stop();
         yield return new WaitForSeconds(cooldownTime);
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.magenta;
+        gameObject.GetComponentInChildren<ParticleSystem>().Play();
         onCooldown = false;
     }
 }
