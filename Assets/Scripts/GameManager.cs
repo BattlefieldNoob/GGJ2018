@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
 
 		yield return new WaitForSeconds(1); 
 
-		WhoWonText.text = "Player " + winnerOfGame + " won the game!";
+		WhoWonText.text = "Player " + (winnerOfGame+1) + " won the game!";
 		backButton.gameObject.SetActive(true);
 	}
 
