@@ -18,7 +18,7 @@ public class HighLevelGameManager : MonoBehaviour {
 		myState = GameState.Menu; 
 	}
 
-	private void Update()
+	/*private void Update()
 	{
 		if(Input.GetKeyDown(KeyCode.A))
 		{
@@ -32,7 +32,7 @@ public class HighLevelGameManager : MonoBehaviour {
 		{
 			EnterSelectionState();
 		}
-	}
+	}*/
 
 	public void EnterMenuState()
 	{

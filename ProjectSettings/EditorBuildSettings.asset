@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_Scenes/Main Menu.unity
-    guid: 6cd7ab957099b426b817e20de2dfe991
-  - enabled: 0
-    path: Assets/_Scenes/Character Selection.unity
-    guid: 179e440066d8f473a8e24ecd09f067fd
-  - enabled: 0
-    path: Assets/_Scenes/Gameplay.unity
-    guid: 051f1563ffa5a3848b304b048d780071
-  - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/_Scenes/CompleteGameScene.unity
-    guid: b8df238c4b40ac140af0c1cd577392f3
+    guid: f0d7a60729e25744991c4eb979879fa4

@@ -17,7 +17,7 @@ public class PowerUp : MonoBehaviour
 
     int randomIndex;
 
-    private string PickPowerUpSfx = "event:/SFX/SFX_PowerUp_PickUp";
+    [EventRef] public string PickPowerUpSfx;
 
     private void OnEnable()
     {

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Audio;
 using UnityEngine;
 
 public class UFO : MonoBehaviour
@@ -14,8 +13,6 @@ public class UFO : MonoBehaviour
 	public float speed = 2;
 	Vector3 halfPos;
 	bool done; 
-	private string audio = "event:/SFX/SFX_UFO_Passes";
-
 
 	private void Awake()
 	{
@@ -31,7 +28,6 @@ public class UFO : MonoBehaviour
 
 	public void StartTransition()
 	{
-		AudioManager.PlayOneShotAudio(audio, gameObject);
 		moving = true;
 	}
 
