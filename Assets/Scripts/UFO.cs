@@ -53,6 +53,7 @@ public class UFO : MonoBehaviour
 				done = false;
 				moving = false;
 				transform.position = startPos;
+                transform.rotation = Quaternion.identity; 
 				FindObjectOfType<GameManager>().Restart();
 
 			}
