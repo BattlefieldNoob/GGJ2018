@@ -33,11 +33,21 @@ public class GameManager : MonoBehaviour
 
 	#endregion
 
+	
+	public enum GameMultiplayerType
+	{
+		Local,
+		Online
+	}
+	
 	public float InfectDuration;
 	//public Image InfectTimeFilledImage;
 
 	public GameObject PlayerPrefab;
 	public GameObject DiseasePrefab;
+
+	public GameObject OnlineCanvasPrefab;
+	public GameObject NetworkManagerPrefab;
 
 	public Transform[] SpawnPoints;
 
@@ -57,6 +67,22 @@ public class GameManager : MonoBehaviour
 	public Button backButton;
 
 	public List<GameObject> levels;
+
+	public GameMultiplayerType _gameType;
+
+	public GameMultiplayerType gameType
+	{
+		set
+		{
+			_gameType = value;
+			if (value == GameMultiplayerType.Online)
+			{
+				//instanzio e inizializzo tutto il necessario per il multiplayer
+				Instantiate(NetworkManagerPrefab);
+				Instantiate(OnlineCanvasPrefab);
+			}
+		}
+	}
 	
 	
 	/// <summary>

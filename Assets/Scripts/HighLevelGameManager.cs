@@ -52,8 +52,19 @@ public class HighLevelGameManager : MonoBehaviour {
 		gameCanvas.SetActive(true);
 	}
 
-	public void EnterSelectionState()
+	public void StartLocalGame()
 	{
+		EnterSelectionState(GameManager.GameMultiplayerType.Local);
+	}
+
+	public void StartOnlineGame()
+	{
+		EnterSelectionState(GameManager.GameMultiplayerType.Online);
+	}
+
+	private void EnterSelectionState(GameManager.GameMultiplayerType gameType)
+	{
+		GameManager.Instance.gameType = gameType;
 		rail.MoveToMenu();
 		myState = GameState.Selection;
 		menuCanvas.SetActive(false);
